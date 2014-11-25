@@ -1,0 +1,42 @@
+<p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
+
+<h2>Common tips and tricks</h2>
+
+<ul>
+<li>Look at the URL path (e.g. <code>/users/100685/edit</code>).
+Can the action and main view file be determined from CRUD/REST conventions?
+
+<ul>
+<li><code>/:model/edit</code> -> edit.html.slim</li>
+<li><code>/:model/1234</code> -> show.html.slim</li>
+<li><code>/:model/new</code> -> new.html.slim</li>
+<li><code>/:model</code> -> index.html.slim</li>
+</ul>
+</li>
+<li>Look up the path in routes.rb, or even more useful, run <code>rake routes</code></li>
+</ul>
+
+
+<h2>Finding a controller and action responsible for a given page</h2>
+
+<ol>
+<li>In development go to your server&rsquo;s output, and clear the screen (<code>Ctrl+L</code>,
+for Linux, <code>Cmd-K</code> for OS X)</li>
+<li>Refresh the web page</li>
+<li>Back to the server&rsquo;s output, scroll to the top of the output. About the second
+line of non-blank log output, you should see something like:
+<code>Processing by UserseController#edit as HTML</code>. That&rsquo;s the
+controller (<code>UsersController</code>) and action (<code>edit</code>).</li>
+</ol>
+
+
+<h2>Finding a view file for a given page</h2>
+
+<ul>
+<li>If in development, look at the server log. If it is too noisy, use
+<code>tail -f log/development | grep Rendered</code> to cut out the noise.</li>
+<li>If in development, add the <code>rails_view_annotator</code> gem to your Gemfile,
+and look at the DOM or HTML source. It should have HTML comments identifying
+the view partials responsible for their generated HTML.</li>
+</ul>
+

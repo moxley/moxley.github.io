@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Moxley Stratton</title>
-  <meta name="author" content="Moxley Stratton">
+  <title>My Octopress Blog</title>
+  <meta name="author" content="Your Name">
 
   
   <meta name="description" content="I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle: 1
@@ -25,7 +25,7 @@
   <link rel="canonical" href="http://moxley.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Moxley Stratton" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -40,9 +40,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Moxley Stratton</a></h1>
+  <h1><a href="/">My Octopress Blog</a></h1>
   
-    <h2>A blog for hackers.</h2>
+    <h2>A blogging framework for hackers.</h2>
   
 </hgroup>
 
@@ -140,6 +140,76 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/">Finding the Source for a Given Rails Web Page</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-05-29T00:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
+
+<h2>Common tips and tricks</h2>
+
+<ul>
+<li>Look at the URL path (e.g. <code>/users/100685/edit</code>).
+Can the action and main view file be determined from CRUD/REST conventions?
+
+<ul>
+<li><code>/:model/edit</code> -> edit.html.slim</li>
+<li><code>/:model/1234</code> -> show.html.slim</li>
+<li><code>/:model/new</code> -> new.html.slim</li>
+<li><code>/:model</code> -> index.html.slim</li>
+</ul>
+</li>
+<li>Look up the path in routes.rb, or even more useful, run <code>rake routes</code></li>
+</ul>
+
+
+<h2>Finding a controller and action responsible for a given page</h2>
+
+<ol>
+<li>In development go to your server&rsquo;s output, and clear the screen (<code>Ctrl+L</code>,
+for Linux, <code>Cmd-K</code> for OS X)</li>
+<li>Refresh the web page</li>
+<li>Back to the server&rsquo;s output, scroll to the top of the output. About the second
+line of non-blank log output, you should see something like:
+<code>Processing by UserseController#edit as HTML</code>. That&rsquo;s the
+controller (<code>UsersController</code>) and action (<code>edit</code>).</li>
+</ol>
+
+
+<h2>Finding a view file for a given page</h2>
+
+<ul>
+<li>If in development, look at the server log. If it is too noisy, use
+<code>tail -f log/development | grep Rendered</code> to cut out the noise.</li>
+<li>If in development, add the <code>rails_view_annotator</code> gem to your Gemfile,
+and look at the DOM or HTML source. It should have HTML comments identifying
+the view partials responsible for their generated HTML.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -156,36 +226,11 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
         <a href="/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/">Sometimes Clojure Is More Concise Than Ruby</a>
       </li>
     
+      <li class="post">
+        <a href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/">Finding the Source for a Given Rails Web Page</a>
+      </li>
+    
   </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/moxley">@moxley</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'moxley',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
@@ -198,7 +243,7 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Moxley Stratton -
+  Copyright &copy; 2014 - Your Name -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
