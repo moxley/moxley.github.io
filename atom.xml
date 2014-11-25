@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://moxley.github.io/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T19:32:18-08:00</updated>
+  <updated>2014-11-24T19:49:42-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Sometimes Clojure Is More Concise Than Ruby]]></title>
     <link href="http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
-    <updated>2014-11-24T00:00:00-08:00</updated>
+    <updated>2014-11-24T19:00:00-08:00</updated>
     <id>http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
     <content type="html"><![CDATA[<p>I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:</p>
 
@@ -66,7 +66,7 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
   <entry>
     <title type="html"><![CDATA[Finding the Source for a Given Rails Web Page]]></title>
     <link href="http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/"/>
-    <updated>2014-05-29T00:00:00-07:00</updated>
+    <updated>2014-05-29T12:00:00-07:00</updated>
     <id>http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page</id>
     <content type="html"><![CDATA[<p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
 
@@ -114,9 +114,9 @@ the view partials responsible for their generated HTML.</li>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Considering a Switch to the Atom Text Editor]]></title>
+    <title type="html"><![CDATA[Considering a Switch to the Atom Text Editor?]]></title>
     <link href="http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/"/>
-    <updated>2014-03-16T00:00:00-07:00</updated>
+    <updated>2014-03-16T12:00:00-07:00</updated>
     <id>http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor</id>
     <content type="html"><![CDATA[<p>You&rsquo;ve probably heard of <a href="http://atom.io/">Atom, Github&rsquo;s new text editor</a>. Read
 these checklists to help you decide whether it&rsquo;s an editor worth switching to.</p>
@@ -213,7 +213,7 @@ these checklists to help you decide whether it&rsquo;s an editor worth switching
   <entry>
     <title type="html"><![CDATA[Simple Cellular Automata]]></title>
     <link href="http://moxley.github.io/blog/2012/12/01/simple-cellular-automata/"/>
-    <updated>2012-12-01T00:00:00-08:00</updated>
+    <updated>2012-12-01T12:00:00-08:00</updated>
     <id>http://moxley.github.io/blog/2012/12/01/simple-cellular-automata</id>
     <content type="html"><![CDATA[<p>I released a very simple cellular automata explorer. <a href="http://moxley.github.io/cellauto/cellauto.html">Try it out here</a>.
 See the <a href="https://github.com/moxley/cellauto">Github page</a> for more information.</p>
