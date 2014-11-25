@@ -68,8 +68,6 @@ these checklists to help you decide whether it's an editor worth switching to.
 
 ### Cons
 
-*   Costs money
-*   Core is closed-source for now
 *   Editor API doesn't go as deep as Emacs. Lacks rich callback API that Emacs has.
 *   No cursor history, so no command for going back to the last location without using bookmarks
 *   No cursor navigation around, or editing operations on, symbol definitions (e.g., methods)
