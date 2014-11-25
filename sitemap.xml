@@ -26,14 +26,34 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>http://moxley.github.io/blog/2012/04/13/injection/</loc>
+    <lastmod>2012-04-13T12:00:00-07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/</loc>
+    <lastmod>2008-05-01T12:00:00-07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/</loc>
+    <lastmod>2007-07-31T12:00:00-07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/</loc>
+    <lastmod>2006-01-11T12:00:00-08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://moxley.github.io/blog/archives/</loc>
-    <lastmod>2014-11-24T22:33:39-08:00</lastmod>
+    <lastmod>2014-11-24T23:06:54-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://moxley.github.io/</loc>
-    <lastmod>2014-11-24T22:33:39-08:00</lastmod>
+    <lastmod>2014-11-24T23:06:54-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

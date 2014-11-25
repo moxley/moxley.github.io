@@ -1,422 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://moxley.github.io/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T23:06:54-08:00</updated>
-  <id>http://moxley.github.io/</id>
-  <author>
-    <name><![CDATA[Your Name]]></name>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Clojure Tutorial for the Non-Lisp Programmer - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:moxley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
     
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+      <h1 class="entry-title">Clojure Tutorial for the Non-Lisp Programmer</h1>
+    
+    
+      <p class="meta">
+        
 
-  
-  <entry>
-    <title type="html"><![CDATA[Sometimes Clojure Is More Concise Than Ruby]]></title>
-    <link href="http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
-    <updated>2014-11-24T19:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
-    <content type="html"><![CDATA[<p>I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; Subtract two vectors in Clojure</span>
-</span><span class='line'><span class="p">(</span><span class="k">def </span><span class="nv">a</span> <span class="p">[</span><span class="mi">10</span> <span class="mi">9</span> <span class="mi">8</span><span class="p">])</span>
-</span><span class='line'><span class="p">(</span><span class="k">def </span><span class="nv">b</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">])</span>
-</span><span class='line'><span class="p">(</span><span class="nb">map - </span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span>
-</span><span class='line'><span class="c1">;; (9 7 5)</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
+<time class='entry-date' datetime='2008-05-01T12:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 pm</span></time>
+        
+      </p>
+    
+  </header>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Subtract two vectors in Ruby</span>
-</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="o">]</span>
-</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
-</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">|</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="p">}</span>
-</span><span class='line'><span class="c1"># [9, 7, 5]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What is it about Ruby that makes it less concise in this example?</p>
-
-<p>In my opinion, the OOP nature of Ruby gets in the way. In OOP, there is a message receiver
-(the object), plus zero or more arguments. In Clojure, there is no receiver, only arguments.
-In Ruby, the two arguments to Clojure&rsquo;s <code>map</code> call have to be split up into the receiver
-and the first argument. Additionally, the arguments to Ruby&rsquo;s <code>map</code> arrive as a single
-array instead of of two distinct scalar arguments. This requires the destructor
-parentheses inside the <code>map</code> block.</p>
-
-<p>The syntactical division between a receiver and it&rsquo;s arguments is usually not a problem.
-But every once in a while, it gets in the way. Another division in OOP is between class
-and instance. I&rsquo;ve found that this division can sometimes get in the way too.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Finding the Source for a Given Rails Web Page]]></title>
-    <link href="http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/"/>
-    <updated>2014-05-29T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page</id>
-    <content type="html"><![CDATA[<p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
-
-<h2>Common tips and tricks</h2>
-
-<ul>
-<li>Look at the URL path (e.g. <code>/users/100685/edit</code>).
-Can the action and main view file be determined from CRUD/REST conventions?
-
-<ul>
-<li><code>/:model/edit</code> -> edit.html.slim</li>
-<li><code>/:model/1234</code> -> show.html.slim</li>
-<li><code>/:model/new</code> -> new.html.slim</li>
-<li><code>/:model</code> -> index.html.slim</li>
-</ul>
-</li>
-<li>Look up the path in routes.rb, or even more useful, run <code>rake routes</code></li>
-</ul>
-
-
-<h2>Finding a controller and action responsible for a given page</h2>
-
-<ol>
-<li>In development go to your server&rsquo;s output, and clear the screen (<code>Ctrl+L</code>,
-for Linux, <code>Cmd-K</code> for OS X)</li>
-<li>Refresh the web page</li>
-<li>Back to the server&rsquo;s output, scroll to the top of the output. About the second
-line of non-blank log output, you should see something like:
-<code>Processing by UserseController#edit as HTML</code>. That&rsquo;s the
-controller (<code>UsersController</code>) and action (<code>edit</code>).</li>
-</ol>
-
-
-<h2>Finding a view file for a given page</h2>
-
-<ul>
-<li>If in development, look at the server log. If it is too noisy, use
-<code>tail -f log/development | grep Rendered</code> to cut out the noise.</li>
-<li>If in development, add the <code>rails_view_annotator</code> gem to your Gemfile,
-and look at the DOM or HTML source. It should have HTML comments identifying
-the view partials responsible for their generated HTML.</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Considering a Switch to the Atom Text Editor?]]></title>
-    <link href="http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/"/>
-    <updated>2014-03-16T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor</id>
-    <content type="html"><![CDATA[<p>You&rsquo;ve probably heard of <a href="http://atom.io/">Atom, Github&rsquo;s new text editor</a>. Read
-these checklists to help you decide whether it&rsquo;s an editor worth switching to.</p>
-
-<h2>General Pros</h2>
-
-<ul>
-<li>Open Source</li>
-<li>High-quality extension and enhancement infrastructure</li>
-<li>View is programmable using good old HTML DOM and CSS</li>
-<li>Well-known API model (NodeJS)</li>
-<li>Built-in Github integration</li>
-<li>Built-in, light Git integration</li>
-<li><a href="https://www.youtube.com/watch?v=VGUemwCaBR0&amp;amp;feature=youtu.be">Realtime Markdown preview</a></li>
-<li>Seamlessly tracks external file renames while the file is open</li>
-<li>Browse archive files, like zip or tar.gz, like Emacs does.</li>
-<li>UI and editing features basically a clone of Sublime Text</li>
-<li>Free, while in Beta.</li>
-</ul>
-
-
-<h2>General Cons</h2>
-
-<ul>
-<li>In Beta. Some rough UX details.</li>
-<li>No keyboard macros</li>
-<li>No command documentation</li>
-<li>Difficult to discover available commands</li>
-<li>Currently only works on OS X (Windows and Linux planned)</li>
-</ul>
-
-
-<h2>For Sublime Users</h2>
-
-<h3>Pros</h3>
-
-<ul>
-<li>Package manager is built in</li>
-<li>Deep customization API</li>
-<li>Fine-grained commands</li>
-<li>Complete pane splitting and pane navigation</li>
-<li>Smarter indentation of pasted text</li>
-</ul>
-
-
-<h3>Cons</h3>
-
-<ul>
-<li>2-3x slower, 2-3x more memory than ST3 (realistically, it&rsquo;s not as bad as it sounds)</li>
-<li>No &ldquo;Jump Back&rdquo; feature, as found in ST3</li>
-<li>No auto-highlighting matching strings of selected string</li>
-<li>Can&rsquo;t open file in existing window, unless it lives within the window&rsquo;s directory</li>
-<li>Missing key bindings for many search &amp; replace operations</li>
-</ul>
-
-
-<h2>For Vim and Emacs Users</h2>
-
-<h3>Pros</h3>
-
-<ul>
-<li>Modern Application and UI, contemporary key bindings</li>
-<li>Easy to learn</li>
-<li>Built in Package manager, and standard package formats</li>
-<li>View is good old HTML DOM, CSS</li>
-<li>CoffeeScript is arguably better than eLisp and Vimscript</li>
-<li>Editor API reaches deep into the editor</li>
-<li>Project-wide fuzzy file finder, built in, fuss-free</li>
-<li>Buffer-wide fuzzy symbol finder, built in, fuss-free</li>
-<li>Project-wide string search</li>
-<li>Large number of homerow-close key bindings (many of them are Emacs compatible)</li>
-<li>Pane splitting on par with Vim and Emacs</li>
-<li>Multi selections</li>
-<li>Code Snippets</li>
-</ul>
-
-
-<h3>Cons</h3>
-
-<ul>
-<li>Costs money</li>
-<li>Core is closed-source for now</li>
-<li>Editor API doesn&rsquo;t go as deep as Emacs. Lacks rich callback API that Emacs has.</li>
-<li>No cursor history, so no command for going back to the last location without using bookmarks</li>
-<li>No cursor navigation around, or editing operations on, symbol definitions (e.g., methods)</li>
-<li>Unlike Emacs, no built-in shell console (package under development)</li>
-<li>Keyboard navigation of file tree is cumbersome, but will likely improve over time.</li>
-<li>Missing a lot of the cool text navigation and editing commands available to Vim and Emacs</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Simple Cellular Automata]]></title>
-    <link href="http://moxley.github.io/blog/2012/12/01/simple-cellular-automata/"/>
-    <updated>2012-12-01T12:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2012/12/01/simple-cellular-automata</id>
-    <content type="html"><![CDATA[<p>I released a very simple cellular automata explorer. <a href="http://moxley.github.io/cellauto/cellauto.html">Try it out here</a>.
-See the <a href="https://github.com/moxley/cellauto">Github page</a> for more information.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ten Secret Key Bindings From OS X]]></title>
-    <link href="http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings/"/>
-    <updated>2012-05-11T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings</id>
-    <content type="html"><![CDATA[<p>Did you know that when using these applications:</p>
-
-<ul>
-<li>Any application on OS X, except Vim and MS products</li>
-<li>Bash, or any console program with Readline support</li>
-</ul>
-
-
-<p>These key bindings are available:</p>
-
-<ol>
-<li>Control-A - Move to beginning of line</li>
-<li>Control-E - Move to end of line</li>
-<li>Control-F - Move forward one column</li>
-<li>Control-B - Move backward one column</li>
-<li>Control-N - Move to next line</li>
-<li>Control-P - Move to previous line</li>
-<li>Control-D - Delete next character</li>
-<li>Control-H - Delete previous character</li>
-<li>Control-K - Delete from cursor to end of line</li>
-<li> Control-Y - Paste what was deleted with Control-K</li>
-</ol>
-
-
-<p>It seems silly, but the thing I love the most about OS X is the ubiquity of these key bindings. Any text editing, from writing a blog post in Chrome, to writing code in TextMate is immensely sweeter with the availability of the above key bindings. One need not leave the keyboard&rsquo;s home row to do much of anything when they&rsquo;re available.</p>
-
-<p>Whether you use Emacs or Vim or another text editor, learn to use key bindings that allow you to keep your fingers close to the home row. Your text editing will be faster an more efficient.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Injection]]></title>
-    <link href="http://moxley.github.io/blog/2012/04/13/injection/"/>
-    <updated>2012-04-13T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2012/04/13/injection</id>
-    <content type="html"><![CDATA[<p>Within the world of application development, there is a conspiracy.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username=&#39;&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What&rsquo;s wrong with this code? The problem is that <code>$username</code> needs to be escaped before it can be put into the SQL statement. If <code>$username</code> contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there&rsquo;s more to this story.</p>
-
-<p>Without escaping the data before it is added to the SQL, the code is vulnerable to Injection attack. Injection is the top security risk in applications, according to <a href="https://www.owasp.org/index.php/Top_10_2010-Main" title="">OWASP&rsquo;s Top 10 Security Risks</a>>.</p>
-
-<p>Here&rsquo;s the corrected code:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username=&#39;&quot;</span> <span class="o">.</span> <span class="nb">mysql_real_escape_string</span><span class="p">(</span><span class="nv">$username</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>See the really long function name <code>mysql_real_escape_string()</code>? The long length is part of a conspiracy to discourage you from escaping injected data.</p>
-
-<p>If you work much with SQL, you may also know about parameterized SQL statements, which automatically escape the injected data, and they reduce the need to concatenate bits of SQL together.</p>
-
-<p>&hellip;</p>
-
-<p>Let&rsquo;s pull out the essential parts from the PHP example. The <code>$username</code> value is <em>data</em>. It&rsquo;s being <em>injected</em> into the source code of a computer <em>language</em> called SQL. Notice these three keywords:</p>
-
-<ol>
-<li><em>data</em></li>
-<li><em>injection</em></li>
-<li><em>language</em></li>
-</ol>
-
-
-<p>Look for these words as we move on.</p>
-
-<p>Here&rsquo;s another example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;username&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo </span><span class="si">$username</span><span class="s2"> ?&gt;&quot;</span> <span class="o">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The situation is the same as before, but now the language is HTML. We&rsquo;re still <em>injecting</em> some <em>data</em>, <code>$username</code>, into the <em>language</em>. And like the first SQL example, <code>$username</code> is not escaped.</p>
-
-<p>The security attack that leverages this defect is called Cross-Site Scripting (XSS). XSS is the number two security risk, according to <a href="https://www.owasp.org/index.php/Top_10_2010-Main">OWASP&rsquo;s Top Ten list</a>. XSS is actually just another case of Injection. The defect that causes these two vulnerabilities is the same kind of defect&ndash; failing to escape data that is being injected into a language.</p>
-
-<p>What does PHP provide you to avert certain disaster?</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;</span><span class="nx">input</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;username&quot;</span>
-</span><span class='line'>  <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlspecialchars(</span><span class="si">$username</span><span class="s2">)?&gt;&quot;</span> <span class="o">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In case you weren&rsquo;t thinking of it already, I just want to say, PHP is one <em>ugly</em> language.</p>
-
-<p>With a name like <code>htmlspecialchars()</code>, you might guess it was not intended to be used often. Actually, nine out of ten times it is perfectly appropriate to use <code>htmlspecialchars()</code>. If the length of <code>htmlspecialchars()</code> bothers you as much as it does me, I suggest writing your own shortcut:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
-</span><span class='line'><span class="k">function</span> <span class="nf">h</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span><span class='line'><span class="x">&lt;input name=&quot;username&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">h</span><span class="p">(</span><span class="nv">$username</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Only when you really want to inject actual HTML would you not use <code>htmlspecialchars()</code>. And when you do so, be sure the HTML is either trusted or sanitized.</p>
-
-<p>If you are ever in the position to choose a templating language, choose one that escapes injected data by default, because that&rsquo;s what is needed 90% of the time. Yes, 90%. Think about it: how often do you inject HTML into HTML, compared to how often you inject plain old data? Not very often. Note that the top PHP templating languages <em>do not</em> escape data by default. The default templating language for Rails 3&ndash; ERB&ndash; escapes data by default. Most of the JavaScript templating languages escape by default.</p>
-
-<p>Next, we&rsquo;ll move on to JavaScript:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#notice&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="nx">message</span> <span class="o">+</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="err">/p&gt;);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Do you see the pattern? The <em>language</em> is HTML, the <em>data</em> is <code>message</code>. This time, it is JavaScript <em>injecting</em> data into another language. Do you know what JavaScript gives us to escape <code>message</code> for injecting it into HTML? Nothing. Absolutely nothing. What does jQuery give us for the task?</p>
-
-<p>Nothing.</p>
-
-<p>Yes, really. Escaping data for HTML seems like such an essential task for web programming, yet the designers of both JavaScript and jQuery have provided nothing for it. This is part of the conspiracy.</p>
-
-<p>With JavaScript, we must write our own function to escape data for HTML:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Escape for HTML</span>
-</span><span class='line'><span class="kd">function</span> <span class="nx">h</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">str</span> <span class="o">==</span> <span class="s1">&#39;number&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">str</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">str</span> <span class="o">||</span> <span class="o">!</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">trans</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>      <span class="s1">&#39;&lt;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="s1">&#39;&quot;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="o">:</span> <span class="s1">&#39;&amp;#39;&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="s1">&#39;&amp;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;amp;&#39;</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">c</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-</span><span class='line'>    <span class="nx">out</span> <span class="o">+=</span> <span class="nx">trans</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span> <span class="o">||</span> <span class="nx">c</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">out</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now &ldquo;message&rdquo; can be escaped:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#notice&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="nx">h</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">+</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="err">/p&gt;);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So there you have it: three examples of injection, and three solutions for escaping data before injecting it into language code.</p>
-
-<p>Using a templating language that escapes by default is great, and so is using parameterized SQL statements. But don&rsquo;t think that you don&rsquo;t have to worry about escaping data again. If you work with multiple languages, you will eventually need to call upon an escape function.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Clojure Tutorial for the Non-Lisp Programmer]]></title>
-    <link href="http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/"/>
-    <updated>2008-05-01T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer</id>
-    <content type="html"><![CDATA[<p>I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.</p>
+<div class="entry-content"><p>I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.</p>
 
 <p>Clojure is a functional lisp dialect that uses the Java Virtual Runtime as its platform. The language home page is at <a href="http://clojure.org/">http://clojure.org/</a>.</p>
 
@@ -1631,107 +1299,121 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
 <li><a href="http://en.wikibooks.org/wiki/Clojure_Programming">Clojure Programming Wikibook: http://en.wikibooks.org/wiki/Clojure_Programming</a></li>
 </ul>
 
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL]]></title>
-    <link href="http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/"/>
-    <updated>2007-07-31T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url</id>
-    <content type="html"><![CDATA[<p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;cgi&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Escape data for URL query parameters</span>
-</span><span class='line'><span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;ruby?&quot;</span>
-</span><span class='line'><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;yes&quot;</span>
-</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://example.com/?&quot;</span> <span class="o">+</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&amp;var=T&quot;</span>
-</span><span class='line'><span class="c1"># url: http://example.com/?ruby%3F=yes&amp;var=T</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Escape data for HTML</span>
-</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://example.com/?ruby%3F=yes&amp;var=T&quot;</span>
-</span><span class='line'><span class="n">html</span> <span class="o">=</span> <span class="sx">%(&lt;a href=&quot;</span><span class="si">#{</span><span class="no">CGI</span><span class="o">.</span><span class="n">escapeHTML</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="si">}</span><span class="sx">&quot;&gt;example&lt;/a&gt;)</span>
-</span><span class='line'><span class="c1"># html: &lt;a href=&quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&quot;&gt;example&lt;/a&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Unescape HTML-escaped data</span>
-</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="no">CGI</span><span class="o">.</span><span class="n">unescapeHTML</span><span class="p">(</span><span class="s2">&quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># url: http://example.com/?ruby%3F=yes&amp;var=T</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Parse query params:</span>
-</span><span class='line'><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;ruby%3F=yes&amp;var=T&quot;</span>
-</span><span class='line'><span class="n">pairs</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span>    <span class="c1"># pairs: [&quot;ruby%3F=yes&quot;, &quot;var=T&quot;]</span>
-</span><span class='line'><span class="nb">name</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">pairs</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="no">CGI</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">v</span><span class="p">)}</span>
-</span><span class='line'><span class="c1"># name, value: [&quot;ruby?&quot;, &quot;yes&quot;]</span>
-</span></code></pre></td></tr></table></div></figure>
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
 
-]]></content>
-  </entry>
+      
+
+
+
+
+<time class='entry-date' datetime='2008-05-01T12:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 pm</span></time>
+      
+
+<span class="categories">
   
-  <entry>
-    <title type="html"><![CDATA[Bookmarklet Compiler]]></title>
-    <link href="http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/"/>
-    <updated>2006-01-11T12:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler</id>
-    <content type="html"><![CDATA[<p>What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite <a href="http://www.squarefree.com/bookmarklets/">bookmarklet site</a>. It includes the bookmarklet that helped me develop my first Ajax applications: <a href="http://www.squarefree.com/shell/">Javascript Shell</a>.</p></p>
-
-<h2>How do you make a bookmarklet?</h2>
-
-<ol>
-<li>Write the javascript that you want to be the bookmarklet.</li>
-<li>Escape all the special URL characters, like space, parentheses, etc.</li>
-<li>Wrap the script in an anonymous Javascript function</li>
-<li>Wrap the function in a Javascript URL (<code>javascript:...</code>)</li>
-<li>Better yet, just do step #1 and use the bookmarklet maker below to do the rest.</li>
-</ol>
-
-
-<h2>Bookmarklet Maker</h2>
-
-<p>This form will take your nicely-formatted Javascript, and turn it into a URL so that you can bookmark it.</p>
-
-<p>Go ahead and enter some javascript.</p>
-
-<script type="text/javascript" src="http://moxley.github.io/bookmarklet/bookmarklet-compiler.js"></script>
-
-
-<p><form id="bookmarkletGenerator" method="get" action="javascript:;">
-  <textarea cols="80" rows="10" id="source"></textarea></p>
-
-<p>  <input type="button" onclick="Bookmarklet.forPost()" value="Make Bookmarket"/>
-</form></p>
-
-<div id="generated"></div>
-
-
-
-
-
-
-<p>The Javascript function for creating the bookmarklet maker can be downloaded <a href="https://raw.github.com/moxley/misc/master/bookmarklet-compiler.js">from Github</a></p>
-]]></content>
-  </entry>
+    <a class='category' href='/blog/categories/clojure/'>clojure</a>
   
-</feed>
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/" data-via="" data-counturl="http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/" title="Previous Post: Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL">&laquo; Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/04/13/injection/" title="Next Post: Injection">Injection &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/">Sometimes Clojure Is More Concise Than Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/">Finding the Source for a Given Rails Web Page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/">Considering a Switch to the Atom Text Editor?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/01/simple-cellular-automata/">Simple Cellular Automata</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/11/ten-secret-key-bindings/">Ten Secret Key Bindings From OS X</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | My Octopress Blog]]></title>
+  <link href="http://moxley.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://moxley.github.io/"/>
+  <updated>2014-11-24T23:06:54-08:00</updated>
+  <id>http://moxley.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bookmarklet Compiler]]></title>
+    <link href="http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/"/>
+    <updated>2006-01-11T12:00:00-08:00</updated>
+    <id>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler</id>
+    <content type="html"><![CDATA[<p>What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite <a href="http://www.squarefree.com/bookmarklets/">bookmarklet site</a>. It includes the bookmarklet that helped me develop my first Ajax applications: <a href="http://www.squarefree.com/shell/">Javascript Shell</a>.</p></p>
+
+<h2>How do you make a bookmarklet?</h2>
+
+<ol>
+<li>Write the javascript that you want to be the bookmarklet.</li>
+<li>Escape all the special URL characters, like space, parentheses, etc.</li>
+<li>Wrap the script in an anonymous Javascript function</li>
+<li>Wrap the function in a Javascript URL (<code>javascript:...</code>)</li>
+<li>Better yet, just do step #1 and use the bookmarklet maker below to do the rest.</li>
+</ol>
+
+
+<h2>Bookmarklet Maker</h2>
+
+<p>This form will take your nicely-formatted Javascript, and turn it into a URL so that you can bookmark it.</p>
+
+<p>Go ahead and enter some javascript.</p>
+
+<script type="text/javascript" src="http://moxley.github.io/bookmarklet/bookmarklet-compiler.js"></script>
+
+
+<p><form id="bookmarkletGenerator" method="get" action="javascript:;">
+  <textarea cols="80" rows="10" id="source"></textarea></p>
+
+<p>  <input type="button" onclick="Bookmarklet.forPost()" value="Make Bookmarket"/>
+</form></p>
+
+<div id="generated"></div>
+
+
+
+
+
+
+<p>The Javascript function for creating the bookmarklet maker can be downloaded <a href="https://raw.github.com/moxley/misc/master/bookmarklet-compiler.js">from Github</a></p>
+]]></content>
+  </entry>
+  
+</feed>

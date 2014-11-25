@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Injection - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Within the world of application development, there is a conspiracy. 1
+$sql = &quot;SELECT * FROM users WHERE username=&#39;&quot; . $username . &quot &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://moxley.github.io/blog/2012/04/13/injection">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:moxley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Injection</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-04-13T12:00:00-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Within the world of application development, there is a conspiracy.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username=&#39;&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What&rsquo;s wrong with this code? The problem is that <code>$username</code> needs to be escaped before it can be put into the SQL statement. If <code>$username</code> contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there&rsquo;s more to this story.</p>
+
+<p>Without escaping the data before it is added to the SQL, the code is vulnerable to Injection attack. Injection is the top security risk in applications, according to <a href="https://www.owasp.org/index.php/Top_10_2010-Main" title="">OWASP&rsquo;s Top 10 Security Risks</a>>.</p>
+
+<p>Here&rsquo;s the corrected code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username=&#39;&quot;</span> <span class="o">.</span> <span class="nb">mysql_real_escape_string</span><span class="p">(</span><span class="nv">$username</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>See the really long function name <code>mysql_real_escape_string()</code>? The long length is part of a conspiracy to discourage you from escaping injected data.</p>
+
+<p>If you work much with SQL, you may also know about parameterized SQL statements, which automatically escape the injected data, and they reduce the need to concatenate bits of SQL together.</p>
+
+<p>&hellip;</p>
+
+<p>Let&rsquo;s pull out the essential parts from the PHP example. The <code>$username</code> value is <em>data</em>. It&rsquo;s being <em>injected</em> into the source code of a computer <em>language</em> called SQL. Notice these three keywords:</p>
+
+<ol>
+<li><em>data</em></li>
+<li><em>injection</em></li>
+<li><em>language</em></li>
+</ol>
+
+
+<p>Look for these words as we move on.</p>
+
+<p>Here&rsquo;s another example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;username&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo </span><span class="si">$username</span><span class="s2"> ?&gt;&quot;</span> <span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The situation is the same as before, but now the language is HTML. We&rsquo;re still <em>injecting</em> some <em>data</em>, <code>$username</code>, into the <em>language</em>. And like the first SQL example, <code>$username</code> is not escaped.</p>
+
+<p>The security attack that leverages this defect is called Cross-Site Scripting (XSS). XSS is the number two security risk, according to <a href="https://www.owasp.org/index.php/Top_10_2010-Main">OWASP&rsquo;s Top Ten list</a>. XSS is actually just another case of Injection. The defect that causes these two vulnerabilities is the same kind of defect&ndash; failing to escape data that is being injected into a language.</p>
+
+<p>What does PHP provide you to avert certain disaster?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;</span><span class="nx">input</span>
+</span><span class='line'>  <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;username&quot;</span>
+</span><span class='line'>  <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlspecialchars(</span><span class="si">$username</span><span class="s2">)?&gt;&quot;</span> <span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In case you weren&rsquo;t thinking of it already, I just want to say, PHP is one <em>ugly</em> language.</p>
+
+<p>With a name like <code>htmlspecialchars()</code>, you might guess it was not intended to be used often. Actually, nine out of ten times it is perfectly appropriate to use <code>htmlspecialchars()</code>. If the length of <code>htmlspecialchars()</code> bothers you as much as it does me, I suggest writing your own shortcut:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'><span class="k">function</span> <span class="nf">h</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">&lt;input name=&quot;username&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">h</span><span class="p">(</span><span class="nv">$username</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Only when you really want to inject actual HTML would you not use <code>htmlspecialchars()</code>. And when you do so, be sure the HTML is either trusted or sanitized.</p>
+
+<p>If you are ever in the position to choose a templating language, choose one that escapes injected data by default, because that&rsquo;s what is needed 90% of the time. Yes, 90%. Think about it: how often do you inject HTML into HTML, compared to how often you inject plain old data? Not very often. Note that the top PHP templating languages <em>do not</em> escape data by default. The default templating language for Rails 3&ndash; ERB&ndash; escapes data by default. Most of the JavaScript templating languages escape by default.</p>
+
+<p>Next, we&rsquo;ll move on to JavaScript:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#notice&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="nx">message</span> <span class="o">+</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="err">/p&gt;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Do you see the pattern? The <em>language</em> is HTML, the <em>data</em> is <code>message</code>. This time, it is JavaScript <em>injecting</em> data into another language. Do you know what JavaScript gives us to escape <code>message</code> for injecting it into HTML? Nothing. Absolutely nothing. What does jQuery give us for the task?</p>
+
+<p>Nothing.</p>
+
+<p>Yes, really. Escaping data for HTML seems like such an essential task for web programming, yet the designers of both JavaScript and jQuery have provided nothing for it. This is part of the conspiracy.</p>
+
+<p>With JavaScript, we must write our own function to escape data for HTML:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Escape for HTML</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">h</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">str</span> <span class="o">==</span> <span class="s1">&#39;number&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">str</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">str</span> <span class="o">||</span> <span class="o">!</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">trans</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="s1">&#39;&lt;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="s1">&#39;&quot;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="o">:</span> <span class="s1">&#39;&amp;#39;&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="s1">&#39;&amp;&#39;</span><span class="o">:</span> <span class="s1">&#39;&amp;amp;&#39;</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">c</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>    <span class="nx">out</span> <span class="o">+=</span> <span class="nx">trans</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span> <span class="o">||</span> <span class="nx">c</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">out</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now &ldquo;message&rdquo; can be escaped:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#notice&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="nx">h</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">+</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="err">/p&gt;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So there you have it: three examples of injection, and three solutions for escaping data before injecting it into language code.</p>
+
+<p>Using a templating language that escapes by default is great, and so is using parameterized SQL statements. But don&rsquo;t think that you don&rsquo;t have to worry about escaping data again. If you work with multiple languages, you will eventually need to call upon an escape function.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-04-13T12:00:00-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://moxley.github.io/blog/2012/04/13/injection/" data-via="" data-counturl="http://moxley.github.io/blog/2012/04/13/injection/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/" title="Previous Post: Clojure Tutorial for the Non-Lisp Programmer">&laquo; Clojure Tutorial for the Non-Lisp Programmer</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/11/ten-secret-key-bindings/" title="Next Post: Ten Secret Key Bindings from OS X">Ten Secret Key Bindings from OS X &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/">Sometimes Clojure Is More Concise Than Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/">Finding the Source for a Given Rails Web Page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/">Considering a Switch to the Atom Text Editor?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/01/simple-cellular-automata/">Simple Cellular Automata</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/11/ten-secret-key-bindings/">Ten Secret Key Bindings From OS X</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

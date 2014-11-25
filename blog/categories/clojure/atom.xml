@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Clojure | Moxley Stratton]]></title>
+  <title><![CDATA[Category: Clojure | My Octopress Blog]]></title>
   <link href="http://moxley.github.io/blog/categories/clojure/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T22:33:39-08:00</updated>
+  <updated>2014-11-24T23:06:54-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
-    <name><![CDATA[Moxley Stratton]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -46,6 +46,837 @@ parentheses inside the <code>map</code> block.</p>
 <p>The syntactical division between a receiver and it&rsquo;s arguments is usually not a problem.
 But every once in a while, it gets in the way. Another division in OOP is between class
 and instance. I&rsquo;ve found that this division can sometimes get in the way too.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Clojure Tutorial for the Non-Lisp Programmer]]></title>
+    <link href="http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/"/>
+    <updated>2008-05-01T12:00:00-07:00</updated>
+    <id>http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer</id>
+    <content type="html"><![CDATA[<p>I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.</p>
+
+<p>Clojure is a functional lisp dialect that uses the Java Virtual Runtime as its platform. The language home page is at <a href="http://clojure.org/">http://clojure.org/</a>.</p>
+
+<h2>Table of Contents</h2>
+
+<ul>
+<li><a href="#quick-comparison">A Quick Comparison</a></li>
+<li><a href="#install">Installing Clojure</a></li>
+<li><a href="#atoms">Atoms</a></li>
+<li><a href="#vectors">Vectors</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#maps-sets">Maps and Sets</a></li>
+<li><a href="#defs">Defining Variables and Functions</a></li>
+<li><a href="#special-forms">Special Forms</a></li>
+<li><a href="#looping-iterating">Looping and Iterating</a></li>
+<li><a href="#sequences">Sequences</a></li>
+<li><a href="#java-integration">Java Integration</a></li>
+<li><a href="#libraries">Using Libraries</a></li>
+<li><a href="#resources">Additional Resources</a></li>
+</ul>
+
+
+<p><a name="quick-comparison"></a></p>
+
+<h2>A Quick Comparison</h2>
+
+<p>In C-like languages, a function call might look something like this:</p>
+
+<pre><code class="c">do_something_with(value1, value2)
+</code></pre>
+
+<p>In Clojure, the same function call would look like this:</p>
+
+<pre><code class="clojure">(do-something-with value1 value2)
+</code></pre>
+
+<p>Here, Clojure&rsquo;s syntax differs in these ways:</p>
+
+<ol>
+<li>The opening parenthesis is to the left of the function name.</li>
+<li>There are no commas delimiting the function parameters.</li>
+<li>By convention, words in a function name are separated by dashes.</li>
+</ol>
+
+
+<p>There&rsquo;s not a huge difference.</p>
+
+<p>Here&rsquo;s how adding two values might look in a C-like language:</p>
+
+<pre><code class="c">value1 + value2
+</code></pre>
+
+<p>And here’s how it would look in Clojure:</p>
+
+<pre><code class="clojure">(+ value1 value2)
+</code></pre>
+
+<p>In C, the plus operator goes in between the two operands. In Clojure, the operator is always first, and there can be any number of operands. In this way, there is no syntactic difference between operators and function calls. They are the same. This is a thematic difference between Clojure and non-Lisp languages: Clojure is more simple.</p>
+
+<p><a name="install"></a></p>
+
+<h2>Installing Clojure</h2>
+
+<p>A fast and easy way to get started with Clojure is to download and run <a href="https://github.com/arthuredelstein/clooj#readme">Clooj</a>. Clooj is an Integrated Development Environment for Clojure.</p>
+
+<p>As an alternative, the Clojure website provides <a href="http://clojure.org/getting_started">instructions for installing Clojure the traditional way</a>.</p>
+
+<p>The primary way of interacting with Clojure is through the REPL (Read-Evaluate-Print-Loop). The REPL Reads expressions that you give it, Evaluates the expressions, Prints the value that is the result, and Loops around for more input.</p>
+
+<p><a name="atoms"></a></p>
+
+<h1>Atoms</h1>
+
+<p>There are two categories of Clojure expressions, <em>atoms</em> and <em>lists</em>. Atoms are like the primitive types in other languages. Let’s use the <span class="caps">REPL</span> to explore some atoms.</p>
+
+<h3>Numbers</h3>
+
+<pre><code class="clojure">user=&gt; 5
+5
+</code></pre>
+
+<p>The number 5 is evaluated and the result is displayed.</p>
+
+<h3>Booleans</h3>
+
+<p>Here’s another atom:</p>
+
+<pre><code class="clojure">user=&gt; true
+true
+</code></pre>
+
+<p>Clojure supports boolean <code>TRUE</code> and <code>FALSE</code> values, represented as <code>true</code> and <code>false</code> respectively.</p>
+
+<h3>Nil</h3>
+
+<p>Here is another important atom:</p>
+
+<pre><code class="clojure">user=&gt; nil
+nil
+</code></pre>
+
+<p>This is Clojure’s name for no-value, or null. It resolves to Java’s <code>null</code> value.</p>
+
+<h3>Strings</h3>
+
+<p>Here is a Clojure string:</p>
+
+<pre><code class="clojure">user=&gt; "Hello, world!"
+"Hello, world!"
+</code></pre>
+
+<p>Clojure strings follow the same rules as Java strings, so for instance, <code>"\t"</code> represents the ASCII <code>TAB</code> character. The Java API is the primary way to make calculations on a string.</p>
+
+<h3>Symbols</h3>
+
+<p>Symbols are stand-in names for values. They&rsquo;re sort of like what you would call a constant in other languages. Clojure doesn&rsquo;t have variables. And unlike other languages, Clojure makes a distinction between a symbol and its value.</p>
+
+<p>When a symbol is evaluated, its value is returned:</p>
+
+<pre><code class="clojure">user=&gt; *file*
+"NO_SOURCE_PATH"
+user=&gt; *compile-path*
+"classes"
+user=&gt; *clojure-version*
+{:major 1, :minor 3, :incremental 0, :qualifier nil}
+user=&gt; *command-line-args*
+nil
+user=&gt; +
+#&lt;core$_PLUS_ clojure.core$_PLUS_@6d581e80&gt;
+</code></pre>
+
+<p>The above shows some of Clojure&rsquo;s built-in symbols. By convention, built-in symbols begin and end with &lsquo;*&rsquo; if they bind to data. The last symbol shown &ldquo;+&rdquo; is a built-in function.</p>
+
+<h3>Keywords</h3>
+
+<p>Keywords are like symbols, except that they do not bind to an arbitrary value. They always bind to themselves. Keywords always start with a colon (<code>:</code>). Here are some keywords:</p>
+
+<pre><code class="clojure">user=&gt; :a
+:a
+user=&gt; :_123
+:_123
+user=&gt; :KEY
+:KEY
+</code></pre>
+
+<p><a name="lists"></a></p>
+
+<h2>Lists</h2>
+
+<p>Near the beginning of the tutorial we saw a function call:</p>
+
+<pre><code class="clojure">=&gt; (+ 3 3 3)
+9
+</code></pre>
+
+<p>Function calls use lists to define the call. Lists are comprised of an opening and closing parenthesis, and zero or more elements. Each element is separated by whitespace or commas.</p>
+
+<p>Lists can be both a data structure and a functional call form. When used as a function call, the first element of the lists is a function. Any remaining elements in the list are the function&rsquo;s arguments.</p>
+
+<p>When a list is used to perform an operation, it is called a <em>form</em>. The function element of the form is referred to as the <em>operator</em>. Strictly, it isn&rsquo;t always a function. There are three kinds of forms: <em>functions</em>, <em>macros</em>, and <em>special forms</em>.</p>
+
+<p>Although the list can be used to perform operations, it can also be used to represent data. There is an important consequence of code and data sharing the same syntax: code can be manipulated as if it were data because it <em>is</em> data.</p>
+
+<p>One way to use lists simply as data is to use Clojure’s built-in operation, <code>list</code>:</p>
+
+<pre><code class="clojure">user=&gt; (list 1 2 3)
+(1 2 3)
+user=&gt; (list a b c)
+(a b c)
+user=&gt; (list "one" "two" "three")
+("one" "two" "three")
+</code></pre>
+
+<p>List items can be atoms, other lists, or other data structures that are part of Clojure.</p>
+
+<pre><code class="clojure">user=&gt; (list :foo (list 1 2 3) [4 5 6])
+(:foo (1 2 3) [4 5 6])
+</code></pre>
+
+<p>Clojure also has a short-cut syntax for creating a list as data. Just prepend the list with a single-quote character:</p>
+
+<pre><code class="clojure">user=&gt; '(1 2 3)
+(1 2 3)
+</code></pre>
+
+<p>Creating a list this way has a slightly different effect. The list items are left unevaluated. They can be undefined, and Clojure won&rsquo;t complain.</p>
+
+<p>Using some of Clojure’s built-in operations, information can be extracted from the data. The following expression returns the first element of the given list.</p>
+
+<pre><code class="clojure">user=&gt; (first '("one" "two" "three"))
+"one"
+</code></pre>
+
+<p>Another operation returns all the elements except the first:</p>
+
+<pre><code class="clojure">user=&gt; (rest '("one" "two" "three"))
+("two" "three")
+</code></pre>
+
+<p><a name="vectors"></a></p>
+
+<h2>Vectors</h2>
+
+<p>The vector is another data structure, similar to a list. Vectors are zero-based arrays. They can contain any value, and any mix of value types, just like lists. Here are a few examples:</p>
+
+<pre><code class="clojure">user=&gt; [1 2 3]
+[1 2 3]
+user=&gt; [:a 0 "hello"]
+[:a 0 "hello"]
+user=&gt; []
+[]
+</code></pre>
+
+<p>  The nice thing about vectors is you don&rsquo;t have to do anything special to use them as data as you do with lists.</p>
+
+<p>  Other languages give you a handy syntax for getting an array&rsquo;s element by its index. So, how is this accomplished with Clojure&rsquo;s vectors? Perform an operation:</p>
+
+<pre><code class="clojure">user=&gt; ([7 8 9] 2)
+9
+</code></pre>
+
+<p>Here, we fetch the value at index <code>2</code>, which is <code>9</code>. The vector itself is the operator of the form. This may seem a little weird at first, but eventually it makes a lot of sense. Its argument is <code>2</code>. The general form for this operation is <code>(vector index)</code>. Compare this with JavaScript, which is similar:</p>
+
+<pre><code class="javascript">[7, 8, 9][2]
+</code></pre>
+
+<p>You can use the same operation on vectors as we did earlier with lists:</p>
+
+<pre><code class="clojure">user=&gt; (first [7 8 9])
+7
+user=&gt; (last [7 8 9])
+9
+user=&gt; (rest [7 8 9])
+(8 9)
+</code></pre>
+
+<p>That last one was a bit unexpected. It didn&rsquo;t return a vector. It looks like a list instead.</p>
+
+<p><a name="maps-sets"></a></p>
+
+<h2>Maps and Sets</h2>
+
+<p>In addition to lists as a data type, Clojure provides syntax for defining <em>maps</em> and <em>sets</em>.</p>
+
+<p>Maps define a set of unique key-value pairs:</p>
+
+<pre><code class="clojure">user=&gt; {"a" 1, "b" 2, "c" 3}
+{"a" 1, "b" 2, "c" 3}
+</code></pre>
+
+<p>The map above maps the string <code>"a"</code> to the number <code>1</code>, <code>"b"</code> to the number <code>2</code>, and <code>"c"</code> to the number <code>3</code>. The commas between each pair are optional, to enhance readability of the code. Clojure treats the commas nearly the same as whitespace. You can put commas anywhere between elements of an expression:</p>
+
+<pre><code class="clojure">user=&gt; {"a" 1 "b" 2 "c" 3}
+{"a" 1, "b" 2, "c" 3}
+user=&gt; {"a", 1, "b", 2, "c", 3}
+{"a" 1, "b" 2, "c" 3}
+user=&gt; {"a"  1 ,"b" 2 ,"c" 3}
+{"a" 1, "b" 2, "c" 3}
+</code></pre>
+
+<p>Notice that Clojure REPL adds commas to the formatted return value.</p>
+
+<p>Once a map is defined, its values can be looked up from key values using the <code>get</code> form:</p>
+
+<pre><code class="clojure">user=&gt; (get {"a" 1, "b" 2, "c" 3} "a")
+1
+user=&gt; (get {"a" 1, "b" 2, "c" 3} "b")
+2
+user=&gt; (get {"a" 1, "b" 2, "c" 3} "c")
+3
+user=&gt; (get {"a" 1, "b" 2, "c" 3} "d")
+nil
+</code></pre>
+
+<p>However, there’s a shortcut for this:</p>
+
+<pre><code class="clojure">user=&gt; ({"a" 1, "b" 2, "c" 3} "a")
+1
+user=&gt; ({"a" 1, "b" 2, "c" 3} "b")
+2
+user=&gt; ({"a" 1, "b" 2, "c" 3} "c")
+3
+user=&gt; ({"a" 1, "b" 2, "c" 3} "d")
+nil
+</code></pre>
+
+<p>Similar to Vectors and lists, Maps can be used as functions of their keys.</p>
+
+<p>There is yet a third way to get a value from a key:</p>
+
+<pre><code class="clojure">user=&gt; (:a {:a 1, :b 2, :c 3})
+1
+user=&gt; (:b {:a 1, :b 2, :c 3})
+2
+user=&gt; (:c {:a 1, :b 2, :c 3})
+3
+user=&gt; (:d {:a 1, :b 2, :c 3})
+nil
+</code></pre>
+
+<p>It’s important to get familiar with the last two usages, as they are commonly used in Clojure programs.</p>
+
+<p><a name="defs"></a></p>
+
+<h2>Defining Variables and Functions</h2>
+
+<h3><code>def</code></h3>
+
+<p>To bind a symbol to a value, use the <code>def</code> form:</p>
+
+<pre><code class="clojure">user=&gt; (def x 5)
+#'user/x
+user=&gt; x
+5
+user=&gt; (+ 5 x)
+10
+user=&gt; (def my-list '(1 2 3))
+#'user/my-list
+user=&gt; my-list
+(1 2 3)
+user=&gt; (last my-list)
+3
+</code></pre>
+
+<p>There a a few things going on when a variable is created. What gets returned from <code>def</code> is a <em>var</em>, which is a an object that holds a value, such as <em>5</em>. Also, a symbol is created, and that symbol is bound to the var.</p>
+
+<h3><code>defn</code></h3>
+
+<p>Functions can be created using <code>defn</code>:</p>
+
+<pre><code class="clojure">user=&gt; (defn election-year? [year]
+  (zero? (rem year 4)))
+#'user/election-year?
+user=&gt; (election-year? 2007)
+false
+user=&gt; (election-year? 2008)
+true
+user=&gt;
+</code></pre>
+
+<p>Functions are just a kind of object that can be called.</p>
+
+<p>The first argument to a <code>defn</code> is the function’s name, which becomes a symbol bound to the function. The second argument is the function’s argument list. Argument lists are always represented by a vector. The remaining arguments of <code>defn</code> can be one or more expressions. The result of the last expression is used as the function’s return value.</p>
+
+<h3>Using <code>fn</code></h3>
+
+<p>Anonymous functions can be created using <code>fn</code>:</p>
+
+<pre><code class="clojure">user=&gt; (fn [x] (+ x 1))
+user.eval__2384$fn__2386@c4b579
+user=&gt; ((fn [x] (+ x 1)) 9)
+10
+</code></pre>
+
+<p>Since functions are just objects, they can be bound to a symbol (assigned to a variable):</p>
+
+<pre><code class="clojure">user=&gt; (def plus-one
+     (fn [x] (+ x 1)))
+#'user/plus-one
+user=&gt; (plus-one 9)
+10
+</code></pre>
+
+<p>The <code>defn</code> form is just a macro that turns its contents into a <code>def</code> + <code>fn</code> combination.</p>
+
+<h3>The <code>doc</code> form</h3>
+
+<p>Nearly all the forms in Clojure have built-in documentation. To quickly find out about a form, pass the form’s name to the <code>doc</code> form:</p>
+
+<pre><code class="clojure">user=&gt; (doc first)
+-------------------------
+clojure/first
+([coll])
+  Returns the first item in the collection. Calls seq on its
+    argument. If coll is nil, returns nil.
+nil
+</code></pre>
+
+<h3>Documenting a function</h3>
+
+<p>There are multiple ways to add documentation to a function. Here is the easiest:</p>
+
+<pre><code class="clojure">user=&gt; (defn plus-one
+  "Returns a number one greater than x"
+  [x]
+  (+ x 1))
+#'user/plus-one
+user=&gt; (doc plus-one)
+-------------------------
+user/plus-one
+([x])
+  Returns a number one greater than x
+nil
+</code></pre>
+
+<p>Here is another way:</p>
+
+<pre><code class="clojure">user=&gt; (defn plus-one
+  {:doc "Returns a number one greater than x"}
+  [x]
+  (+ x 1))
+#'user/plus-one
+user=&gt; (doc plus-one)
+-------------------------
+user/plus-one
+([x])
+  Returns a number one greater than x
+nil
+</code></pre>
+
+<p><a name="special-forms"></a></p>
+
+<h2>Special Forms</h2>
+
+<p>Clojure has several built-in forms, known collectively as <em>special forms</em>. This section introduces them and delves further into the types of expressions that are possible with Clojure.</p>
+
+<h3>The <code>str</code> form:</h3>
+
+<p>The <code>str</code> form concatenates two or more values, converting them to strings if necessary, and returns the result:</p>
+
+<pre><code class="clojure">user=&gt; (str "Hello," " world!")
+"Hello, world!"
+user=&gt; (str 5)
+"5"
+user=&gt; (str "Value: " 5)
+"Value: 5"
+</code></pre>
+
+<h3>The <code>if</code> form</h3>
+
+<p>The <code>if</code> form is similar to the <code>if</code> statement in C-like languages.</p>
+
+<pre><code class="clojure">user=&gt; (if true "yes")
+"yes"
+user=&gt; (if false "yes")
+nil
+user=&gt; (if false "yes" "no")
+"no"
+user=&gt; (if nil "yes" "no")
+"no"
+user=&gt; (if "" true)
+true
+user=&gt; (if 0 true)
+true
+user=&gt; (if true "yes" "no")
+"yes"
+user=&gt; (if (= 1 1) "yes" "no")
+"yes"
+user=&gt; (if (= 1 1) (+ 2 3) (+ 5 5))
+5
+user=&gt; (if (= 1 2) (+ 2 3) (+ 5 5))
+10
+</code></pre>
+
+<p>If the first argument, converted to a boolean, is true, then the second argument is returned. Otherwise the third argument is returned. The third argument is optional.</p>
+
+<p>In Clojure, when a value is converted to boolean, it is always <span class="caps">TRUE</span>, unless the value is <code>false</code> or <code>nil</code>. There are many forms that make decisions based on whether a value will be true or false when converted to boolean.</p>
+
+<p>The <code>if</code> form works a lot like the C-language ternary operator:</p>
+
+<pre><code class="clojure">v = true ? 1 : 0
+</code></pre>
+
+<p>The ternary operator is usually used in places where an <code>if</code> statement is too verbose. However, since Clojure’s <code>if</code> form is already succinct, there is no need for a separate operator. You can still break up the expression onto separate lines when it makes sense to do so:</p>
+
+<pre><code class="clojure">user=&gt; (if (= 1 1)
+  (+ 2 3)
+  (+ 3 4))
+5
+user=&gt; (if (= "foobar" (str "foo" "bar"))
+  "'foo' plus 'bar' equals 'foobar'"
+  "'foo' plus 'bar' does not equal 'foobar'")
+"'foo' plus 'bar' equals 'foobar'"
+</code></pre>
+
+<h3>The <code>do</code> form:</h3>
+
+<p>The <code>do</code> form is used to execute a number of operations in sequence. Typically in functional programming, expressions are contained by, or are containers for, other expressions, so there isn’t a need to execute operations one after the other. This is fine when the expressions produce a value that will be used by a containing expression. However, there are some occasions where the value of an expression isn’t used. If such an expression does anything useful at all, it is said to have side effects. For example, writing something to standard output, or a file, or a database, are all examples of side-effects.</p>
+
+<p>Clojure provides the <code>println</code> form for writing to standard output. In order to use <code>println</code> within an expression whose return value we care about, we need to put it in a <code>do</code> expression:</p>
+
+<pre><code class="clojure">user=&gt; (do (println "Hello.") (+ 2 2))
+Hello.
+4
+user=&gt; (do (println "Hello.") (println "Hello again.") (+ 2 2))
+Hello.
+Hello again.
+4
+</code></pre>
+
+<p>The <code>do</code> operation executes each expression in sequence and returns the result of the last expression.</p>
+
+<p>The <code>do</code> form isn’t the only form that lets you perform a number of operations in sequence. <code>let</code>, <code>defn</code> and <code>fn</code> all let you do that too.</p>
+
+<p>One of the things that takes some getting used to is that Clojure is a functional language. All expressions in Clojure return a value. Often, a single Clojure expression will span several lines, where the C-like programmer would write it out the same logic as a block of code consisting of several distinct statements. The distinct statements may assign a value to a variable to be used in the following statements. Programs written in functional languages tend to have larger statements spanning multiple lines rather than a multiline block of code split into smaller statements. This way of building programs can take some getting used to, but once you’ve learned it, the new way can be just as easy as the old. There are several advantages to writing programs this way.</p>
+
+<h3>The <code>when</code> form</h3>
+
+<p>The <code>when</code> form is similar to the <code>if</code> form. The differences are that there is no “else” condition, and more than one expression can be added to the <code>when</code> form for evaluation when the condition is <span class="caps">TRUE</span>.</p>
+
+<pre><code class="clojure">user=&gt; (when nil "Should return 'nil'")
+nil
+user=&gt; (when false "Should return 'nil'")
+nil
+user=&gt; (when true "Yes")
+"Yes"
+user=&gt; (when true 1)
+1
+user=&gt; (when true 1 2 3)
+3
+user=&gt; (when true
+  (println "Hello, world")
+  "Yes")
+Hello, world
+"Yes"
+user=&gt; (when (= 5 (inc 4))
+  "Yes")
+"Yes"
+</code></pre>
+
+<h3>The <code>let</code> form</h3>
+
+<p>The <code>let</code> operator is used for setting up and holding temporary values to be used by a containing operation.</p>
+
+<pre><code class="clojure">user=&gt; (let [x 2] (+ x 8))
+10
+user=&gt; (let [x 2 y 8] (+ x y))
+10
+user=&gt; (let [x 2 y 8] (= (+ x y) 10))
+true
+user=&gt; (let [x 3] (+ (* x x) 1))
+10
+user=&gt; (let [color "Red"] (str "Color is: " color))
+"Color is: Red"
+user=&gt; (let [color "Red" phrase (str "Color is: " color)]
+  (str "Clojure says: " phrase))
+"Clojure says: Color is: Red"
+</code></pre>
+
+<p>The <code>let</code> form creates a temporary var (<code>x</code> and <code>y</code> in this case), that can only be used inside the body of the <code>let</code> expression. A vector is used to define the var and its value, and vectors are also used by other Clojure forms to declare a list of temporary variables and their assigned values. The vector contains name-value pairs.</p>
+
+<p><a name="looping-iterating"></a></p>
+
+<h2>Looping and Iterating</h2>
+
+<p>Here are three ways to loop while incrementing an index from 0 to 4 (5 iterations):</p>
+
+<pre><code class="clojure">user=&gt; (loop [i 0]
+  (when (&lt; i 5)
+    (println i)
+    (recur (inc i))))
+0
+1
+2
+3
+4
+nil
+user=&gt; (dorun (for [i (range 0 5)]
+         (println i)))
+0
+1
+2
+3
+4
+nil
+user=&gt; (doseq [i (range 0 5)]
+  (println i))
+0
+1
+2
+3
+4
+nil
+</code></pre>
+
+<p>The first example uses the <code>loop</code> form, which provides the most flexibility, but requires the most syntactical overhead. The second and third examples are examples of iterating over a sequence, which is a more common kind of looping. The <code>dorun</code> and <code>doseq</code> calls suppress the return values of the containing expressions.</p>
+
+<p>Let’s look at the <code>loop</code> form a little closer.</p>
+
+<pre><code class="clojure">user=&gt; (loop [i 0]
+  (when (&lt; i 5)
+    (println "i:" i)
+    (recur (inc i))))
+i: 0
+i: 1
+i: 2
+i: 3
+i: 4
+nil
+</code></pre>
+
+<p>In the above example, the temporary symbol <code>i</code> is bound to a value of <code>0</code>. The <code>when</code> statement checks to see if <code>i</code> is less than <code>5</code>. If the test passes, the two expressions inside are evaluated. The <code>println</code> expression outputs the value of <code>i</code>. Next, the <code>recur</code> form is evaluated, which instructs the loop to iterate again with a new value for <code>i</code>. The <code>(inc i)</code> is short for <code>(+ i 1)</code>.</p>
+
+<p>Without the <code>recur</code>, a <code>loop</code> expression behaves exactly the same as a <code>let</code> expression.</p>
+
+<p><a name="sequences"></a></p>
+
+<h2>Sequences</h2>
+
+<p>Sequences are in a sense, the core of idiomatic Clojure programming. Understand sequences and the forms that work with them, and you will have cleared one of the biggest hurdles to writing significant Clojure programs.</p>
+
+<p>At first glance, a Sequence looks like another data structure. However, a Sequence is not a data structure. It is an interface, or view, into a data structure. A sequence can be derived from a collection. The relation between collection and sequence is similar to the relation between database table and database view.</p>
+
+<p><a href="http://clojure.org/sequences">Clojure’s section on Sequences</a> gives an excellent definition.</p>
+
+<p>Let’s get a sequence from a vector:</p>
+
+<pre><code class="clojure">user=&gt; (seq [1 2 3])
+(1 2 3)
+</code></pre>
+
+<p>This bit of code doesn’t merely convert the vector into a list. It calls on the vector to produce a sequence of the vector. The <span class="caps">REPL</span> (Read, Evaluate, Print, Loop), as part of its ‘Print’ step, uses the sequence to produce a list so that something meaningful can be displayed.</p>
+
+<p>One way to keep the <span class="caps">REPL</span> from creating a list from the sequence is to enclose the expression in another expression that doesn’t consume the sequence. For example, a method call of the sequence will not consume the sequence. Take <code>getClass()</code> for instance:</p>
+
+<pre><code class="clojure">user=&gt; (.getClass (seq [1 2 3]))
+clojure.lang.APersistentVector$Seq
+</code></pre>
+
+<p>What gets returned is an APersistentVector$Seq, which is the class that represents a vector’s sequence.</p>
+
+<p>All of Clojure’s built-in data structures have methods to produce a sequence. The sequence interface is formally named clojure.lang.iSeq, or iSeq.</p>
+
+<h3><code>first</code></h3>
+
+<p>Use <code>first</code> to get the first item in a sequence:</p>
+
+<pre><code class="clojure">user=&gt; (first (seq [1 2 3]))
+1
+</code></pre>
+
+<p><code>first</code> will also take a vector directly, implicitly converting it into a sequence:</p>
+
+<pre><code class="clojure">user=&gt; (first [1 2 3])
+1
+user=&gt; (first ["a" "b" "c"])
+"a"
+user=&gt; (first '("A" "B" "C"))
+"A"
+user=&gt; (first '(:a :b :c))
+:a
+</code></pre>
+
+<p>Most of the sequence forms do this implicit conversion, so you can pass any collection that provides an iSeq interface, including any of Clojure’s built-in collection types.</p>
+
+<h3><code>rest</code></h3>
+
+<p><code>rest</code> produces a sequence that consists of every item of the original sequence, minus the first item.</p>
+
+<pre><code class="clojure">user=&gt; (rest [1 2 3])
+(2 3)
+user=&gt; (rest ["a" "b" "c"])
+("b" "c")
+user=&gt; (rest '("A" "B" "C"))
+("B" "C")
+user=&gt; (rest [:a :b :c])
+(:b :c)
+</code></pre>
+
+<p>Keep in mind that no new data structure is created. <code>rest</code> only creates a logical list (a sequence). It is up to the caller to create a data structure, if needed. In the examples above, the caller is the <span class="caps">REPL</span>, and it collects the sequence into a list so that it can display something meaningful. It is computationally inexpensive to create a sequence.</p>
+
+<h3><code>cons</code></h3>
+
+<p><code>cons</code> creates a new sequence by prepending an element onto a collection. The element is the first argument, and the collection is the second.</p>
+
+<pre><code class="clojure">user=&gt; (cons 1 [2 3])
+(1 2 3)
+user=&gt; (cons :a [:b :c])
+(:a :b :c)
+</code></pre>
+
+<p>Again, no data structure is created by <code>cons</code>. The resulting sequence internally consists of separate pointers to the first and second arguments of <code>cons</code>. To the user or consumer of the sequence, it appears as one continuous sequence.</p>
+
+<p><a name="java-integration"></a></p>
+
+<h2>Java Integration</h2>
+
+<p>Clojure provides the ability to interface with Java objects and primitives. Knowing how to do this is essential for non-trival programs.</p>
+
+<p>Let’s start by instantiating a Java <code>java.util.Date</code> object:</p>
+
+<pre><code class="clojure">user=&gt; (new java.util.Date)
+Mon May 26 10:25:25 PDT 2008
+</code></pre>
+
+<p>Clojure instantiates the <code>Date</code> object, then calls and displays its <code>toString()</code> method as a visual representation of the object.</p>
+
+<p>To pass arguments to the object’s constructor, just include them in the call to <code>new</code>:</p>
+
+<pre><code class="clojure">user=&gt; (new StringBuffer "This is the initial value")
+This is the initial value
+</code></pre>
+
+<p>There is also a shortcut syntax for instantiation. Replace the <code>new</code> operator and the Java class with only the Java class, but with a period appended to its name:</p>
+
+<pre><code class="clojure">user=&gt; (StringBuffer. "This is the initial value")
+This is the initial value
+</code></pre>
+
+<p>To call a method on an instance, use the special dot-method (<code>.&lt;method&gt;</code>) form. The operator in this form consists of the method name, prepended with a period. The second argument is the object whose method is called:</p>
+
+<pre><code class="clojure">(.toString (new java.util.Date))
+"Thu Apr 05 21:44:36 PDT 2012"
+(.toString (java.util.Date.))
+"Thu Apr 05 21:45:22 PDT 2012"
+</code></pre>
+
+<p>After the operator and object, any additional arguments are passed as arguments to the method:</p>
+
+<pre><code class="clojure">user=&gt; (def my-hash (java.util.HashMap.))
+#'user/my-hash
+user=&gt; (.put my-hash "food" "tacos")
+nil
+user=&gt; (.get my-hash "food")
+"tacos"
+</code></pre>
+
+<p>Above, a <code>symbol</code> called <code>my-hash</code> is created and bound to a HashMap instance. Then a value is added to the HashMap for the key <code>"food"</code>. Then the value is retrieved from the HashMap.</p>
+
+<p>Static (class) fields and methods are called with a different syntax:</p>
+
+<pre><code class="clojure">user=&gt; (Integer/MAX_VALUE)
+2147483647
+user=&gt; (Character/TYPE)
+char
+user=&gt; (Boolean/valueOf "true")
+true
+</code></pre>
+
+<p>Just like with Java, Clojure provides the means to import classes into the current context, so that classes do not need to be written out using the fully-qualified syntax:</p>
+
+<pre><code class="clojure">user=&gt; (import '(java.io FileReader))
+nil
+user=&gt; (FileReader. "source.txt")
+java.io.FileReader@f784d7
+</code></pre>
+
+<p>Multiple classes within a package can be included, like this:</p>
+
+<pre><code class="clojure">user=&gt; (import '(java.io File FileReader))
+nil
+</code></pre>
+
+<p>Both the <code>File</code> and <code>FileReader</code> classes are</p>
+
+<p>imported above.</p>
+
+<p>If the classes are in different packages, use this syntax:</p>
+
+<pre><code class="clojure">user=&gt; (import '(java.io File) '(java.util HashMap))
+nil
+</code></pre>
+
+<p>Or you can use two separate import statements:</p>
+
+<pre><code class="clojure">user=&gt; (import '(java.io File))
+nil
+user=&gt; (import '(java.util HashMap))
+</code></pre>
+
+<p><a name="libraries"></a></p>
+
+<h2>Using Clojure Libraries</h2>
+
+<p>If you&rsquo;re writing an application, you&rsquo;ll probably end up using a third party library.</p>
+
+<h3>Leiningen</h3>
+
+<p>The ideal way to import libraries is to use a packaging tool called Leiningen.</p>
+
+<p>First, <a href="https://github.com/technomancy/leiningen/">install Leiningen</a>. In order to do its job, Leiningen needs to create a new project directory for your project:</p>
+
+<pre><code class="bash">&gt; lein new my-project
+</code></pre>
+
+<p>In the new project directory, it puts a file, <code>project.clj</code> that represents your project to Leiningen. Go ahead an edit this file, changing the project description to match your tastes.</p>
+
+<p>There are two main repositories for Clojure libraries: <a href="http://dev.clojure.org/display/doc/Clojure+Contrib">Clojure Contrib</a>, and <a href="https://clojars.org/">Clojars</a>. We&rsquo;ll look at Clojure Contrib.</p>
+
+<h3>Clojure Contrib</h3>
+
+<p>The libraries in Clojure Contrib can be found at <a href="http://dev.clojure.org/display/doc/Clojure+Contrib">the Clojure Contrib libraries list</a>. Choose a library to use. For this tutorial, we&rsquo;ll use <code>data.json</code>.</p>
+
+<p>Edit your <code>project.clj</code> file. Add a new vector to the <code>:dependencies</code> vector. This new vector will contain two elements:</p>
+
+<pre><code class="clojure">[org.clojure/data.json "0.1.2"]
+</code></pre>
+
+<p>For Clojure Contrib libraries and any other libraries associated with the Clojure project, the dependency path with start with <code>org.clojure/</code>, followed by the library name, <code>data.json</code></p>
+
+<p>So now, the <code>:dependencies</code> vector will look something like this:</p>
+
+<pre><code class="clojure">:dependencies [[org.clojure/clojure "1.4.0"]
+               [org.clojure/data.json "0.1.2"]]
+</code></pre>
+
+<p>When using Leiningen for your project, you need to use lein to get to the REPL:</p>
+
+<pre><code class="bash">&gt; lein repl
+REPL started; server listening on localhost port 64984
+user=&gt; 
+</code></pre>
+
+<p>Now the library can be referenced from your code:</p>
+
+<pre><code class="clojure">user=&gt; (use '[clojure.data.json :only (read-json json-str)])
+nil
+user=&gt; (json-str {:color "red" :name "apple"})       
+"{\"name\":\"apple\",\"color\":\"red\"}"
+user=&gt; (read-json "{\"width\": 300, \"height\": 200}")
+{:width 300, :height 200}
+</code></pre>
+
+<p><a name="resources"></a></p>
+
+<h2>Additional Resources</h2>
+
+<ul>
+<li><a href="http://clojuredocs.org/">ClojureDocs: http://clojuredocs.org/</a></li>
+<li><a href="http://en.wikibooks.org/wiki/Clojure_Programming">Clojure Programming Wikibook: http://en.wikibooks.org/wiki/Clojure_Programming</a></li>
+</ul>
+
 ]]></content>
   </entry>
   

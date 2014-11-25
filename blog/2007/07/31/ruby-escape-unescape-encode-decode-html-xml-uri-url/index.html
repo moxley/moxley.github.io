@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="This example shows you how to escape and un-escape a value to be included in a URI and within HTML. 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:moxley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-07-31T12:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;cgi&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Escape data for URL query parameters</span>
+</span><span class='line'><span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;ruby?&quot;</span>
+</span><span class='line'><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;yes&quot;</span>
+</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://example.com/?&quot;</span> <span class="o">+</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&amp;var=T&quot;</span>
+</span><span class='line'><span class="c1"># url: http://example.com/?ruby%3F=yes&amp;var=T</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Escape data for HTML</span>
+</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://example.com/?ruby%3F=yes&amp;var=T&quot;</span>
+</span><span class='line'><span class="n">html</span> <span class="o">=</span> <span class="sx">%(&lt;a href=&quot;</span><span class="si">#{</span><span class="no">CGI</span><span class="o">.</span><span class="n">escapeHTML</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="si">}</span><span class="sx">&quot;&gt;example&lt;/a&gt;)</span>
+</span><span class='line'><span class="c1"># html: &lt;a href=&quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&quot;&gt;example&lt;/a&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Unescape HTML-escaped data</span>
+</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="no">CGI</span><span class="o">.</span><span class="n">unescapeHTML</span><span class="p">(</span><span class="s2">&quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># url: http://example.com/?ruby%3F=yes&amp;var=T</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Parse query params:</span>
+</span><span class='line'><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;ruby%3F=yes&amp;var=T&quot;</span>
+</span><span class='line'><span class="n">pairs</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span>    <span class="c1"># pairs: [&quot;ruby%3F=yes&quot;, &quot;var=T&quot;]</span>
+</span><span class='line'><span class="nb">name</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">pairs</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="no">CGI</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">v</span><span class="p">)}</span>
+</span><span class='line'><span class="c1"># name, value: [&quot;ruby?&quot;, &quot;yes&quot;]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2007-07-31T12:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/" data-via="" data-counturl="http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2006/01/11/bookmarklet-compiler/" title="Previous Post: Bookmarklet Compiler">&laquo; Bookmarklet Compiler</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/" title="Next Post: Clojure Tutorial for the Non-Lisp Programmer">Clojure Tutorial for the Non-Lisp Programmer &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/">Sometimes Clojure Is More Concise Than Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/">Finding the Source for a Given Rails Web Page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/">Considering a Switch to the Atom Text Editor?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/01/simple-cellular-automata/">Simple Cellular Automata</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/11/ten-secret-key-bindings/">Ten Secret Key Bindings From OS X</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Simple Cellular Automata - My Octopress Blog</title>
+  <title>Bookmarklet Compiler - My Octopress Blog</title>
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="I released a very simple cellular automata explorer. Try it out here.
-See the Github page for more information.
-">
+  <meta name="description" content="What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ See the Github page for more information.
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://moxley.github.io/blog/2012/12/01/simple-cellular-automata">
+  <link rel="canonical" href="http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
@@ -70,7 +68,7 @@ See the Github page for more information.
   
   <header>
     
-      <h1 class="entry-title">Simple Cellular Automata</h1>
+      <h1 class="entry-title">Bookmarklet Compiler</h1>
     
     
       <p class="meta">
@@ -79,15 +77,49 @@ See the Github page for more information.
 
 
 
-<time class='entry-date' datetime='2012-12-01T12:00:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 pm</span></time>
+<time class='entry-date' datetime='2006-01-11T12:00:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2006</span></span> <span class='time'>12:00 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I released a very simple cellular automata explorer. <a href="/cellauto/cellauto.html">Try it out here</a>.
-See the <a href="https://github.com/moxley/cellauto">Github page</a> for more information.</p>
+<div class="entry-content"><p>What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite <a href="http://www.squarefree.com/bookmarklets/">bookmarklet site</a>. It includes the bookmarklet that helped me develop my first Ajax applications: <a href="http://www.squarefree.com/shell/">Javascript Shell</a>.</p></p>
+
+<h2>How do you make a bookmarklet?</h2>
+
+<ol>
+<li>Write the javascript that you want to be the bookmarklet.</li>
+<li>Escape all the special URL characters, like space, parentheses, etc.</li>
+<li>Wrap the script in an anonymous Javascript function</li>
+<li>Wrap the function in a Javascript URL (<code>javascript:...</code>)</li>
+<li>Better yet, just do step #1 and use the bookmarklet maker below to do the rest.</li>
+</ol>
+
+
+<h2>Bookmarklet Maker</h2>
+
+<p>This form will take your nicely-formatted Javascript, and turn it into a URL so that you can bookmark it.</p>
+
+<p>Go ahead and enter some javascript.</p>
+
+<script type="text/javascript" src="/bookmarklet/bookmarklet-compiler.js"></script>
+
+
+<p><form id="bookmarkletGenerator" method="get" action="javascript:;">
+  <textarea cols="80" rows="10" id="source"></textarea></p>
+
+<p>  <input type="button" onclick="Bookmarklet.forPost()" value="Make Bookmarket"/>
+</form></p>
+
+<div id="generated"></div>
+
+
+
+
+
+
+<p>The Javascript function for creating the bookmarklet maker can be downloaded <a href="https://raw.github.com/moxley/misc/master/bookmarklet-compiler.js">from Github</a></p>
 </div>
 
 
@@ -103,12 +135,12 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
 
 
 
-<time class='entry-date' datetime='2012-12-01T12:00:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 pm</span></time>
+<time class='entry-date' datetime='2006-01-11T12:00:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2006</span></span> <span class='time'>12:00 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cellular-automata/'>cellular automata</a>
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
   
 </span>
 
@@ -117,7 +149,7 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://moxley.github.io/blog/2012/12/01/simple-cellular-automata/" data-via="" data-counturl="http://moxley.github.io/blog/2012/12/01/simple-cellular-automata/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/" data-via="" data-counturl="http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/" >Tweet</a>
   
   
   
@@ -126,10 +158,8 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/05/11/ten-secret-key-bindings/" title="Previous Post: Ten Secret Key Bindings from OS X">&laquo; Ten Secret Key Bindings from OS X</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/" title="Next Post: Considering a switch to the Atom Text Editor?">Considering a switch to the Atom Text Editor? &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/" title="Next Post: Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL">Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL &raquo;</a>
       
     </p>
   </footer>

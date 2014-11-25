@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ruby | Moxley Stratton]]></title>
+  <title><![CDATA[Category: Ruby | My Octopress Blog]]></title>
   <link href="http://moxley.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T22:33:39-08:00</updated>
+  <updated>2014-11-24T23:06:54-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
-    <name><![CDATA[Moxley Stratton]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -96,6 +96,39 @@ and look at the DOM or HTML source. It should have HTML comments identifying
 the view partials responsible for their generated HTML.</li>
 </ul>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL]]></title>
+    <link href="http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/"/>
+    <updated>2007-07-31T12:00:00-07:00</updated>
+    <id>http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url</id>
+    <content type="html"><![CDATA[<p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
+
+<pre><code class="ruby">require 'cgi'
+
+# Escape data for URL query parameters
+name = "ruby?"
+value = "yes"
+url = "http://example.com/?" + CGI.escape(name) + '=' + CGI.escape(value) + "&amp;var=T"
+# url: http://example.com/?ruby%3F=yes&amp;var=T
+
+# Escape data for HTML
+url = "http://example.com/?ruby%3F=yes&amp;var=T"
+html = %(&lt;a href="#{CGI.escapeHTML(url)}"&gt;example&lt;/a&gt;)
+# html: &lt;a href="http://example.com/?ruby%3F=yes&amp;amp;var=T"&gt;example&lt;/a&gt;
+
+# Unescape HTML-escaped data
+url = CGI.unescapeHTML("http://example.com/?ruby%3F=yes&amp;amp;var=T")
+# url: http://example.com/?ruby%3F=yes&amp;var=T
+
+# Parse query params:
+query = "ruby%3F=yes&amp;var=T"
+pairs = query.split('&amp;')    # pairs: ["ruby%3F=yes", "var=T"]
+name, value = pairs[0].split('=').map{|v| CGI.unescape(v)}
+# name, value: ["ruby?", "yes"]
+</code></pre>
 ]]></content>
   </entry>
   
