@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Atom | Moxley Stratton]]></title>
+  <title><![CDATA[Category: Atom | My Octopress Blog]]></title>
   <link href="http://moxley.github.io/blog/categories/atom/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T19:50:48-08:00</updated>
+  <updated>2014-11-24T22:32:29-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
-    <name><![CDATA[Moxley Stratton]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

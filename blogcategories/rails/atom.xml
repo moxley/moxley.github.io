@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ruby | My Octopress Blog]]></title>
-  <link href="http://moxley.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Rails | My Octopress Blog]]></title>
+  <link href="http://moxley.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
   <updated>2014-11-24T22:32:29-08:00</updated>
   <id>http://moxley.github.io/</id>
@@ -12,42 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Sometimes Clojure Is More Concise Than Ruby]]></title>
-    <link href="http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
-    <updated>2014-11-24T19:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
-    <content type="html"><![CDATA[<p>I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:</p>
-
-<pre><code class="clojure">;; Subtract two vectors in Clojure
-(def a [10 9 8])
-(def b [1 2 3])
-(map - a b)
-;; (9 7 5)
-</code></pre>
-
-<pre><code class="ruby"># Subtract two vectors in Ruby
-a = [10, 9, 8]
-b = [1, 2, 3]
-a.zip(b).map { |(a, b)| a - b }
-# [9, 7, 5]
-</code></pre>
-
-<p>What is it about Ruby that makes it less concise in this example?</p>
-
-<p>In my opinion, the OOP nature of Ruby gets in the way. In OOP, there is a message receiver
-(the object), plus zero or more arguments. In Clojure, there is no receiver, only arguments.
-In Ruby, the two arguments to Clojure&rsquo;s <code>map</code> call have to be split up into the receiver
-and the first argument. Additionally, the arguments to Ruby&rsquo;s <code>map</code> arrive as a single
-array instead of of two distinct scalar arguments. This requires the destructor
-parentheses inside the <code>map</code> block.</p>
-
-<p>The syntactical division between a receiver and it&rsquo;s arguments is usually not a problem.
-But every once in a while, it gets in the way. Another division in OOP is between class
-and instance. I&rsquo;ve found that this division can sometimes get in the way too.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Finding the Source for a Given Rails Web Page]]></title>

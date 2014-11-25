@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Moxley Stratton]]></title>
+  <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://moxley.github.io/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T19:50:48-08:00</updated>
+  <updated>2014-11-24T22:32:29-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
-    <name><![CDATA[Moxley Stratton]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -217,6 +217,41 @@ these checklists to help you decide whether it&rsquo;s an editor worth switching
     <id>http://moxley.github.io/blog/2012/12/01/simple-cellular-automata</id>
     <content type="html"><![CDATA[<p>I released a very simple cellular automata explorer. <a href="http://moxley.github.io/cellauto/cellauto.html">Try it out here</a>.
 See the <a href="https://github.com/moxley/cellauto">Github page</a> for more information.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ten Secret Key Bindings From OS X]]></title>
+    <link href="http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings/"/>
+    <updated>2012-05-11T12:00:00-07:00</updated>
+    <id>http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings</id>
+    <content type="html"><![CDATA[<p>Did you know that when using these applications:</p>
+
+<ul>
+<li>Any application on OS X, except Vim and MS products</li>
+<li>Bash, or any console program with Readline support</li>
+</ul>
+
+
+<p>These key bindings are available:</p>
+
+<ol>
+<li>Control-A - Move to beginning of line</li>
+<li>Control-E - Move to end of line</li>
+<li>Control-F - Move forward one column</li>
+<li>Control-B - Move backward one column</li>
+<li>Control-N - Move to next line</li>
+<li>Control-P - Move to previous line</li>
+<li>Control-D - Delete next character</li>
+<li>Control-H - Delete previous character</li>
+<li>Control-K - Delete from cursor to end of line</li>
+<li> Control-Y - Paste what was deleted with Control-K</li>
+</ol>
+
+
+<p>It seems silly, but the thing I love the most about OS X is the ubiquity of these key bindings. Any text editing, from writing a blog post in Chrome, to writing code in TextMate is immensely sweeter with the availability of the above key bindings. One need not leave the keyboard&rsquo;s home row to do much of anything when they&rsquo;re available.</p>
+
+<p>Whether you use Emacs or Vim or another text editor, learn to use key bindings that allow you to keep your fingers close to the home row. Your text editing will be faster an more efficient.</p>
 ]]></content>
   </entry>
   
