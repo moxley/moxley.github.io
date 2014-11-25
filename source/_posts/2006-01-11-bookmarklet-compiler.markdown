@@ -21,7 +21,7 @@ This form will take your nicely-formatted Javascript, and turn it into a URL so 
 
 Go ahead and enter some javascript.
 
-<script type="text/javascript" src="https://raw.github.com/moxley/misc/master/bookmarklet-compiler.js"></script>
+<script type="text/javascript" src="/bookmarklet/bookmarklet-compiler.js"></script>
 
 <form id="bookmarkletGenerator" method="get" action="javascript:;">
   <textarea cols="80" rows="10" id="source"></textarea>
