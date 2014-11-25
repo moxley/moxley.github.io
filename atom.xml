@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Moxley Stratton]]></title>
+  <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://moxley.github.io/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T23:07:47-08:00</updated>
+  <updated>2014-11-24T23:12:07-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
-    <name><![CDATA[Moxley Stratton]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -197,8 +197,6 @@ these checklists to help you decide whether it&rsquo;s an editor worth switching
 <h3>Cons</h3>
 
 <ul>
-<li>Costs money</li>
-<li>Core is closed-source for now</li>
 <li>Editor API doesn&rsquo;t go as deep as Emacs. Lacks rich callback API that Emacs has.</li>
 <li>No cursor history, so no command for going back to the last location without using bookmarks</li>
 <li>No cursor navigation around, or editing operations on, symbol definitions (e.g., methods)</li>
