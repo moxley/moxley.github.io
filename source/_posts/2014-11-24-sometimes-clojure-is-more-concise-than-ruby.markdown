@@ -1,7 +1,7 @@
 I find that 90% of the time, Clojure is more verbose than Ruby. Here's one simple example where Clojure wins a conciseness battle:
 
 ```clojure
-;; Subtract two vectors
+;; Subtract two vectors in Clojure
 (def a [10 9 8])
 (def b [1 2 3])
 (map - a b)
@@ -9,7 +9,7 @@ I find that 90% of the time, Clojure is more verbose than Ruby. Here's one simpl
 ```
 
 ```ruby
-# Subtract two vectors
+# Subtract two vectors in Ruby
 a = [10, 9, 8]
 b = [1, 2, 3]
 a.zip(b).map { |(a, b)| a - b }
