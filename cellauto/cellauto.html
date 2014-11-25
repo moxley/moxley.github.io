@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cellular Automata</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script type="text/javascript" src="/cellauto/cellauto.js"></script>
+    <script>$(function () { CELLAUTO.init(); CELLAUTO.run(); });</script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <canvas id="canvas" width="800" height="400"></canvas>
+    </div>
+    <div>
+      Rule <span id="rule"></span>
+    </div>
+    <div>
+      <button id="btn_prev">Prev</button>
+      <button id="btn_stop">Stop</button>
+      <button id="btn_next">Next</button>
+    </div>
+    
+    <p>
+      What's this about?
+      Cellular automata generated from your browser.
+      See <a href="http://en.wikipedia.org/wiki/Cellular_automaton">Wikipedia's page on Cellular Automation</a>
+      There are 256 different rules for this type of celluar automata.
+      The <a href="https://github.com/moxley/cellauto">source code</a> for this explorer is hosted at
+      Github.
+    </p>
+  </body>
+</html>

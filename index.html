@@ -98,7 +98,7 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; Subtract two vectors</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; Subtract two vectors in Clojure</span>
 </span><span class='line'><span class="p">(</span><span class="k">def </span><span class="nv">a</span> <span class="p">[</span><span class="mi">10</span> <span class="mi">9</span> <span class="mi">8</span><span class="p">])</span>
 </span><span class='line'><span class="p">(</span><span class="k">def </span><span class="nv">b</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">])</span>
 </span><span class='line'><span class="p">(</span><span class="nb">map - </span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span>
@@ -113,7 +113,7 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Subtract two vectors</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Subtract two vectors in Ruby</span>
 </span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="o">]</span>
 </span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
 </span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">|</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="p">}</span>
@@ -210,6 +210,153 @@ the view partials responsible for their generated HTML.</li>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/">Considering a Switch to the Atom Text Editor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-16T00:00:00-07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>You&rsquo;ve probably heard of <a href="http://atom.io/">Atom, Github&rsquo;s new text editor</a>. Read
+these checklists to help you decide whether it&rsquo;s an editor worth switching to.</p>
+
+<h2>General Pros</h2>
+
+<ul>
+<li>Open Source</li>
+<li>High-quality extension and enhancement infrastructure</li>
+<li>View is programmable using good old HTML DOM and CSS</li>
+<li>Well-known API model (NodeJS)</li>
+<li>Built-in Github integration</li>
+<li>Built-in, light Git integration</li>
+<li><a href="https://www.youtube.com/watch?v=VGUemwCaBR0&amp;amp;feature=youtu.be">Realtime Markdown preview</a></li>
+<li>Seamlessly tracks external file renames while the file is open</li>
+<li>Browse archive files, like zip or tar.gz, like Emacs does.</li>
+<li>UI and editing features basically a clone of Sublime Text</li>
+<li>Free, while in Beta.</li>
+</ul>
+
+
+<h2>General Cons</h2>
+
+<ul>
+<li>In Beta. Some rough UX details.</li>
+<li>No keyboard macros</li>
+<li>No command documentation</li>
+<li>Difficult to discover available commands</li>
+<li>Currently only works on OS X (Windows and Linux planned)</li>
+</ul>
+
+
+<h2>For Sublime Users</h2>
+
+<h3>Pros</h3>
+
+<ul>
+<li>Package manager is built in</li>
+<li>Deep customization API</li>
+<li>Fine-grained commands</li>
+<li>Complete pane splitting and pane navigation</li>
+<li>Smarter indentation of pasted text</li>
+</ul>
+
+
+<h3>Cons</h3>
+
+<ul>
+<li>2-3x slower, 2-3x more memory than ST3 (realistically, it&rsquo;s not as bad as it sounds)</li>
+<li>No &ldquo;Jump Back&rdquo; feature, as found in ST3</li>
+<li>No auto-highlighting matching strings of selected string</li>
+<li>Can&rsquo;t open file in existing window, unless it lives within the window&rsquo;s directory</li>
+<li>Missing key bindings for many search &amp; replace operations</li>
+</ul>
+
+
+<h2>For Vim and Emacs Users</h2>
+
+<h3>Pros</h3>
+
+<ul>
+<li>Modern Application and UI, contemporary key bindings</li>
+<li>Easy to learn</li>
+<li>Built in Package manager, and standard package formats</li>
+<li>View is good old HTML DOM, CSS</li>
+<li>CoffeeScript is arguably better than eLisp and Vimscript</li>
+<li>Editor API reaches deep into the editor</li>
+<li>Project-wide fuzzy file finder, built in, fuss-free</li>
+<li>Buffer-wide fuzzy symbol finder, built in, fuss-free</li>
+<li>Project-wide string search</li>
+<li>Large number of homerow-close key bindings (many of them are Emacs compatible)</li>
+<li>Pane splitting on par with Vim and Emacs</li>
+<li>Multi selections</li>
+<li>Code Snippets</li>
+</ul>
+
+
+<h3>Cons</h3>
+
+<ul>
+<li>Costs money</li>
+<li>Core is closed-source for now</li>
+<li>Editor API doesn&rsquo;t go as deep as Emacs. Lacks rich callback API that Emacs has.</li>
+<li>No cursor history, so no command for going back to the last location without using bookmarks</li>
+<li>No cursor navigation around, or editing operations on, symbol definitions (e.g., methods)</li>
+<li>Unlike Emacs, no built-in shell console (package under development)</li>
+<li>Keyboard navigation of file tree is cumbersome, but will likely improve over time.</li>
+<li>Missing a lot of the cool text navigation and editing commands available to Vim and Emacs</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/01/simple-cellular-automata/">Simple Cellular Automata</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-01T00:00:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I released a very simple cellular automata explorer. <a href="/cellauto/cellauto.html">Try it out here</a>.
+See the <a href="https://github.com/moxley/cellauto">Github page</a> for more information.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -228,6 +375,14 @@ the view partials responsible for their generated HTML.</li>
     
       <li class="post">
         <a href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/">Finding the Source for a Given Rails Web Page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/">Considering a Switch to the Atom Text Editor</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/01/simple-cellular-automata/">Simple Cellular Automata</a>
       </li>
     
   </ul>
