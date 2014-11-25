@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Sometimes Clojure is More Concise than Ruby"
+date: 2014-11-24 19:00
+comments: true
+categories: [Ruby, Clojure]
+---
 I find that 90% of the time, Clojure is more verbose than Ruby. Here's one simple example where Clojure wins a conciseness battle:
 
 ```clojure
