@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Atom | Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/blog/categories/atom/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Coding | Moxley Stratton]]></title>
+  <link href="http://moxley.github.io/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
   <updated>2014-11-29T15:13:01-08:00</updated>
   <id>http://moxley.github.io/</id>
