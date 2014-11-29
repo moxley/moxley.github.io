@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://moxley.github.io/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-29T12:20:14-08:00</updated>
+  <updated>2014-11-29T14:17:32-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -18,7 +18,7 @@
     <link href="http://moxley.github.io/blog/2014/11/29/switching-to-octopress-from-wordpress/"/>
     <updated>2014-11-29T11:34:20-08:00</updated>
     <id>http://moxley.github.io/blog/2014/11/29/switching-to-octopress-from-wordpress</id>
-    <content type="html"><![CDATA[<p><img src="http://cl.ly/image/47150p2I2447/Image%202014-11-29%20at%2011.47.26%20AM.png" title="Octopress and Atom - A potent combination" alt="octopress post in atom" /></p>
+    <content type="html"><![CDATA[<p><img src="http://cl.ly/image/1k3O2Y023s1u/octopress-atom.jpg" title="Octopress and Atom - A potent combination" alt="octopress post in atom" /></p>
 
 <p>Wordpress has been my blogging platform for the last two years, and
 Drupal for a few years before that. Both are written in PHP and both
