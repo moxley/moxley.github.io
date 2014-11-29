@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://moxley.github.io/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-29T11:29:09-08:00</updated>
+  <updated>2014-11-29T11:52:57-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Switching to Octopress From Wordpress]]></title>
+    <link href="http://moxley.github.io/blog/2014/11/29/switching-to-octopress-from-wordpress/"/>
+    <updated>2014-11-29T11:34:20-08:00</updated>
+    <id>http://moxley.github.io/blog/2014/11/29/switching-to-octopress-from-wordpress</id>
+    <content type="html"><![CDATA[<p><img src="http://cl.ly/image/47150p2I2447/Image%202014-11-29%20at%2011.47.26%20AM.png" title="Octopress and Atom - A potent combination" alt="octopress post in atom" /></p>
+
+<p>Wordpress has been my blogging platform for the last two years, and
+Drupal for a few years before that. Both are written in PHP and both
+were installed and maintained on a traditional shared hosting account.
+I would have stuck with Wordpress if it weren&rsquo;t for it&rsquo;s lack of robust
+Markdown language support. Writing a coder&rsquo;s blog requires code samples,
+usually in multiple languages. Github&rsquo;s flavor of Markdown has proved to be
+an excellent language for authoring content that includes code samples, and
+Octopress supports it by default.</p>
+
+<p><a href="http://octopress.org/">Octopress</a>
+is a wrapper around <a href="http://jekyllrb.com/">Jekyll</a>, and Jekyll is well suited for
+publishing a blog to a Github&rsquo;s Pages service. Since Jekyll only generates a
+static site, it can be much faster than a PHP solution like Wordpress or Drupal.
+When used in conjunction with the <a href="https://atom.io/">Atom text editor</a>,
+Octopress becomes a powerful blogging platform.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sometimes Clojure Is More Concise Than Ruby]]></title>
