@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Clojure | Moxley Stratton]]></title>
   <link href="http://moxley.github.io/blog/categories/clojure/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T23:13:12-08:00</updated>
+  <updated>2014-11-29T11:29:09-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -57,6 +57,9 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
     <content type="html"><![CDATA[<p>I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.</p>
 
 <p>Clojure is a functional lisp dialect that uses the Java Virtual Runtime as its platform. The language home page is at <a href="http://clojure.org/">http://clojure.org/</a>.</p>
+
+<!-- more -->
+
 
 <h2>Table of Contents</h2>
 
@@ -855,14 +858,14 @@ user=&gt; (import '(java.util HashMap))
 
 <pre><code class="bash">&gt; lein repl
 REPL started; server listening on localhost port 64984
-user=&gt; 
+user=&gt;
 </code></pre>
 
 <p>Now the library can be referenced from your code:</p>
 
 <pre><code class="clojure">user=&gt; (use '[clojure.data.json :only (read-json json-str)])
 nil
-user=&gt; (json-str {:color "red" :name "apple"})       
+user=&gt; (json-str {:color "red" :name "apple"})
 "{\"name\":\"apple\",\"color\":\"red\"}"
 user=&gt; (read-json "{\"width\": 300, \"height\": 200}")
 {:width 300, :height 200}

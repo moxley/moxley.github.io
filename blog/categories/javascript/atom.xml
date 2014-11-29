@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Moxley Stratton]]></title>
   <link href="http://moxley.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T23:13:12-08:00</updated>
+  <updated>2014-11-29T11:29:09-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -19,6 +19,9 @@
     <updated>2006-01-11T12:00:00-08:00</updated>
     <id>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler</id>
     <content type="html"><![CDATA[<p>What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite <a href="http://www.squarefree.com/bookmarklets/">bookmarklet site</a>. It includes the bookmarklet that helped me develop my first Ajax applications: <a href="http://www.squarefree.com/shell/">Javascript Shell</a>.</p></p>
+
+<!-- more -->
+
 
 <h2>How do you make a bookmarklet?</h2>
 

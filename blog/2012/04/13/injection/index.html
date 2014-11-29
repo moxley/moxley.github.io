@@ -92,6 +92,11 @@ $sql = &quot;SELECT * FROM users WHERE username=&#39;&quot; . $username . &quot 
 </span></code></pre></td></tr></table></div></figure>
 
 
+
+
+<!-- more -->
+
+
 <p>What&rsquo;s wrong with this code? The problem is that <code>$username</code> needs to be escaped before it can be put into the SQL statement. If <code>$username</code> contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there&rsquo;s more to this story.</p>
 
 <p>Without escaping the data before it is added to the SQL, the code is vulnerable to Injection attack. Injection is the top security risk in applications, according to <a href="https://www.owasp.org/index.php/Top_10_2010-Main" title="">OWASP&rsquo;s Top 10 Security Risks</a>>.</p>

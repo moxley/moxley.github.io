@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://moxley.github.io/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T23:13:12-08:00</updated>
+  <updated>2014-11-29T11:29:09-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -70,6 +70,9 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
     <id>http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page</id>
     <content type="html"><![CDATA[<p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
 
+<!-- more -->
+
+
 <h2>Common tips and tricks</h2>
 
 <ul>
@@ -120,6 +123,9 @@ the view partials responsible for their generated HTML.</li>
     <id>http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor</id>
     <content type="html"><![CDATA[<p>You&rsquo;ve probably heard of <a href="http://atom.io/">Atom, Github&rsquo;s new text editor</a>. Read
 these checklists to help you decide whether it&rsquo;s an editor worth switching to.</p>
+
+<!-- more -->
+
 
 <h2>General Pros</h2>
 
@@ -231,6 +237,9 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
 </ul>
 
 
+<!-- more -->
+
+
 <p>These key bindings are available:</p>
 
 <ol>
@@ -263,6 +272,11 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username=&#39;&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
 
 
 <p>What&rsquo;s wrong with this code? The problem is that <code>$username</code> needs to be escaped before it can be put into the SQL statement. If <code>$username</code> contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there&rsquo;s more to this story.</p>
@@ -417,6 +431,9 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     <content type="html"><![CDATA[<p>I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.</p>
 
 <p>Clojure is a functional lisp dialect that uses the Java Virtual Runtime as its platform. The language home page is at <a href="http://clojure.org/">http://clojure.org/</a>.</p>
+
+<!-- more -->
+
 
 <h2>Table of Contents</h2>
 
@@ -1639,6 +1656,11 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     <id>http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url</id>
     <content type="html"><![CDATA[<p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
 
+<!-- more -->
+
+
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -1694,6 +1716,9 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     <updated>2006-01-11T12:00:00-08:00</updated>
     <id>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler</id>
     <content type="html"><![CDATA[<p>What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite <a href="http://www.squarefree.com/bookmarklets/">bookmarklet site</a>. It includes the bookmarklet that helped me develop my first Ajax applications: <a href="http://www.squarefree.com/shell/">Javascript Shell</a>.</p></p>
+
+<!-- more -->
+
 
 <h2>How do you make a bookmarklet?</h2>
 

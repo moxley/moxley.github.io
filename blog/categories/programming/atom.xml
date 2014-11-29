@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | Moxley Stratton]]></title>
   <link href="http://moxley.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T23:13:12-08:00</updated>
+  <updated>2014-11-29T11:29:09-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -22,6 +22,9 @@
 
 <pre><code class="php">$sql = "SELECT * FROM users WHERE username='" . $username . "'";
 </code></pre>
+
+<!-- more -->
+
 
 <p>What&rsquo;s wrong with this code? The problem is that <code>$username</code> needs to be escaped before it can be put into the SQL statement. If <code>$username</code> contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there&rsquo;s more to this story.</p>
 

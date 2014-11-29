@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Os X | Moxley Stratton]]></title>
   <link href="http://moxley.github.io/blog/categories/os-x/atom.xml" rel="self"/>
   <link href="http://moxley.github.io/"/>
-  <updated>2014-11-24T23:13:12-08:00</updated>
+  <updated>2014-11-29T11:29:09-08:00</updated>
   <id>http://moxley.github.io/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -24,6 +24,9 @@
 <li>Any application on OS X, except Vim and MS products</li>
 <li>Bash, or any console program with Readline support</li>
 </ul>
+
+
+<!-- more -->
 
 
 <p>These key bindings are available:</p>
