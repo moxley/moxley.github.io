@@ -11,6 +11,8 @@ Within the world of application development, there is a conspiracy.
 $sql = "SELECT * FROM users WHERE username='" . $username . "'";
 ```
 
+<!-- more -->
+
 What's wrong with this code? The problem is that `$username` needs to be escaped before it can be put into the SQL statement. If `$username` contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there's more to this story.
 
 Without escaping the data before it is added to the SQL, the code is vulnerable to Injection attack. Injection is the top security risk in applications, according to [OWASP's Top 10 Security Risks](https://www.owasp.org/index.php/Top_10_2010-Main")>.

@@ -8,6 +8,8 @@ categories: [Atom, Text Editors]
 You've probably heard of [Atom, Github's new text editor](http://atom.io/). Read
 these checklists to help you decide whether it's an editor worth switching to.
 
+<!-- more -->
+
 ## General Pros
 
 *   Open Source

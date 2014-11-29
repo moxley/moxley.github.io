@@ -10,6 +10,8 @@ Did you know that when using these applications:
 *   Any application on OS X, except Vim and MS products
 *   Bash, or any console program with Readline support
 
+<!-- more -->
+
 These key bindings are available:
 
 1.  Control-A - Move to beginning of line

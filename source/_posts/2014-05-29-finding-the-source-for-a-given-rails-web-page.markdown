@@ -7,6 +7,8 @@ categories: [Ruby, Rails]
 ---
 These tips may help those of you who are relatively new to Rails, or maybe even if you're not.
 
+<!-- more -->
+
 ## Common tips and tricks
 
 * Look at the URL path (e.g. `/users/100685/edit`).

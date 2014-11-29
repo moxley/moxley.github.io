@@ -7,6 +7,8 @@ categories: [Ruby]
 ---
 This example shows you how to escape and un-escape a value to be included in a URI and within HTML.
 
+<!-- more -->
+
 ```ruby
 require 'cgi'
 

@@ -7,6 +7,8 @@ categories: [JavaScript]
 ---
 What are bookmarklets? They're small Javascripts, saved as browser bookmarks, that perform useful functions. Here's my favorite [bookmarklet site](http://www.squarefree.com/bookmarklets/). It includes the bookmarklet that helped me develop my first Ajax applications: [Javascript Shell](http://www.squarefree.com/shell/).</p>
 
+<!-- more -->
+
 ## How do you make a bookmarklet?
 
 1.  Write the javascript that you want to be the bookmarklet.

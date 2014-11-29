@@ -9,6 +9,8 @@ I intend to keep this tutorial as accurate and up-to-date as possible. If you ha
 
 Clojure is a functional lisp dialect that uses the Java Virtual Runtime as its platform. The language home page is at [http://clojure.org/](http://clojure.org/).
 
+<!-- more -->
+
 ## Table of Contents
 
 *   [A Quick Comparison](#quick-comparison)
@@ -861,7 +863,7 @@ When using Leiningen for your project, you need to use lein to get to the REPL:
 ```bash
 > lein repl
 REPL started; server listening on localhost port 64984
-user=> 
+user=>
 ```
 
 Now the library can be referenced from your code:
@@ -869,7 +871,7 @@ Now the library can be referenced from your code:
 ```clojure
 user=> (use '[clojure.data.json :only (read-json json-str)])
 nil
-user=> (json-str {:color "red" :name "apple"})       
+user=> (json-str {:color "red" :name "apple"})
 "{\"name\":\"apple\",\"color\":\"red\"}"
 user=> (read-json "{\"width\": 300, \"height\": 200}")
 {:width 300, :height 200}
