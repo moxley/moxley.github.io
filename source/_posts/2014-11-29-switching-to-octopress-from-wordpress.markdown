@@ -5,7 +5,6 @@ date: 2014-11-29 11:34:20 -0800
 comments: true
 categories:
 ---
-
 ![octopress post in atom](http://cl.ly/image/47150p2I2447/Image%202014-11-29%20at%2011.47.26%20AM.png "Octopress and Atom - A potent combination")
 
 Wordpress has been my blogging platform for the last two years, and

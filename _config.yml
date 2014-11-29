@@ -4,7 +4,7 @@
 
 url: http://moxley.github.io
 title: Moxley Stratton
-subtitle: A blog for hackers.
+subtitle: Code Blog
 author: Moxley Stratton
 simple_search: https://www.google.com/search
 description: A blog about programming with Ruby, JavaScript and Clojure
@@ -91,7 +91,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: moxleystratton
 disqus_show_comment_count: false
 
 # Google Analytics
