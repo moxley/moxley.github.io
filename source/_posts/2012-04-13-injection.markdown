@@ -4,6 +4,7 @@ title: "Injection"
 date: 2012-04-13 12:00
 comments: false
 categories: [Programming]
+alias: /coding/injection
 ---
 Within the world of application development, there is a conspiracy.
 

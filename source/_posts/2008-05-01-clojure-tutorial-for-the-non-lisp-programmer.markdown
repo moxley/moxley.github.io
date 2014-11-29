@@ -4,6 +4,7 @@ title: "Clojure Tutorial for the Non-Lisp Programmer"
 date: 2008-05-01 12:00
 comments: false
 categories: [Clojure]
+alias: [/clojure/clojure-tutorial-for-the-non-lisp-programmer/index.html, /article/clojure/for-non-lisp-programmers/index.html, /category/clojure/index.html, /article/clojure-for-non-lisp-programmers/index.html]
 ---
 I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.
 

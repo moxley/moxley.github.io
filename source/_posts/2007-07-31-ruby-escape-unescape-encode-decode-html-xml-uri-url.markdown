@@ -4,6 +4,7 @@ title: "Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL"
 date: 2007-07-31 12:00
 comments: false
 categories: [Ruby]
+alias: /article/ruby-escape-unescape-encode-decode-html-xml-uri-url/index.html
 ---
 This example shows you how to escape and un-escape a value to be included in a URI and within HTML.
 

@@ -3,7 +3,8 @@ layout: post
 title: "Considering a switch to the Atom Text Editor?"
 date: 2014-03-16 12:00
 comments: false
-categories: [Atom, Text Editors]
+categories: [Coding, Atom, Text Editors]
+alias: /coding/atom-text-editor/index.html
 ---
 You've probably heard of [Atom, Github's new text editor](http://atom.io/). Read
 these checklists to help you decide whether it's an editor worth switching to.

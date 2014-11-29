@@ -4,6 +4,7 @@ title: "Bookmarklet Compiler"
 date: 2006-01-11 12:00
 comments: false
 categories: [JavaScript]
+alias: /article/javascript/bookmarklets/compiler/index.html
 ---
 What are bookmarklets? They're small Javascripts, saved as browser bookmarks, that perform useful functions. Here's my favorite [bookmarklet site](http://www.squarefree.com/bookmarklets/). It includes the bookmarklet that helped me develop my first Ajax applications: [Javascript Shell](http://www.squarefree.com/shell/).</p>
 

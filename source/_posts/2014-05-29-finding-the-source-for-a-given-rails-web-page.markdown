@@ -4,6 +4,7 @@ title: "Finding the source for a given Rails web page"
 date: 2014-05-29 12:00
 comments: false
 categories: [Ruby, Rails]
+alias: /ruby/finding-the-source-for-a-given-rails-web-page
 ---
 These tips may help those of you who are relatively new to Rails, or maybe even if you're not.
 
