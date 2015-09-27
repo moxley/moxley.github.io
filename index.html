@@ -106,8 +106,9 @@ for unlocking the confines of common ActiveRecord.</p>
 
 <h3>#find_by_sql</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>users = User.find_by_sql("SELECT * FROM users WHERE id = 1")</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_by_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = 1&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This returns model instances for the given SQL string.</p>
@@ -227,6 +228,128 @@ it bypasses ActiveRecord entirely.</p>
 
 
 <p>The only problem is that the password is not there. It shows as <code>nil</code>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/25/the-memrister-computer/">The Memrister Computer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-25T12:57:01-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:57 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>What I want to convey:</p>
+
+<ul>
+<li>What is it?
+
+<ul>
+<li>A new fundamental component of digital circuits</li>
+<li>Theorized in the 1970s</li>
+<li>Basis for non- Von Neumann architecture</li>
+</ul>
+</li>
+<li>What&rsquo;s it good for?
+
+<ul>
+<li>Computing and memory in one place</li>
+<li>More efficient</li>
+<li>Faster</li>
+<li>Solve certain classes of problems much faster than Von Neumann architecture</li>
+</ul>
+</li>
+<li>When will it be available?
+
+<ul>
+<li>HP&rsquo;s prototype computer: &ldquo;The Machine&rdquo;</li>
+</ul>
+</li>
+<li>History
+
+<ul>
+<li>Leon Chua, 1971</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Notes from HP presentation:</p>
+
+<ul>
+<li>Martin Fink</li>
+<li>100TB stored on your phone</li>
+<li>Merges different compute platforms into one</li>
+<li>Moonshot</li>
+<li>Components:
+
+<ul>
+<li>Special purpose cores</li>
+<li>Photonics</li>
+</ul>
+</li>
+<li>Example:
+
+<ul>
+<li>160 Racks, each 1PT = 160PT</li>
+<li>Behaving as one server</li>
+<li>Any one byte, accessed under 250ns</li>
+<li>Compared to 60ns for local DRAM, and 100ns for remote DRAM on i7</li>
+</ul>
+</li>
+<li>Today, processors and memory have to be physically close to each other
+(on the order of centimeters)</li>
+<li>1 fiber: 6TB/s</li>
+<li>Memory arranged in cube structure</li>
+<li>Connected to processor via fiber</li>
+<li>Universal Memory</li>
+<li>Traditional: memory pyramid, from top to bottom consisting of:
+
+<ol>
+<li>On-chip cache</li>
+<li>Main memory</li>
+<li>Mass storage</li>
+<li>90% of what an OS does is shuffle (shuttle) data between these layers</li>
+<li>To balance cost and performance</li>
+<li>9-11 layers of memory</li>
+</ol>
+</li>
+<li>Leave the layers/hierarchy behind: memrister</li>
+<li>Store data at the atomic level instead of using electrons
+
+<ul>
+<li>Oxegen ion (2 electrons removed)</li>
+</ul>
+</li>
+<li>Flip between zero on one at the picosecond range</li>
+<li>Require no energy to maintain state over time</li>
+<li>Simple explanation:
+
+<ul>
+<li>Electrons compute</li>
+<li>Photons communicate</li>
+<li>Ions store</li>
+</ul>
+</li>
+</ul>
+
 </div>
   
   
@@ -565,40 +688,6 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/">Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2007-07-31T12:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -618,6 +707,10 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
       </li>
     
       <li class="post">
+        <a href="/blog/2015/01/25/the-memrister-computer/">The Memrister Computer</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/29/switching-to-octopress-from-wordpress/">Switching to Octopress From Wordpress</a>
       </li>
     
@@ -627,10 +720,6 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     
       <li class="post">
         <a href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/">Finding the Source for a Given Rails Web Page</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/">Considering a Switch to the Atom Text Editor?</a>
       </li>
     
   </ul>

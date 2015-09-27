@@ -5,15 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sometimes Clojure Is More Concise Than Ruby - Moxley Stratton</title>
+  <title>The Memrister Computer - Moxley Stratton</title>
   <meta name="author" content="Moxley Stratton">
 
   
-  <meta name="description" content="I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle: 1
-2
-3
-4
-5 &hellip;">
+  <meta name="description" content="What I want to convey: What is it? A new fundamental component of digital circuits
+Theorized in the 1970s
+Basis for non- Von Neumann architecture &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby">
+  <link rel="canonical" href="http://www.moxleystratton.com/blog/2015/01/25/the-memrister-computer">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Moxley Stratton" type="application/atom+xml">
@@ -84,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sometimes Clojure Is More Concise Than Ruby</h1>
+      <h1 class="entry-title">The Memrister Computer</h1>
     
     
       <p class="meta">
@@ -93,55 +91,107 @@
 
 
 
-<time class='entry-date' datetime='2014-11-24T19:00:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:00 pm</span></time>
+<time class='entry-date' datetime='2015-01-25T12:57:01-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:57 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:</p>
+<div class="entry-content"><p>What I want to convey:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; Subtract two vectors in Clojure</span>
-</span><span class='line'><span class="p">(</span><span class="k">def </span><span class="nv">a</span> <span class="p">[</span><span class="mi">10</span> <span class="mi">9</span> <span class="mi">8</span><span class="p">])</span>
-</span><span class='line'><span class="p">(</span><span class="k">def </span><span class="nv">b</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">])</span>
-</span><span class='line'><span class="p">(</span><span class="nb">map - </span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span>
-</span><span class='line'><span class="c1">;; (9 7 5)</span>
-</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li>What is it?
+
+<ul>
+<li>A new fundamental component of digital circuits</li>
+<li>Theorized in the 1970s</li>
+<li>Basis for non- Von Neumann architecture</li>
+</ul>
+</li>
+<li>What&rsquo;s it good for?
+
+<ul>
+<li>Computing and memory in one place</li>
+<li>More efficient</li>
+<li>Faster</li>
+<li>Solve certain classes of problems much faster than Von Neumann architecture</li>
+</ul>
+</li>
+<li>When will it be available?
+
+<ul>
+<li>HP&rsquo;s prototype computer: &ldquo;The Machine&rdquo;</li>
+</ul>
+</li>
+<li>History
+
+<ul>
+<li>Leon Chua, 1971</li>
+</ul>
+</li>
+</ul>
 
 
+<p>Notes from HP presentation:</p>
 
+<ul>
+<li>Martin Fink</li>
+<li>100TB stored on your phone</li>
+<li>Merges different compute platforms into one</li>
+<li>Moonshot</li>
+<li>Components:
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Subtract two vectors in Ruby</span>
-</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="o">]</span>
-</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
-</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">|</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="p">}</span>
-</span><span class='line'><span class="c1"># [9, 7, 5]</span>
-</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li>Special purpose cores</li>
+<li>Photonics</li>
+</ul>
+</li>
+<li>Example:
 
+<ul>
+<li>160 Racks, each 1PT = 160PT</li>
+<li>Behaving as one server</li>
+<li>Any one byte, accessed under 250ns</li>
+<li>Compared to 60ns for local DRAM, and 100ns for remote DRAM on i7</li>
+</ul>
+</li>
+<li>Today, processors and memory have to be physically close to each other
+(on the order of centimeters)</li>
+<li>1 fiber: 6TB/s</li>
+<li>Memory arranged in cube structure</li>
+<li>Connected to processor via fiber</li>
+<li>Universal Memory</li>
+<li>Traditional: memory pyramid, from top to bottom consisting of:
 
-<p>What is it about Ruby that makes it less concise in this example?</p>
+<ol>
+<li>On-chip cache</li>
+<li>Main memory</li>
+<li>Mass storage</li>
+<li>90% of what an OS does is shuffle (shuttle) data between these layers</li>
+<li>To balance cost and performance</li>
+<li>9-11 layers of memory</li>
+</ol>
+</li>
+<li>Leave the layers/hierarchy behind: memrister</li>
+<li>Store data at the atomic level instead of using electrons
 
-<p>In my opinion, the OOP nature of Ruby gets in the way. In OOP, there is a message receiver
-(the object), plus zero or more arguments. In Clojure, there is no receiver, only arguments.
-In Ruby, the two arguments to Clojure&rsquo;s <code>map</code> call have to be split up into the receiver
-and the first argument. Additionally, the arguments to Ruby&rsquo;s <code>map</code> arrive as a single
-array instead of of two distinct scalar arguments. This requires the destructor
-parentheses inside the <code>map</code> block.</p>
+<ul>
+<li>Oxegen ion (2 electrons removed)</li>
+</ul>
+</li>
+<li>Flip between zero on one at the picosecond range</li>
+<li>Require no energy to maintain state over time</li>
+<li>Simple explanation:
 
-<p>The syntactical division between a receiver and it&rsquo;s arguments is usually not a problem.
-But every once in a while, it gets in the way. Another division in OOP is between class
-and instance. I&rsquo;ve found that this division can sometimes get in the way too.</p>
+<ul>
+<li>Electrons compute</li>
+<li>Photons communicate</li>
+<li>Ions store</li>
+</ul>
+</li>
+</ul>
+
 </div>
 
 
@@ -157,21 +207,15 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
 
 
 
-<time class='entry-date' datetime='2014-11-24T19:00:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:00 pm</span></time>
+<time class='entry-date' datetime='2015-01-25T12:57:01-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:57 pm</span></time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/clojure/'>clojure</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/" data-via="moxicon" data-counturl="http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.moxleystratton.com/blog/2015/01/25/the-memrister-computer/" data-via="moxicon" data-counturl="http://www.moxleystratton.com/blog/2015/01/25/the-memrister-computer/" >Tweet</a>
   
   
   
@@ -180,10 +224,10 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/" title="Previous Post: Finding the source for a given Rails web page">&laquo; Finding the source for a given Rails web page</a>
+        <a class="basic-alignment left" href="/blog/2014/11/29/switching-to-octopress-from-wordpress/" title="Previous Post: Switching to Octopress from Wordpress">&laquo; Switching to Octopress from Wordpress</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/11/29/switching-to-octopress-from-wordpress/" title="Next Post: Switching to Octopress from Wordpress">Switching to Octopress from Wordpress &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/09/27/low-level-activerecord/" title="Next Post: Low-Level ActiveRecord">Low-Level ActiveRecord &raquo;</a>
       
     </p>
   </footer>
@@ -278,8 +322,8 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/';
-        var disqus_url = 'http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/';
+        var disqus_identifier = 'http://www.moxleystratton.com/blog/2015/01/25/the-memrister-computer/';
+        var disqus_url = 'http://www.moxleystratton.com/blog/2015/01/25/the-memrister-computer/';
         var disqus_script = 'embed.js';
       
     (function () {

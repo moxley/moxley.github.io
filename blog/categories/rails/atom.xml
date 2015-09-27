@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails, | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T12:03:13-07:00</updated>
+  <updated>2015-09-27T12:06:10-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -24,7 +24,7 @@ for unlocking the confines of common ActiveRecord.</p>
 
 <h3>#find_by_sql</h3>
 
-<pre><code>users = User.find_by_sql("SELECT * FROM users WHERE id = 1")
+<pre><code class="ruby">users = User.find_by_sql("SELECT * FROM users WHERE id = 1")
 </code></pre>
 
 <p>This returns model instances for the given SQL string.</p>
