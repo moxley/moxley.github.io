@@ -1,9 +1,11 @@
 ---
+published: false
 layout: post
 title: "The Memrister Computer"
 date: 2015-01-25 12:57:01 -0800
 comments: true
 categories:
+
 ---
 
 What I want to convey:
