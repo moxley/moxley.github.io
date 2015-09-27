@@ -3,7 +3,7 @@ layout: post
 title: "Low-Level ActiveRecord"
 date: 2015-09-27 10:58:40 -0700
 comments: true
-categories: activerecord, programming, rails
+categories: activerecord programming rails
 ---
 With most large Rails projects, there is a need to bypass the normal ActiveRecord
 API, and get closer to the low-level SQL API. Here are a few useful methods
