@@ -5,9 +5,9 @@ date: 2015-09-27 10:58:40 -0700
 comments: true
 categories: programming, rails, activerecord
 ---
-With every large Rails project, there is a need to bypass the normal ActiveRecord
+With most large Rails projects, there is a need to bypass the normal ActiveRecord
 API, and get closer to the low-level SQL API. Here are a few useful methods
-for unlocking the confines of common ActiveRecord.
+for unlocking the confines of everyday ActiveRecord.
 
 ### #find_by_sql
 
@@ -26,7 +26,7 @@ users = User.find_by_sql(["SELECT * FROM users WHERE id = ?", 1])
 ### #select_all
 
 ```ruby
-users = User.connection.select_all("
+users = ActiveRecord::Base.connection.select_all("
   SELECT first_name, created_at
   FROM users
   WHERE id = 1")
@@ -57,18 +57,19 @@ values for the SQL statement.
 Something like this is bad practice:
 
 ```ruby
-users = User.connection.select_all("
+users = ActiveRecord::Base.connection.select_all("
   SELECT * FROM users WHERE email='#{email}'")
 ```
 
 Because we're not sure what is in `email`. It could have an SQL injection
-attack, or it could just have unexpect characters that will break
+attack, or it could just have unexpected characters that will break
 the query. To cover these
 cases, ActiveRecord provides `#quote`:
 
-```
-users = User.connection.select_all("
-  SELECT * FROM users WHERE email='#{User.connection.quote(email)}'")
+```ruby
+conn = ActiveRecord::Base.connection
+users = conn.select_all("
+  SELECT * FROM users WHERE email='#{conn.quote(email)}'")
 ```
 
 ### #sanitize_sql_array
@@ -82,7 +83,7 @@ API.
 sql = ActiveRecord::Base.send(:sanitize_sql_array,
   ["SELECT * FROM users WHERE email=?", email])
 
-users = User.connection.select_all(sql)
+users = ActiveRecord::Base.connection.select_all(sql)
 ```
 
 ### #connection_config
