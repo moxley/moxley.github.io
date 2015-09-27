@@ -102,9 +102,9 @@ API, and get closer to the low-level SQL API. Here are a few useful &hellip;">
 
   <div class="entry-content"><p>With every large Rails project, there is a need to bypass the normal ActiveRecord
 API, and get closer to the low-level SQL API. Here are a few useful methods
-for unlocking the confines.</p>
+for unlocking the confines of common ActiveRecord.</p>
 
-<h3>find_by_sql</h3>
+<h3>#find_by_sql</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>users = User.find_by_sql("SELECT * FROM users WHERE id = 1")</span></code></pre></td></tr></table></div></figure>
@@ -112,21 +112,23 @@ for unlocking the confines.</p>
 
 <p>This returns model instances for the given SQL string.</p>
 
-<p><code>find_by_sql</code> accepts parametrized values:</p>
+<p><code>#find_by_sql</code> also accepts parametrized values, like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_by_sql</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;SELECT * FROM users WHERE id = ?&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>select_all</h3>
+<h3>#select_all</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="s2">  SELECT first_name, created_at FROM users</span>
-</span><span class='line'><span class="s2">   WHERE id = 1&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="s2">  SELECT first_name, created_at</span>
+</span><span class='line'><span class="s2">  FROM users</span>
+</span><span class='line'><span class="s2">  WHERE id = 1&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -136,7 +138,7 @@ the collection is a <code>Hash</code> representing a row in the results.</p>
 <p>The <code>ActiveRecord::Result</code> contains information about the table and its columns.
 It knows how to convert column values to their corresponding Ruby types.</p>
 
-<h3>execute</h3>
+<h3>#execute</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id=1&quot;</span><span class="p">)</span>
@@ -144,11 +146,11 @@ It knows how to convert column values to their corresponding Ruby types.</p>
 
 
 <p>This returns an array-like object that is specific on the database driver. For
-PostgreSQL, this will be a <code>PG::Result</code>. Item item in the collection is a
+PostgreSQL, this will be a <code>PG::Result</code>. Each item in the collection is a
 <code>Hash</code>. The values of the Hash are strings and nils. No conversion is performed
 to convert the values to the appropriate Ruby type, other than NULL to nil.</p>
 
-<h3>quote</h3>
+<h3>#quote</h3>
 
 <p>The <code>select_all</code> and <code>execute</code> methods have no built-in mechanism for escaping
 values for the SQL statement.</p>
@@ -163,7 +165,8 @@ values for the SQL statement.</p>
 
 
 <p>Because we&rsquo;re not sure what is in <code>email</code>. It could have an SQL injection
-attack, or it could just have characters that weren&rsquo;t expected. To cover these
+attack, or it could just have unexpect characters that will break
+the query. To cover these
 cases, ActiveRecord provides <code>#quote</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -173,7 +176,7 @@ cases, ActiveRecord provides <code>#quote</code>:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>sanitize_sql_array</h3>
+<h3>#sanitize_sql_array</h3>
 
 <p>Using <code>#quote</code> can get unwieldy as more and more values need to be escaped.
 There is a private method called <code>#sanitize_sql_array</code> that brings back the
@@ -183,16 +186,18 @@ API.</p>
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">sql</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:sanitize_sql_array</span><span class="p">,</span>
 </span><span class='line'>  <span class="o">[</span><span class="s2">&quot;SELECT * FROM users WHERE email=?&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>
 </span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>connection_config</h3>
+<h3>#connection_config</h3>
 
 <p>Sometimes you need to introspect the database connection details. Maybe you have an external utility that performs bulk operations against the database, and
-you need to bypass ActiveRecord entirely.</p>
+it bypasses ActiveRecord entirely.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

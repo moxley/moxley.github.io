@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming, | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T11:51:43-07:00</updated>
+  <updated>2015-09-27T12:03:13-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -20,25 +20,26 @@
     <id>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord</id>
     <content type="html"><![CDATA[<p>With every large Rails project, there is a need to bypass the normal ActiveRecord
 API, and get closer to the low-level SQL API. Here are a few useful methods
-for unlocking the confines.</p>
+for unlocking the confines of common ActiveRecord.</p>
 
-<h3>find_by_sql</h3>
+<h3>#find_by_sql</h3>
 
 <pre><code>users = User.find_by_sql("SELECT * FROM users WHERE id = 1")
 </code></pre>
 
 <p>This returns model instances for the given SQL string.</p>
 
-<p><code>find_by_sql</code> accepts parametrized values:</p>
+<p><code>#find_by_sql</code> also accepts parametrized values, like this:</p>
 
 <pre><code class="ruby">users = User.find_by_sql(["SELECT * FROM users WHERE id = ?", 1])
 </code></pre>
 
-<h3>select_all</h3>
+<h3>#select_all</h3>
 
 <pre><code class="ruby">users = User.connection.select_all("
-  SELECT first_name, created_at FROM users
-   WHERE id = 1")
+  SELECT first_name, created_at
+  FROM users
+  WHERE id = 1")
 </code></pre>
 
 <p>This returns an array-like object of type <code>ActiveRecord::Result</code>. Each item in
@@ -47,17 +48,17 @@ the collection is a <code>Hash</code> representing a row in the results.</p>
 <p>The <code>ActiveRecord::Result</code> contains information about the table and its columns.
 It knows how to convert column values to their corresponding Ruby types.</p>
 
-<h3>execute</h3>
+<h3>#execute</h3>
 
 <pre><code class="ruby">ActiveRecord::Base.connection.execute("SELECT * FROM users WHERE id=1")
 </code></pre>
 
 <p>This returns an array-like object that is specific on the database driver. For
-PostgreSQL, this will be a <code>PG::Result</code>. Item item in the collection is a
+PostgreSQL, this will be a <code>PG::Result</code>. Each item in the collection is a
 <code>Hash</code>. The values of the Hash are strings and nils. No conversion is performed
 to convert the values to the appropriate Ruby type, other than NULL to nil.</p>
 
-<h3>quote</h3>
+<h3>#quote</h3>
 
 <p>The <code>select_all</code> and <code>execute</code> methods have no built-in mechanism for escaping
 values for the SQL statement.</p>
@@ -69,14 +70,15 @@ values for the SQL statement.</p>
 </code></pre>
 
 <p>Because we&rsquo;re not sure what is in <code>email</code>. It could have an SQL injection
-attack, or it could just have characters that weren&rsquo;t expected. To cover these
+attack, or it could just have unexpect characters that will break
+the query. To cover these
 cases, ActiveRecord provides <code>#quote</code>:</p>
 
 <pre><code>users = User.connection.select_all("
   SELECT * FROM users WHERE email='#{User.connection.quote(email)}'")
 </code></pre>
 
-<h3>sanitize_sql_array</h3>
+<h3>#sanitize_sql_array</h3>
 
 <p>Using <code>#quote</code> can get unwieldy as more and more values need to be escaped.
 There is a private method called <code>#sanitize_sql_array</code> that brings back the
@@ -85,13 +87,14 @@ API.</p>
 
 <pre><code class="ruby">sql = ActiveRecord::Base.send(:sanitize_sql_array,
   ["SELECT * FROM users WHERE email=?", email])
+
 users = User.connection.select_all(sql)
 </code></pre>
 
-<h3>connection_config</h3>
+<h3>#connection_config</h3>
 
 <p>Sometimes you need to introspect the database connection details. Maybe you have an external utility that performs bulk operations against the database, and
-you need to bypass ActiveRecord entirely.</p>
+it bypasses ActiveRecord entirely.</p>
 
 <pre><code class="ruby">config = ActiveRecord::Base.connection_config
 
