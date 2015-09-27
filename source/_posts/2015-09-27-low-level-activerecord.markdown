@@ -105,13 +105,35 @@ config = Rails.application.config.database_configuration
     "port"              => 5432
   },
   "development" => {
+    "adapter"           => "postgres",
+    "encoding"          => "utf8",
+    "postgis_extension" => true,
+    "username"          => "user",
+    "password"          => "password",
+    "host"              => "127.0.0.1",
+    "port"              => 5432,
     "database"          => "database_development"    
   },
-  "staging" => {
-    "database"          => "database_staging"    
-  },
   "production" => {
+    "adapter"           => "postgres",
+    "encoding"          => "utf8",
+    "postgis_extension" => true,
+    "username"          => "user",
+    "password"          => "password",
+    "host"              => "127.0.0.1",
+    "port"              => 5432,
     "database"          => "database_production"    
-  },
+  }
 }
+```
+
+## #structure_load
+
+For times when you need to load a bunch of SQL statements from a file,
+ActiveRecord profiles `#structure_load`.
+
+```ruby
+config = Rails.application.config.database_configuration['development']
+sql_file = "tmp/foo.sql"
+ActiveRecord::Tasks::DatabaseTasks.structure_load(config, sql_file)
 ```
