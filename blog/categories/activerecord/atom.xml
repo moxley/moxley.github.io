@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Activerecord | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/activerecord/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T13:31:36-07:00</updated>
+  <updated>2015-09-27T13:32:59-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -18,9 +18,9 @@
     <link href="http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord/"/>
     <updated>2015-09-27T10:58:40-07:00</updated>
     <id>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord</id>
-    <content type="html"><![CDATA[<p>With most large Rails projects, there is a need to bypass the normal ActiveRecord
-API, and get closer to the low-level SQL API. Here are a few useful methods
-for unlocking the confines of everyday ActiveRecord.</p>
+    <content type="html"><![CDATA[<p>With many Rails projects, there is occasionally a need to bypass the normal
+ActiveRecord API, and get closer to the low-level SQL API. Here are a few
+useful methods that bypass the confines of everyday ActiveRecord.</p>
 
 <h3>#find_by_sql</h3>
 
