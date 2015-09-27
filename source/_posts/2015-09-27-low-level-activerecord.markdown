@@ -3,7 +3,7 @@ layout: post
 title: "Low-Level ActiveRecord"
 date: 2015-09-27 10:58:40 -0700
 comments: true
-categories: programming, rails, activerecord
+categories: activerecord, programming, rails
 ---
 With most large Rails projects, there is a need to bypass the normal ActiveRecord
 API, and get closer to the low-level SQL API. Here are a few useful methods
@@ -130,7 +130,7 @@ config = Rails.application.config.database_configuration
 ## #structure_load
 
 For times when you need to load a bunch of SQL statements from a file,
-ActiveRecord profiles `#structure_load`.
+ActiveRecord provides `#structure_load`:
 
 ```ruby
 config = Rails.application.config.database_configuration['development']
