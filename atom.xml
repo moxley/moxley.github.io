@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T12:06:10-07:00</updated>
+  <updated>2015-09-27T12:12:32-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -18,9 +18,9 @@
     <link href="http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord/"/>
     <updated>2015-09-27T10:58:40-07:00</updated>
     <id>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord</id>
-    <content type="html"><![CDATA[<p>With every large Rails project, there is a need to bypass the normal ActiveRecord
+    <content type="html"><![CDATA[<p>With most large Rails projects, there is a need to bypass the normal ActiveRecord
 API, and get closer to the low-level SQL API. Here are a few useful methods
-for unlocking the confines of common ActiveRecord.</p>
+for unlocking the confines of everyday ActiveRecord.</p>
 
 <h3>#find_by_sql</h3>
 
@@ -44,7 +44,7 @@ for unlocking the confines of common ActiveRecord.</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
 </span><span class='line'><span class="s2">  SELECT first_name, created_at</span>
 </span><span class='line'><span class="s2">  FROM users</span>
 </span><span class='line'><span class="s2">  WHERE id = 1&quot;</span><span class="p">)</span>
@@ -78,20 +78,22 @@ values for the SQL statement.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
 </span><span class='line'><span class="s2">  SELECT * FROM users WHERE email=&#39;</span><span class="si">#{</span><span class="n">email</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because we&rsquo;re not sure what is in <code>email</code>. It could have an SQL injection
-attack, or it could just have unexpect characters that will break
+attack, or it could just have unexpected characters that will break
 the query. To cover these
 cases, ActiveRecord provides <code>#quote</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="s2">  SELECT * FROM users WHERE email=&#39;</span><span class="si">#{</span><span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">conn</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">  SELECT * FROM users WHERE email=&#39;</span><span class="si">#{</span><span class="n">conn</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -109,7 +111,7 @@ API.</p>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">sql</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:sanitize_sql_array</span><span class="p">,</span>
 </span><span class='line'>  <span class="o">[</span><span class="s2">&quot;SELECT * FROM users WHERE email=?&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">]</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 

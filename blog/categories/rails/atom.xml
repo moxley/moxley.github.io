@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails, | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T12:06:10-07:00</updated>
+  <updated>2015-09-27T12:12:32-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -18,9 +18,9 @@
     <link href="http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord/"/>
     <updated>2015-09-27T10:58:40-07:00</updated>
     <id>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord</id>
-    <content type="html"><![CDATA[<p>With every large Rails project, there is a need to bypass the normal ActiveRecord
+    <content type="html"><![CDATA[<p>With most large Rails projects, there is a need to bypass the normal ActiveRecord
 API, and get closer to the low-level SQL API. Here are a few useful methods
-for unlocking the confines of common ActiveRecord.</p>
+for unlocking the confines of everyday ActiveRecord.</p>
 
 <h3>#find_by_sql</h3>
 
@@ -36,7 +36,7 @@ for unlocking the confines of common ActiveRecord.</p>
 
 <h3>#select_all</h3>
 
-<pre><code class="ruby">users = User.connection.select_all("
+<pre><code class="ruby">users = ActiveRecord::Base.connection.select_all("
   SELECT first_name, created_at
   FROM users
   WHERE id = 1")
@@ -65,17 +65,18 @@ values for the SQL statement.</p>
 
 <p>Something like this is bad practice:</p>
 
-<pre><code class="ruby">users = User.connection.select_all("
+<pre><code class="ruby">users = ActiveRecord::Base.connection.select_all("
   SELECT * FROM users WHERE email='#{email}'")
 </code></pre>
 
 <p>Because we&rsquo;re not sure what is in <code>email</code>. It could have an SQL injection
-attack, or it could just have unexpect characters that will break
+attack, or it could just have unexpected characters that will break
 the query. To cover these
 cases, ActiveRecord provides <code>#quote</code>:</p>
 
-<pre><code>users = User.connection.select_all("
-  SELECT * FROM users WHERE email='#{User.connection.quote(email)}'")
+<pre><code class="ruby">conn = ActiveRecord::Base.connection
+users = conn.select_all("
+  SELECT * FROM users WHERE email='#{conn.quote(email)}'")
 </code></pre>
 
 <h3>#sanitize_sql_array</h3>
@@ -88,7 +89,7 @@ API.</p>
 <pre><code class="ruby">sql = ActiveRecord::Base.send(:sanitize_sql_array,
   ["SELECT * FROM users WHERE email=?", email])
 
-users = User.connection.select_all(sql)
+users = ActiveRecord::Base.connection.select_all(sql)
 </code></pre>
 
 <h3>#connection_config</h3>
