@@ -92,18 +92,26 @@ Sometimes you need to introspect the database connection details. Maybe you have
 it bypasses ActiveRecord entirely.
 
 ```ruby
-config = ActiveRecord::Base.connection_config
+config = Rails.application.config.database_configuration
 
 {
-  :adapter           => "postgres",
-  :encoding          => "utf8",
-  :postgis_extension => true,
-  :username          => "user",
-  :password          => nil,
-  :host              => "127.0.0.1",
-  :port              => 5432,
-  :database          => "database_name"
+  "common" => {
+    "adapter"           => "postgres",
+    "encoding"          => "utf8",
+    "postgis_extension" => true,
+    "username"          => "user",
+    "password"          => "password",
+    "host"              => "127.0.0.1",
+    "port"              => 5432
+  },
+  "development" => {
+    "database"          => "database_development"    
+  },
+  "staging" => {
+    "database"          => "database_staging"    
+  },
+  "production" => {
+    "database"          => "database_production"    
+  },
 }
 ```
-
-The only problem is that the password is not there. It shows as `nil`.
