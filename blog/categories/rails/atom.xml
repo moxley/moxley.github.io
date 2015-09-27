@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails, | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T12:53:11-07:00</updated>
+  <updated>2015-09-27T13:25:36-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -110,15 +110,36 @@ it bypasses ActiveRecord entirely.</p>
     "port"              =&gt; 5432
   },
   "development" =&gt; {
+    "adapter"           =&gt; "postgres",
+    "encoding"          =&gt; "utf8",
+    "postgis_extension" =&gt; true,
+    "username"          =&gt; "user",
+    "password"          =&gt; "password",
+    "host"              =&gt; "127.0.0.1",
+    "port"              =&gt; 5432,
     "database"          =&gt; "database_development"    
   },
-  "staging" =&gt; {
-    "database"          =&gt; "database_staging"    
-  },
   "production" =&gt; {
+    "adapter"           =&gt; "postgres",
+    "encoding"          =&gt; "utf8",
+    "postgis_extension" =&gt; true,
+    "username"          =&gt; "user",
+    "password"          =&gt; "password",
+    "host"              =&gt; "127.0.0.1",
+    "port"              =&gt; 5432,
     "database"          =&gt; "database_production"    
-  },
+  }
 }
+</code></pre>
+
+<h2>#structure_load</h2>
+
+<p>For times when you need to load a bunch of SQL statements from a file,
+ActiveRecord profiles <code>#structure_load</code>.</p>
+
+<pre><code class="ruby">config = Rails.application.config.database_configuration['development']
+sql_file = "tmp/foo.sql"
+ActiveRecord::Tasks::DatabaseTasks.structure_load(config, sql_file)
 </code></pre>
 ]]></content>
   </entry>

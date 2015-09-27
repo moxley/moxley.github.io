@@ -224,6 +224,17 @@ it bypasses ActiveRecord entirely.</p>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">database_configuration</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">{</span>
@@ -237,15 +248,40 @@ it bypasses ActiveRecord entirely.</p>
 </span><span class='line'>    <span class="s2">&quot;port&quot;</span>              <span class="o">=&gt;</span> <span class="mi">5432</span>
 </span><span class='line'>  <span class="p">},</span>
 </span><span class='line'>  <span class="s2">&quot;development&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;adapter&quot;</span>           <span class="o">=&gt;</span> <span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;encoding&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;utf8&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;postgis_extension&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;username&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;password&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;host&quot;</span>              <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;port&quot;</span>              <span class="o">=&gt;</span> <span class="mi">5432</span><span class="p">,</span>
 </span><span class='line'>    <span class="s2">&quot;database&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;database_development&quot;</span>
 </span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>  <span class="s2">&quot;staging&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
-</span><span class='line'>    <span class="s2">&quot;database&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;database_staging&quot;</span>
-</span><span class='line'>  <span class="p">},</span>
 </span><span class='line'>  <span class="s2">&quot;production&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;adapter&quot;</span>           <span class="o">=&gt;</span> <span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;encoding&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;utf8&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;postgis_extension&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;username&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;password&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;host&quot;</span>              <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;port&quot;</span>              <span class="o">=&gt;</span> <span class="mi">5432</span><span class="p">,</span>
 </span><span class='line'>    <span class="s2">&quot;database&quot;</span>          <span class="o">=&gt;</span> <span class="s2">&quot;database_production&quot;</span>
-</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>#structure_load</h2>
+
+<p>For times when you need to load a bunch of SQL statements from a file,
+ActiveRecord profiles <code>#structure_load</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">database_configuration</span><span class="o">[</span><span class="s1">&#39;development&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="n">sql_file</span> <span class="o">=</span> <span class="s2">&quot;tmp/foo.sql&quot;</span>
+</span><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Tasks</span><span class="o">::</span><span class="no">DatabaseTasks</span><span class="o">.</span><span class="n">structure_load</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">sql_file</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
