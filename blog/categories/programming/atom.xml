@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming, | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T13:27:40-07:00</updated>
+  <updated>2015-09-27T13:29:09-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -135,7 +135,7 @@ it bypasses ActiveRecord entirely.</p>
 <h2>#structure_load</h2>
 
 <p>For times when you need to load a bunch of SQL statements from a file,
-ActiveRecord profiles <code>#structure_load</code>.</p>
+ActiveRecord provides <code>#structure_load</code>:</p>
 
 <pre><code class="ruby">config = Rails.application.config.database_configuration['development']
 sql_file = "tmp/foo.sql"
