@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Programming | Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/blog/categories/programming/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-12-07T15:34:43-08:00</updated>
-  <id>http://moxley.github.io/</id>
+  <title><![CDATA[Category: Programming, | Moxley Stratton]]></title>
+  <link href="http://www.moxleystratton.com/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2015-09-27T11:51:43-07:00</updated>
+  <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
     
@@ -14,119 +14,100 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Injection]]></title>
-    <link href="http://moxley.github.io/blog/2012/04/13/injection/"/>
-    <updated>2012-04-13T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2012/04/13/injection</id>
-    <content type="html"><![CDATA[<p>Within the world of application development, there is a conspiracy.</p>
+    <title type="html"><![CDATA[Low-Level ActiveRecord]]></title>
+    <link href="http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord/"/>
+    <updated>2015-09-27T10:58:40-07:00</updated>
+    <id>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord</id>
+    <content type="html"><![CDATA[<p>With every large Rails project, there is a need to bypass the normal ActiveRecord
+API, and get closer to the low-level SQL API. Here are a few useful methods
+for unlocking the confines.</p>
 
-<pre><code class="php">$sql = "SELECT * FROM users WHERE username='" . $username . "'";
+<h3>find_by_sql</h3>
+
+<pre><code>users = User.find_by_sql("SELECT * FROM users WHERE id = 1")
 </code></pre>
 
-<!-- more -->
+<p>This returns model instances for the given SQL string.</p>
 
+<p><code>find_by_sql</code> accepts parametrized values:</p>
 
-<p>What&rsquo;s wrong with this code? The problem is that <code>$username</code> needs to be escaped before it can be put into the SQL statement. If <code>$username</code> contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there&rsquo;s more to this story.</p>
-
-<p>Without escaping the data before it is added to the SQL, the code is vulnerable to Injection attack. Injection is the top security risk in applications, according to <a href="https://www.owasp.org/index.php/Top_10_2010-Main" title="">OWASP&rsquo;s Top 10 Security Risks</a>>.</p>
-
-<p>Here&rsquo;s the corrected code:</p>
-
-<pre><code class="php">$sql = "SELECT * FROM users WHERE username='" . mysql_real_escape_string($username) . "'";
+<pre><code class="ruby">users = User.find_by_sql(["SELECT * FROM users WHERE id = ?", 1])
 </code></pre>
 
-<p>See the really long function name <code>mysql_real_escape_string()</code>? The long length is part of a conspiracy to discourage you from escaping injected data.</p>
+<h3>select_all</h3>
 
-<p>If you work much with SQL, you may also know about parameterized SQL statements, which automatically escape the injected data, and they reduce the need to concatenate bits of SQL together.</p>
-
-<p>&hellip;</p>
-
-<p>Let&rsquo;s pull out the essential parts from the PHP example. The <code>$username</code> value is <em>data</em>. It&rsquo;s being <em>injected</em> into the source code of a computer <em>language</em> called SQL. Notice these three keywords:</p>
-
-<ol>
-<li><em>data</em></li>
-<li><em>injection</em></li>
-<li><em>language</em></li>
-</ol>
-
-
-<p>Look for these words as we move on.</p>
-
-<p>Here&rsquo;s another example:</p>
-
-<pre><code class="php">&lt;input type="text" name="username" value="&lt;?php echo $username ?&gt;" /&gt;
+<pre><code class="ruby">users = User.connection.select_all("
+  SELECT first_name, created_at FROM users
+   WHERE id = 1")
 </code></pre>
 
-<p>The situation is the same as before, but now the language is HTML. We&rsquo;re still <em>injecting</em> some <em>data</em>, <code>$username</code>, into the <em>language</em>. And like the first SQL example, <code>$username</code> is not escaped.</p>
+<p>This returns an array-like object of type <code>ActiveRecord::Result</code>. Each item in
+the collection is a <code>Hash</code> representing a row in the results.</p>
 
-<p>The security attack that leverages this defect is called Cross-Site Scripting (XSS). XSS is the number two security risk, according to <a href="https://www.owasp.org/index.php/Top_10_2010-Main">OWASP&rsquo;s Top Ten list</a>. XSS is actually just another case of Injection. The defect that causes these two vulnerabilities is the same kind of defect&ndash; failing to escape data that is being injected into a language.</p>
+<p>The <code>ActiveRecord::Result</code> contains information about the table and its columns.
+It knows how to convert column values to their corresponding Ruby types.</p>
 
-<p>What does PHP provide you to avert certain disaster?</p>
+<h3>execute</h3>
 
-<pre><code class="php">&lt;input
-  name="username"
-  value="&lt;?php echo htmlspecialchars($username)?&gt;" /&gt;
+<pre><code class="ruby">ActiveRecord::Base.connection.execute("SELECT * FROM users WHERE id=1")
 </code></pre>
 
-<p>In case you weren&rsquo;t thinking of it already, I just want to say, PHP is one <em>ugly</em> language.</p>
+<p>This returns an array-like object that is specific on the database driver. For
+PostgreSQL, this will be a <code>PG::Result</code>. Item item in the collection is a
+<code>Hash</code>. The values of the Hash are strings and nils. No conversion is performed
+to convert the values to the appropriate Ruby type, other than NULL to nil.</p>
 
-<p>With a name like <code>htmlspecialchars()</code>, you might guess it was not intended to be used often. Actually, nine out of ten times it is perfectly appropriate to use <code>htmlspecialchars()</code>. If the length of <code>htmlspecialchars()</code> bothers you as much as it does me, I suggest writing your own shortcut:</p>
+<h3>quote</h3>
 
-<pre><code class="php">&lt;?php
-function h($str) {
-  return htmlspecialchars($str);
-}
-?&gt;
-&lt;input name="username" value="&lt;?php echo h($username) ?&gt;" /&gt;
+<p>The <code>select_all</code> and <code>execute</code> methods have no built-in mechanism for escaping
+values for the SQL statement.</p>
+
+<p>Something like this is bad practice:</p>
+
+<pre><code class="ruby">users = User.connection.select_all("
+  SELECT * FROM users WHERE email='#{email}'")
 </code></pre>
 
-<p>Only when you really want to inject actual HTML would you not use <code>htmlspecialchars()</code>. And when you do so, be sure the HTML is either trusted or sanitized.</p>
+<p>Because we&rsquo;re not sure what is in <code>email</code>. It could have an SQL injection
+attack, or it could just have characters that weren&rsquo;t expected. To cover these
+cases, ActiveRecord provides <code>#quote</code>:</p>
 
-<p>If you are ever in the position to choose a templating language, choose one that escapes injected data by default, because that&rsquo;s what is needed 90% of the time. Yes, 90%. Think about it: how often do you inject HTML into HTML, compared to how often you inject plain old data? Not very often. Note that the top PHP templating languages <em>do not</em> escape data by default. The default templating language for Rails 3&ndash; ERB&ndash; escapes data by default. Most of the JavaScript templating languages escape by default.</p>
-
-<p>Next, we&rsquo;ll move on to JavaScript:</p>
-
-<pre><code class="javascript">$('#notice').html('' + message + '&lt;/p&gt;);
+<pre><code>users = User.connection.select_all("
+  SELECT * FROM users WHERE email='#{User.connection.quote(email)}'")
 </code></pre>
 
-<p>Do you see the pattern? The <em>language</em> is HTML, the <em>data</em> is <code>message</code>. This time, it is JavaScript <em>injecting</em> data into another language. Do you know what JavaScript gives us to escape <code>message</code> for injecting it into HTML? Nothing. Absolutely nothing. What does jQuery give us for the task?</p>
+<h3>sanitize_sql_array</h3>
 
-<p>Nothing.</p>
+<p>Using <code>#quote</code> can get unwieldy as more and more values need to be escaped.
+There is a private method called <code>#sanitize_sql_array</code> that brings back the
+parameterized escape mechanism that is present in ActiveRecord&rsquo;s higher-level
+API.</p>
 
-<p>Yes, really. Escaping data for HTML seems like such an essential task for web programming, yet the designers of both JavaScript and jQuery have provided nothing for it. This is part of the conspiracy.</p>
+<pre><code class="ruby">sql = ActiveRecord::Base.send(:sanitize_sql_array,
+  ["SELECT * FROM users WHERE email=?", email])
+users = User.connection.select_all(sql)
+</code></pre>
 
-<p>With JavaScript, we must write our own function to escape data for HTML:</p>
+<h3>connection_config</h3>
 
-<pre><code class="javascript">// Escape for HTML
-function h(str) {
-  if (typeof str == 'number') {
-    return str;
-  }
-  else if (!str || !str.length) {
-    return '';
-  }
-  var i, c, out = '',
-    trans = {
-      '&lt;': '&amp;lt;', '&gt;': '&amp;gt;',
-      '"': '&amp;quot;', "'": '&amp;#39;',
-      '&amp;': '&amp;amp;'
-    };
-  for (i = 0; i &lt; str.length; i += 1) {
-    c = str[i];
-    out += trans[c] || c;
-  }
-  return out;
+<p>Sometimes you need to introspect the database connection details. Maybe you have an external utility that performs bulk operations against the database, and
+you need to bypass ActiveRecord entirely.</p>
+
+<pre><code class="ruby">config = ActiveRecord::Base.connection_config
+
+{
+  :adapter           =&gt; "postgres",
+  :encoding          =&gt; "utf8",
+  :postgis_extension =&gt; true,
+  :username          =&gt; "user",
+  :password          =&gt; nil,
+  :host              =&gt; "127.0.0.1",
+  :port              =&gt; 5432,
+  :database          =&gt; "database_name"
 }
 </code></pre>
 
-<p>Now &ldquo;message&rdquo; can be escaped:</p>
-
-<pre><code class="javascript">$('#notice').html('' + h(message) + '&lt;/p&gt;);
-</code></pre>
-
-<p>So there you have it: three examples of injection, and three solutions for escaping data before injecting it into language code.</p>
-
-<p>Using a templating language that escapes by default is great, and so is using parameterized SQL statements. But don&rsquo;t think that you don&rsquo;t have to worry about escaping data again. If you work with multiple languages, you will eventually need to call upon an escape function.</p>
+<p>The only problem is that the password is not there. It shows as <code>nil</code>.</p>
 ]]></content>
   </entry>
   

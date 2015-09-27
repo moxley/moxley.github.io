@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Os X | Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/blog/categories/os-x/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-12-07T15:34:43-08:00</updated>
-  <id>http://moxley.github.io/</id>
+  <link href="http://www.moxleystratton.com/blog/categories/os-x/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2015-09-27T11:51:43-07:00</updated>
+  <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ten Secret Key Bindings From OS X]]></title>
-    <link href="http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings/"/>
+    <link href="http://www.moxleystratton.com/blog/2012/05/11/ten-secret-key-bindings/"/>
     <updated>2012-05-11T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings</id>
+    <id>http://www.moxleystratton.com/blog/2012/05/11/ten-secret-key-bindings</id>
     <content type="html"><![CDATA[<p>Did you know that when using these applications:</p>
 
 <ul>

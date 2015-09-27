@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ruby | Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-12-07T15:34:43-08:00</updated>
-  <id>http://moxley.github.io/</id>
+  <link href="http://www.moxleystratton.com/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2015-09-27T11:51:43-07:00</updated>
+  <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sometimes Clojure Is More Concise Than Ruby]]></title>
-    <link href="http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
     <updated>2014-11-24T19:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
+    <id>http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
     <content type="html"><![CDATA[<p>I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:</p>
 
 <pre><code class="clojure">;; Subtract two vectors in Clojure
@@ -51,9 +51,9 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
   
   <entry>
     <title type="html"><![CDATA[Finding the Source for a Given Rails Web Page]]></title>
-    <link href="http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/"/>
     <updated>2014-05-29T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page</id>
+    <id>http://www.moxleystratton.com/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page</id>
     <content type="html"><![CDATA[<p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
 
 <!-- more -->
@@ -104,9 +104,9 @@ the view partials responsible for their generated HTML.</li>
   
   <entry>
     <title type="html"><![CDATA[Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL]]></title>
-    <link href="http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/"/>
+    <link href="http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/"/>
     <updated>2007-07-31T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url</id>
+    <id>http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url</id>
     <content type="html"><![CDATA[<p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
 
 <!-- more -->

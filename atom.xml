@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-12-03T19:56:55-08:00</updated>
-  <id>http://moxley.github.io/</id>
+  <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2015-09-27T11:51:43-07:00</updated>
+  <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
     
@@ -14,10 +14,140 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Low-Level ActiveRecord]]></title>
+    <link href="http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord/"/>
+    <updated>2015-09-27T10:58:40-07:00</updated>
+    <id>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord</id>
+    <content type="html"><![CDATA[<p>With every large Rails project, there is a need to bypass the normal ActiveRecord
+API, and get closer to the low-level SQL API. Here are a few useful methods
+for unlocking the confines.</p>
+
+<h3>find_by_sql</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>users = User.find_by_sql("SELECT * FROM users WHERE id = 1")</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This returns model instances for the given SQL string.</p>
+
+<p><code>find_by_sql</code> accepts parametrized values:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_by_sql</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;SELECT * FROM users WHERE id = ?&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>select_all</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">  SELECT first_name, created_at FROM users</span>
+</span><span class='line'><span class="s2">   WHERE id = 1&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This returns an array-like object of type <code>ActiveRecord::Result</code>. Each item in
+the collection is a <code>Hash</code> representing a row in the results.</p>
+
+<p>The <code>ActiveRecord::Result</code> contains information about the table and its columns.
+It knows how to convert column values to their corresponding Ruby types.</p>
+
+<h3>execute</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id=1&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This returns an array-like object that is specific on the database driver. For
+PostgreSQL, this will be a <code>PG::Result</code>. Item item in the collection is a
+<code>Hash</code>. The values of the Hash are strings and nils. No conversion is performed
+to convert the values to the appropriate Ruby type, other than NULL to nil.</p>
+
+<h3>quote</h3>
+
+<p>The <code>select_all</code> and <code>execute</code> methods have no built-in mechanism for escaping
+values for the SQL statement.</p>
+
+<p>Something like this is bad practice:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">  SELECT * FROM users WHERE email=&#39;</span><span class="si">#{</span><span class="n">email</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because we&rsquo;re not sure what is in <code>email</code>. It could have an SQL injection
+attack, or it could just have characters that weren&rsquo;t expected. To cover these
+cases, ActiveRecord provides <code>#quote</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">  SELECT * FROM users WHERE email=&#39;</span><span class="si">#{</span><span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>sanitize_sql_array</h3>
+
+<p>Using <code>#quote</code> can get unwieldy as more and more values need to be escaped.
+There is a private method called <code>#sanitize_sql_array</code> that brings back the
+parameterized escape mechanism that is present in ActiveRecord&rsquo;s higher-level
+API.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">sql</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:sanitize_sql_array</span><span class="p">,</span>
+</span><span class='line'>  <span class="o">[</span><span class="s2">&quot;SELECT * FROM users WHERE email=?&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>connection_config</h3>
+
+<p>Sometimes you need to introspect the database connection details. Maybe you have an external utility that performs bulk operations against the database, and
+you need to bypass ActiveRecord entirely.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection_config</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="ss">:adapter</span>           <span class="o">=&gt;</span> <span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:encoding</span>          <span class="o">=&gt;</span> <span class="s2">&quot;utf8&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:postgis_extension</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:username</span>          <span class="o">=&gt;</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:password</span>          <span class="o">=&gt;</span> <span class="kp">nil</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:host</span>              <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:port</span>              <span class="o">=&gt;</span> <span class="mi">5432</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:database</span>          <span class="o">=&gt;</span> <span class="s2">&quot;database_name&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The only problem is that the password is not there. It shows as <code>nil</code>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Switching to Octopress From Wordpress]]></title>
-    <link href="http://moxley.github.io/blog/2014/11/29/switching-to-octopress-from-wordpress/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/11/29/switching-to-octopress-from-wordpress/"/>
     <updated>2014-11-29T11:34:20-08:00</updated>
-    <id>http://moxley.github.io/blog/2014/11/29/switching-to-octopress-from-wordpress</id>
+    <id>http://www.moxleystratton.com/blog/2014/11/29/switching-to-octopress-from-wordpress</id>
     <content type="html"><![CDATA[<p><img src="http://cl.ly/image/1k3O2Y023s1u/octopress-atom.jpg" title="Octopress and Atom - A potent combination" alt="octopress post in atom" /></p>
 
 <p>Wordpress has been my blogging platform for the last two years, and
@@ -40,9 +170,9 @@ Octopress becomes a powerful blogging platform.</p>
   
   <entry>
     <title type="html"><![CDATA[Sometimes Clojure Is More Concise Than Ruby]]></title>
-    <link href="http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
     <updated>2014-11-24T19:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
+    <id>http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
     <content type="html"><![CDATA[<p>I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -90,9 +220,9 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
   
   <entry>
     <title type="html"><![CDATA[Finding the Source for a Given Rails Web Page]]></title>
-    <link href="http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/"/>
     <updated>2014-05-29T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page</id>
+    <id>http://www.moxleystratton.com/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page</id>
     <content type="html"><![CDATA[<p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
 
 <!-- more -->
@@ -143,9 +273,9 @@ the view partials responsible for their generated HTML.</li>
   
   <entry>
     <title type="html"><![CDATA[Considering a Switch to the Atom Text Editor?]]></title>
-    <link href="http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/"/>
     <updated>2014-03-16T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor</id>
+    <id>http://www.moxleystratton.com/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor</id>
     <content type="html"><![CDATA[<p>You&rsquo;ve probably heard of <a href="http://atom.io/">Atom, Github&rsquo;s new text editor</a>. Read
 these checklists to help you decide whether it&rsquo;s an editor worth switching to.</p>
 
@@ -241,19 +371,19 @@ these checklists to help you decide whether it&rsquo;s an editor worth switching
   
   <entry>
     <title type="html"><![CDATA[Simple Cellular Automata]]></title>
-    <link href="http://moxley.github.io/blog/2012/12/01/simple-cellular-automata/"/>
+    <link href="http://www.moxleystratton.com/blog/2012/12/01/simple-cellular-automata/"/>
     <updated>2012-12-01T12:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2012/12/01/simple-cellular-automata</id>
-    <content type="html"><![CDATA[<p>I released a very simple cellular automata explorer. <a href="http://moxley.github.io/cellauto/cellauto.html">Try it out here</a>.
+    <id>http://www.moxleystratton.com/blog/2012/12/01/simple-cellular-automata</id>
+    <content type="html"><![CDATA[<p>I released a very simple cellular automata explorer. <a href="http://www.moxleystratton.com/cellauto/cellauto.html">Try it out here</a>.
 See the <a href="https://github.com/moxley/cellauto">Github page</a> for more information.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Ten Secret Key Bindings From OS X]]></title>
-    <link href="http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings/"/>
+    <link href="http://www.moxleystratton.com/blog/2012/05/11/ten-secret-key-bindings/"/>
     <updated>2012-05-11T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings</id>
+    <id>http://www.moxleystratton.com/blog/2012/05/11/ten-secret-key-bindings</id>
     <content type="html"><![CDATA[<p>Did you know that when using these applications:</p>
 
 <ul>
@@ -289,9 +419,9 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
   
   <entry>
     <title type="html"><![CDATA[Injection]]></title>
-    <link href="http://moxley.github.io/blog/2012/04/13/injection/"/>
+    <link href="http://www.moxleystratton.com/blog/2012/04/13/injection/"/>
     <updated>2012-04-13T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2012/04/13/injection</id>
+    <id>http://www.moxleystratton.com/blog/2012/04/13/injection</id>
     <content type="html"><![CDATA[<p>Within the world of application development, there is a conspiracy.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -450,9 +580,9 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
   
   <entry>
     <title type="html"><![CDATA[Clojure Tutorial for the Non-Lisp Programmer]]></title>
-    <link href="http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/"/>
+    <link href="http://www.moxleystratton.com/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/"/>
     <updated>2008-05-01T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer</id>
+    <id>http://www.moxleystratton.com/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer</id>
     <content type="html"><![CDATA[<p>I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.</p>
 
 <p>Clojure is a functional lisp dialect that uses the Java Virtual Runtime as its platform. The language home page is at <a href="http://clojure.org/">http://clojure.org/</a>.</p>
@@ -1676,9 +1806,9 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
   
   <entry>
     <title type="html"><![CDATA[Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL]]></title>
-    <link href="http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/"/>
+    <link href="http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/"/>
     <updated>2007-07-31T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url</id>
+    <id>http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url</id>
     <content type="html"><![CDATA[<p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
 
 <!-- more -->
@@ -1737,9 +1867,9 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
   
   <entry>
     <title type="html"><![CDATA[Bookmarklet Compiler]]></title>
-    <link href="http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/"/>
+    <link href="http://www.moxleystratton.com/blog/2006/01/11/bookmarklet-compiler/"/>
     <updated>2006-01-11T12:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler</id>
+    <id>http://www.moxleystratton.com/blog/2006/01/11/bookmarklet-compiler</id>
     <content type="html"><![CDATA[<p>What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite <a href="http://www.squarefree.com/bookmarklets/">bookmarklet site</a>. It includes the bookmarklet that helped me develop my first Ajax applications: <a href="http://www.squarefree.com/shell/">Javascript Shell</a>.</p></p>
 
 <!-- more -->
@@ -1762,7 +1892,7 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
 
 <p>Go ahead and enter some javascript.</p>
 
-<script type="text/javascript" src="http://moxley.github.io/bookmarklet/bookmarklet-compiler.js"></script>
+<script type="text/javascript" src="http://www.moxleystratton.com/bookmarklet/bookmarklet-compiler.js"></script>
 
 
 <p><form id="bookmarkletGenerator" method="get" action="javascript:;">

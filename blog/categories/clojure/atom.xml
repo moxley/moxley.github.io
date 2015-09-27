@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Clojure | Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/blog/categories/clojure/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-12-07T15:34:43-08:00</updated>
-  <id>http://moxley.github.io/</id>
+  <link href="http://www.moxleystratton.com/blog/categories/clojure/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2015-09-27T11:51:43-07:00</updated>
+  <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sometimes Clojure Is More Concise Than Ruby]]></title>
-    <link href="http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/"/>
     <updated>2014-11-24T19:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
+    <id>http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby</id>
     <content type="html"><![CDATA[<p>I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:</p>
 
 <pre><code class="clojure">;; Subtract two vectors in Clojure
@@ -51,9 +51,9 @@ and instance. I&rsquo;ve found that this division can sometimes get in the way t
   
   <entry>
     <title type="html"><![CDATA[Clojure Tutorial for the Non-Lisp Programmer]]></title>
-    <link href="http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/"/>
+    <link href="http://www.moxleystratton.com/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/"/>
     <updated>2008-05-01T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer</id>
+    <id>http://www.moxleystratton.com/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer</id>
     <content type="html"><![CDATA[<p>I intend to keep this tutorial as accurate and up-to-date as possible. If you have any suggestions for changes, please leave a comment at the bottom of this page.</p>
 
 <p>Clojure is a functional lisp dialect that uses the Java Virtual Runtime as its platform. The language home page is at <a href="http://clojure.org/">http://clojure.org/</a>.</p>

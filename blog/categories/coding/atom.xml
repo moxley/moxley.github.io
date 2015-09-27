@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Coding | Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/blog/categories/coding/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-12-07T15:34:43-08:00</updated>
-  <id>http://moxley.github.io/</id>
+  <link href="http://www.moxleystratton.com/blog/categories/coding/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2015-09-27T11:51:43-07:00</updated>
+  <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Considering a Switch to the Atom Text Editor?]]></title>
-    <link href="http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/"/>
+    <link href="http://www.moxleystratton.com/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/"/>
     <updated>2014-03-16T12:00:00-07:00</updated>
-    <id>http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor</id>
+    <id>http://www.moxleystratton.com/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor</id>
     <content type="html"><![CDATA[<p>You&rsquo;ve probably heard of <a href="http://atom.io/">Atom, Github&rsquo;s new text editor</a>. Read
 these checklists to help you decide whether it&rsquo;s an editor worth switching to.</p>
 

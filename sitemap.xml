@@ -1,75 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://moxley.github.io/blog/2014/11/29/switching-to-octopress-from-wordpress/</loc>
+    <loc>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord/</loc>
+    <lastmod>2015-09-27T10:58:40-07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.moxleystratton.com/blog/2014/11/29/switching-to-octopress-from-wordpress/</loc>
     <lastmod>2014-11-29T11:34:20-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/</loc>
+    <loc>http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/</loc>
     <lastmod>2014-11-24T19:00:00-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/</loc>
+    <loc>http://www.moxleystratton.com/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/</loc>
     <lastmod>2014-05-29T12:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/</loc>
+    <loc>http://www.moxleystratton.com/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/</loc>
     <lastmod>2014-03-16T12:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2012/12/01/simple-cellular-automata/</loc>
+    <loc>http://www.moxleystratton.com/blog/2012/12/01/simple-cellular-automata/</loc>
     <lastmod>2012-12-01T12:00:00-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2012/05/11/ten-secret-key-bindings/</loc>
+    <loc>http://www.moxleystratton.com/blog/2012/05/11/ten-secret-key-bindings/</loc>
     <lastmod>2012-05-11T12:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2012/04/13/injection/</loc>
+    <loc>http://www.moxleystratton.com/blog/2012/04/13/injection/</loc>
     <lastmod>2012-04-13T12:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/</loc>
+    <loc>http://www.moxleystratton.com/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/</loc>
     <lastmod>2008-05-01T12:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/</loc>
+    <loc>http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/</loc>
     <lastmod>2007-07-31T12:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/</loc>
+    <loc>http://www.moxleystratton.com/blog/2006/01/11/bookmarklet-compiler/</loc>
     <lastmod>2006-01-11T12:00:00-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/blog/archives/</loc>
-    <lastmod>2014-12-07T15:34:43-08:00</lastmod>
+    <loc>http://www.moxleystratton.com/blog/archives/</loc>
+    <lastmod>2015-09-27T11:51:43-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/</loc>
-    <lastmod>2014-12-07T15:34:43-08:00</lastmod>
+    <loc>http://www.moxleystratton.com/</loc>
+    <lastmod>2015-09-27T11:51:43-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/cellauto/cellauto.html</loc>
-    <lastmod>2014-11-24T19:32:17-08:00</lastmod>
+    <loc>http://www.moxleystratton.com/cellauto/cellauto.html</loc>
+    <lastmod>2015-09-27T11:46:22-07:00</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://moxley.github.io/files/sqittle.html</loc>
-    <lastmod>2014-11-29T15:18:15-08:00</lastmod>
+    <loc>http://www.moxleystratton.com/files/sqittle.html</loc>
+    <lastmod>2015-09-27T11:46:22-07:00</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rails, | Moxley Stratton]]></title>
-  <link href="http://www.moxleystratton.com/blog/categories/rails/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Activerecord | Moxley Stratton]]></title>
+  <link href="http://www.moxleystratton.com/blog/categories/activerecord/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
   <updated>2015-09-27T11:51:43-07:00</updated>
   <id>http://www.moxleystratton.com/</id>

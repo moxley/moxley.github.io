@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Javascript | Moxley Stratton]]></title>
-  <link href="http://moxley.github.io/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://moxley.github.io/"/>
-  <updated>2014-12-07T15:34:43-08:00</updated>
-  <id>http://moxley.github.io/</id>
+  <link href="http://www.moxleystratton.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2015-09-27T11:51:43-07:00</updated>
+  <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Bookmarklet Compiler]]></title>
-    <link href="http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler/"/>
+    <link href="http://www.moxleystratton.com/blog/2006/01/11/bookmarklet-compiler/"/>
     <updated>2006-01-11T12:00:00-08:00</updated>
-    <id>http://moxley.github.io/blog/2006/01/11/bookmarklet-compiler</id>
+    <id>http://www.moxleystratton.com/blog/2006/01/11/bookmarklet-compiler</id>
     <content type="html"><![CDATA[<p>What are bookmarklets? They&rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&rsquo;s my favorite <a href="http://www.squarefree.com/bookmarklets/">bookmarklet site</a>. It includes the bookmarklet that helped me develop my first Ajax applications: <a href="http://www.squarefree.com/shell/">Javascript Shell</a>.</p></p>
 
 <!-- more -->
@@ -40,7 +40,7 @@
 
 <p>Go ahead and enter some javascript.</p>
 
-<script type="text/javascript" src="http://moxley.github.io/bookmarklet/bookmarklet-compiler.js"></script>
+<script type="text/javascript" src="http://www.moxleystratton.com/bookmarklet/bookmarklet-compiler.js"></script>
 
 
 <p><form id="bookmarkletGenerator" method="get" action="javascript:;">

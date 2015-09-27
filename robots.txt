@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://moxley.github.io/sitemap.xml 
+Sitemap: http://www.moxleystratton.com/sitemap.xml 
