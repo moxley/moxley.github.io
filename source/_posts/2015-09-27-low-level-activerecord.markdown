@@ -11,7 +11,7 @@ for unlocking the confines of common ActiveRecord.
 
 ### #find_by_sql
 
-```
+```ruby
 users = User.find_by_sql("SELECT * FROM users WHERE id = 1")
 ```
 
