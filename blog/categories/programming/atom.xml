@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-28T08:36:11-07:00</updated>
+  <updated>2015-09-28T11:36:28-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -148,6 +148,18 @@ it bypasses ActiveRecord entirely.</p>
     "database"          =&gt; "database_production"    
   }
 }
+</code></pre>
+
+<h2>#with_connection</h2>
+
+<p>Using a database connection and not returning is like opening a file and not
+closing it. It can lead to connection leaks in some contexts.
+ActiveRecord provides a block-style pattern for using a database connection:</p>
+
+<pre><code class="ruby">ActiveRecord::Base.connection_pool.with_connection do |conn|
+  users = conn.select_all("
+    SELECT * FROM users WHERE email=#{conn.quote(email)}")
+end
 </code></pre>
 
 <h2>#structure_load</h2>
