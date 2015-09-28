@@ -145,6 +145,19 @@ config = Rails.application.config.database_configuration
 }
 ```
 
+## #with_connection
+
+Using a database connection and not returning is like opening a file and not
+closing it. It can lead to connection leaks in some contexts.
+ActiveRecord provides a block-style pattern for using a database connection:
+
+```ruby
+ActiveRecord::Base.connection_pool.with_connection do |conn|
+  users = conn.select_all("
+    SELECT * FROM users WHERE email=#{conn.quote(email)}")
+end
+```
+
 ## #structure_load
 
 For times when you need to load a bunch of SQL statements from a file,
