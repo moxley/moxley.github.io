@@ -27,9 +27,16 @@ users = User.find_by_sql(["SELECT * FROM users WHERE id = ?", 1])
 
 ```ruby
 users = ActiveRecord::Base.connection.select_all("
-  SELECT first_name, created_at
+  SELECT id, first_name, created_at
   FROM users
   WHERE id = 1")
+
+users[0]
+{
+  "id"         => 202,
+  "first_name" => "Trystan",
+  "created_at" => "2015-09-05 15:44:51.597326"
+}
 ```
 
 This returns an array-like object of type `ActiveRecord::Result`. Each item in
@@ -41,7 +48,14 @@ It knows how to convert column values to their corresponding Ruby types.
 ### #execute
 
 ```ruby
-ActiveRecord::Base.connection.execute("SELECT * FROM users WHERE id=1")
+users = ActiveRecord::Base.connection.execute("SELECT id, first_name, created_at FROM users WHERE id=1")
+
+users[0]
+{
+  "id"         => "1",
+  "first_name" => "Trystan",
+  "created_at" => "2015-09-05 15:44:51.597326"
+}
 ```
 
 This returns an array-like object that is specific on the database driver. For
