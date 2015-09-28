@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Activerecord | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/activerecord/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-28T07:48:27-07:00</updated>
+  <updated>2015-09-28T08:34:10-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -37,9 +37,16 @@ useful methods that bypass the confines of everyday ActiveRecord.</p>
 <h3>#select_all</h3>
 
 <pre><code class="ruby">users = ActiveRecord::Base.connection.select_all("
-  SELECT first_name, created_at
+  SELECT id, first_name, created_at
   FROM users
   WHERE id = 1")
+
+users[0]
+{
+  "id"         =&gt; 202,
+  "first_name" =&gt; "Trystan",
+  "created_at" =&gt; "2015-09-05 15:44:51.597326"
+}
 </code></pre>
 
 <p>This returns an array-like object of type <code>ActiveRecord::Result</code>. Each item in
@@ -50,7 +57,14 @@ It knows how to convert column values to their corresponding Ruby types.</p>
 
 <h3>#execute</h3>
 
-<pre><code class="ruby">ActiveRecord::Base.connection.execute("SELECT * FROM users WHERE id=1")
+<pre><code class="ruby">users = ActiveRecord::Base.connection.execute("SELECT id, first_name, created_at FROM users WHERE id=1")
+
+users[0]
+{
+  "id"         =&gt; "1",
+  "first_name" =&gt; "Trystan",
+  "created_at" =&gt; "2015-09-05 15:44:51.597326"
+}
 </code></pre>
 
 <p>This returns an array-like object that is specific on the database driver. For

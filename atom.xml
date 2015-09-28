@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-28T07:48:27-07:00</updated>
+  <updated>2015-09-28T08:34:10-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -44,10 +44,24 @@ useful methods that bypass the confines of everyday ActiveRecord.</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="s2">  SELECT first_name, created_at</span>
+</span><span class='line'><span class="s2">  SELECT id, first_name, created_at</span>
 </span><span class='line'><span class="s2">  FROM users</span>
 </span><span class='line'><span class="s2">  WHERE id = 1&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;id&quot;</span>         <span class="o">=&gt;</span> <span class="mi">202</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Trystan&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;created_at&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;2015-09-05 15:44:51.597326&quot;</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -60,7 +74,21 @@ It knows how to convert column values to their corresponding Ruby types.</p>
 <h3>#execute</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id=1&quot;</span><span class="p">)</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT id, first_name, created_at FROM users WHERE id=1&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">users</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;id&quot;</span>         <span class="o">=&gt;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Trystan&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;created_at&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;2015-09-05 15:44:51.597326&quot;</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
