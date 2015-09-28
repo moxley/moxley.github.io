@@ -43,7 +43,8 @@ This returns an array-like object of type `ActiveRecord::Result`. Each item in
 the collection is a `Hash` representing a row in the results.
 
 The `ActiveRecord::Result` contains information about the table and its columns.
-It knows how to convert column values to their corresponding Ruby types.
+It knows how to convert column values to _some of_ their corresponding Ruby
+types.
 
 ### #execute
 
