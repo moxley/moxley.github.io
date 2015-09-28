@@ -69,8 +69,11 @@ cases, ActiveRecord provides `#quote`:
 ```ruby
 conn = ActiveRecord::Base.connection
 users = conn.select_all("
-  SELECT * FROM users WHERE email='#{conn.quote(email)}'")
+  SELECT * FROM users WHERE email=#{conn.quote(email)}")
 ```
+
+Notice that the SQL statement does not have single quote marks around the email.
+`#quote` does that automatically.
 
 ### #sanitize_sql_array
 
