@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-27T13:32:59-07:00</updated>
+  <updated>2015-09-28T07:48:27-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -93,9 +93,12 @@ cases, ActiveRecord provides <code>#quote</code>:</p>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">conn</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span>
 </span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="s2">  SELECT * FROM users WHERE email=&#39;</span><span class="si">#{</span><span class="n">conn</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="s2">  SELECT * FROM users WHERE email=</span><span class="si">#{</span><span class="n">conn</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>Notice that the SQL statement does not have single quote marks around the email.
+<code>#quote</code> does that automatically.</p>
 
 <h3>#sanitize_sql_array</h3>
 
