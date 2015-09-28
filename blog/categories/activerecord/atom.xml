@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Activerecord | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/activerecord/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-28T08:34:10-07:00</updated>
+  <updated>2015-09-28T08:36:11-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -53,7 +53,8 @@ users[0]
 the collection is a <code>Hash</code> representing a row in the results.</p>
 
 <p>The <code>ActiveRecord::Result</code> contains information about the table and its columns.
-It knows how to convert column values to their corresponding Ruby types.</p>
+It knows how to convert column values to <em>some of</em> their corresponding Ruby
+types.</p>
 
 <h3>#execute</h3>
 
