@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2015-09-28T11:36:28-07:00</updated>
+  <updated>2016-03-28T20:15:18-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Naming Is Apparently Hard]]></title>
+    <link href="http://www.moxleystratton.com/blog/2016/03/28/naming-is-apparently-hard/"/>
+    <updated>2016-03-28T20:12:26-07:00</updated>
+    <id>http://www.moxleystratton.com/blog/2016/03/28/naming-is-apparently-hard</id>
+    <content type="html"><![CDATA[<h2>Naming Variables</h2>
+
+<p>There are certain properties that variable names should always communicate.
+By reading the name of the variable, the reader should be able to answer
+the three following questions:</p>
+
+<ol>
+<li>Is it 1) a singular thing or 2) a plural thing?</li>
+<li>Is it 1) a thing with attributes, or is it 2) an attribute <em>of</em> a thing, or is it 3) just a lone primitive?</li>
+<li>Is it a boolean?</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Low-Level ActiveRecord]]></title>
