@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2017-08-09T09:55:46-07:00</updated>
+  <updated>2017-08-09T10:06:22-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install Redis on macOS With Homebrew]]></title>
+    <link href="http://www.moxleystratton.com/blog/2017/08/09/install-redis-on-macos-with-homebrew/"/>
+    <updated>2017-08-09T10:02:41-07:00</updated>
+    <id>http://www.moxleystratton.com/blog/2017/08/09/install-redis-on-macos-with-homebrew</id>
+    <content type="html"><![CDATA[<h2>Install</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew update
+</span><span class='line'>brew install redis</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Upgrade</h2>
+
+<p>If Redis is already installed, you might want to upgrade:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew upgrade redis</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Verify</h2>
+
+<p>Check to see if Redis is already running:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>redis-cli</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If it&rsquo;s already running, you can probably stop here.</p>
+
+<h2>Launch on System Boot</h2>
+
+<p>Check to see if it is already set up to launch on boot:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ls -l ~/Library/LaunchAgents | grep -i redis</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make it launch on boot:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Management</h2>
+
+<p>Redis can be started and stopped with these two commands:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew services start redis
+</span><span class='line'>brew services stop redis</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install Elixir on macOS Using ASDF]]></title>
