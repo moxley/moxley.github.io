@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2016-03-29T07:45:26-07:00</updated>
+  <updated>2017-08-09T09:49:42-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install Elixir on macOS Using ASDF]]></title>
+    <link href="http://www.moxleystratton.com/blog/2017/08/09/install-elixir-on-macos-using-asdf/"/>
+    <updated>2017-08-09T09:45:01-07:00</updated>
+    <id>http://www.moxleystratton.com/blog/2017/08/09/install-elixir-on-macos-using-asdf</id>
+    <content type="html"><![CDATA[<h2>Install asdf</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
+</span><span class='line'>echo -e '\n. $HOME/.asdf/asdf.sh' &gt;&gt; ~/.bash_profile
+</span><span class='line'>echo -e '\n. $HOME/.asdf/completions/asdf.bash' &gt;&gt; ~/.bash_profile
+</span><span class='line'>~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Install Erlang and Elixir Plugins</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+</span><span class='line'>asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Uninstall Erlang and Elixir managed by Brew</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew uninstall --force erlang
+</span><span class='line'>brew uninstall --force elixir</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Install Erlang</h2>
+
+<p>Check what versions of Erlang are available:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>asdf list-all erlang</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install and Use Erlang:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>asdf install erlang 19.3
+</span><span class='line'>asdf global erlang 19.3</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Install Elixir</h2>
+
+<p>Check what versions of Elixir are available:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>asdf list-all elixir</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install and Use Elixir:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>asdf install elixir 1.4.4
+</span><span class='line'>asdf global elixir 1.4.4</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Low-Level ActiveRecord]]></title>
