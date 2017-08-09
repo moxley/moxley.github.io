@@ -12,7 +12,7 @@ categories:
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
-~/.bash_profile
+. ~/.bash_profile
 ```
 
 ## Install Erlang and Elixir Plugins
