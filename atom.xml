@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2017-08-09T09:49:42-07:00</updated>
+  <updated>2017-08-09T09:54:49-07:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -27,7 +27,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
 </span><span class='line'>echo -e '\n. $HOME/.asdf/asdf.sh' &gt;&gt; ~/.bash_profile
 </span><span class='line'>echo -e '\n. $HOME/.asdf/completions/asdf.bash' &gt;&gt; ~/.bash_profile
-</span><span class='line'>~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>. ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Install Erlang and Elixir Plugins</h2>
