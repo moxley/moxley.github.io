@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Elixir | Moxley Stratton]]></title>
+  <link href="http://www.moxleystratton.com/blog/categories/elixir/atom.xml" rel="self"/>
+  <link href="http://www.moxleystratton.com/"/>
+  <updated>2017-12-28T10:35:48-08:00</updated>
+  <id>http://www.moxleystratton.com/</id>
+  <author>
+    <name><![CDATA[Moxley Stratton]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Elixir Abstract Syntax]]></title>
+    <link href="http://www.moxleystratton.com/blog/2017/12/28/elixir-abstract-syntax/"/>
+    <updated>2017-12-28T09:02:41-08:00</updated>
+    <id>http://www.moxleystratton.com/blog/2017/12/28/elixir-abstract-syntax</id>
+    <content type="html"><![CDATA[<p>As developers know, program source code is represented as lines of text.</p>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree
+(AST)</a> is the representation
+of the source code as a hierarchical data graph, specifically a tree structure.
+With an AST, much of the difficult work parsing the original source code has
+been performed, and the syntax can be introspected programatically.</p>
+
+<p>Similar to an AST, the <a href="https://en.wikipedia.org/wiki/Abstract_semantic_graph">Abstract Semantic Graph (ASG)</a> is a graph of the
+semantic representation of the source code. The ASG goes one step further than
+the AST by representing semantic information.</p>
+
+<p>When Erlang or Elixir source files are compiled, each module is converted to an
+Abstract Semantic Graph and saved to a file. This file is called a BEAM file,
+and it has a <code>.beam</code> extension.</p>
+
+<p>Elixir provides a way to extract either the AST or ASG from source code. This
+information is used by tools such as Formatter and Dialyzer for the benefit of
+developers.</p>
+
+<p>We&rsquo;ll walk through two techniques for extracting information from program code.</p>
+
+<h3>The Elixir AST</h3>
+
+<p>The function <code>Code.string_to_quoted!/1</code> converts Elixir source code into Elixir Abstract
+Syntax Tree (AST).</p>
+
+<pre><code class="elixir">iex(1)&gt; Code.string_to_quoted!("2 + 3")
+{:+, [line: 1], [2, 3]}
+</code></pre>
+
+<p><code>string_to_quoted!/1</code> (and its sibling <code>string_to_quoted/1</code>) know that the
+above bit of source code is an operation on two operands. It represents the
+plus sign as an atom (<code>:+</code>), and it represents the two operands as a list
+(<code>[2, 3]</code>).</p>
+
+<p>The Elixir AST typically contains three-element tuples like the one above. The
+first element is an operation or data type. The second element is metadata about
+the operation (e.g., source code line number), and the third element is the
+arguments of the operation, or in the case of a data type, the data.</p>
+
+<p>Let&rsquo;s try an example on a function call:</p>
+
+<pre><code class="elixir">iex&gt; Code.string_to_quoted!("f()")
+{:f, [line: 1], []}
+</code></pre>
+
+<p>The above represents a function call with an operand <code>:f</code>. In actuality, the AST
+is not sure it&rsquo;s actually a function call. It just knows that the expression
+is &ldquo;call-like&rdquo;, that it takes zero arguments.</p>
+
+<pre><code class="elixir">iex&gt; Code.string_to_quoted!("v")
+{:v, [line: 1], nil}
+</code></pre>
+
+<p>Here, the AST gives <code>nil</code> to the arguments list, meaning arguments don&rsquo;t apply.
+The AST representation does&rsquo;t actually know whether it&rsquo;s a call or a variable.
+In Elixir parentheses are optional for a function call, so it could be either.</p>
+
+<p>We&rsquo;ll do one more:</p>
+
+<pre><code class="elixir">iex&gt; Code.string_to_quoted!("%{a: \"a\"}")
+{:%{}, [line: 1], [a: "a"]}
+</code></pre>
+
+<p>The above shows what the AST looks like for a map literal.</p>
+
+<h2>The BEAM File</h2>
+
+<p>When Elixir (or Erlang) compiles a module, it creates a <code>.beam</code> file that
+stores the compiled module. If code is compiled using <code>mix</code>, the <code>.beam</code> files
+can be found in <code>_build/**/lib/**/ebin/*.beam</code>.</p>
+
+<p>The <code>.beam</code> file can be created more directly, using <code>elixirc</code>.
+This puts the <code>.beam</code> file in the current directory. We will
+use <code>elixirc</code> for the purposes of this article.</p>
+
+<p>We&rsquo;ll start with a sample module:</p>
+
+<pre><code class="elixir">defmodule MyModule do
+  def addition do
+    2 + 3
+  end
+
+  def an_atom do
+    :hello
+  end
+
+  def a_call do
+    value = addition() + 1
+    value + 4
+  end
+end
+</code></pre>
+
+<p>Save the above file to <code>my_module.ex</code>, then run the following:</p>
+
+<pre><code class="shell">$ elixirc my_module.ex
+$ file Elixir.MyModule.beam
+Elixir.MyModule.beam: Erlang BEAM file
+</code></pre>
+
+<p>Erlang provides the <code>beam_lib</code> library and its <code>chunks/2</code> function for reading
+the <code>.beam</code> file:</p>
+
+<pre><code class="elixir">iex&gt; :beam_lib.chunks('Elixir.MyModule.beam', [:abstract_code])
+{:ok, {MyModule, [
+         abstract_code: {:raw_abstract_v1, [
+                           {:attribute, 1, :file, {'my_module.ex', 1}},
+                           {:attribute, 1, :module, MyModule},
+                           {:attribute, 1, :compile, :no_auto_import},
+                           {:attribute, 1, :export, [
+                              __info__: 1,
+                              a_call: 0,
+                              addition: 0,
+                              an_atom: 0
+                            ]},
+                           ...
+                           ]}]}}
+</code></pre>
+
+<p>The first argument to <code>:beam_lib.chunks/2</code> is the <code>.beam</code> file path. Note the
+single quotes; it&rsquo;s a <em>charlist</em>, not a string.</p>
+
+<p>The second argument is a list of &ldquo;chunk types&rdquo; to extract from the <code>.beam</code> file.
+The full list of available chunk types can be found in the <a href="https://github.com/erlang/otp/blob/master/lib/stdlib/src/beam_lib.erl#L68-L73">Erlang Source Code</a>.</p>
+
+<p>The bulk of the return data is a list of tuples. Some of the tuples contain
+the atom <code>:attributes</code> as the first element, and the others have <code>:function</code> as
+the first element.</p>
+
+<p>The tuples having <code>:function</code> represent the functions of the module. The third
+element in the tuple is the function name.</p>
+
+<p>You&rsquo;ll notice a large function called
+<code>:__info__</code> that is automatically added to all Elixir modules.</p>
+
+<pre><code class="elixir">{:function, 0, :__info__, 1, [...]}
+</code></pre>
+
+<p>The last three
+functions are the ones defined in the module&rsquo;s source code.</p>
+
+<pre><code class="elixir">[
+  ...
+  {:function, 10, :a_call, 0, [...]},
+  {:function, 2, :addition, 0, [...]},
+  {:function, 6, :an_atom, 0, [...]}
+]
+</code></pre>
+
+<p>Digging into the <code>:addition</code> function representation, we can see the semantic
+representation of the simple addition operation, <code>2 + 3</code>:</p>
+
+<pre><code class="elixir">{
+  :op,
+  3,
+  :+,
+  {:integer, 0, 2},
+  {:integer, 0, 3}
+}
+</code></pre>
+
+<p>If the goal is to get the list of functions defined by the module, a small filter and map is all it takes:</p>
+
+<pre><code class="elixir">{:ok, {module, [abstract_code: {:raw_abstract_v1, attributes}]}} =
+  :beam_lib.chunks('Elixir.MyModule.beam', [:abstract_code])
+
+attributes
+|&gt; Enum.filter(&amp;(elem(&amp;1, 0) == :function))
+|&gt; Enum.map(fn {_, _, name, arity, _} -&gt; {name, arity} end)
+
+# Returns: [__info__: 1, bar: 0, foo: 0]
+</code></pre>
+
+<h2>Conclusion</h2>
+
+<p>We&rsquo;ve learned how to introspect Elixir source code by extracting the AST and
+ASG. It is my hope that this information will help you build the next great
+developer tool for Elixir.</p>
+]]></content>
+  </entry>
+  
+</feed>
