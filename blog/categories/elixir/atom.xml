@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Elixir | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/elixir/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2017-12-28T10:37:40-08:00</updated>
+  <updated>2017-12-28T10:43:21-08:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -29,6 +29,9 @@ been performed, and the syntax can be introspected programatically.</p>
 <p>Similar to an AST, the <a href="https://en.wikipedia.org/wiki/Abstract_semantic_graph">Abstract Semantic Graph (ASG)</a> is a graph of the
 semantic representation of the source code. The ASG goes one step further than
 the AST by representing semantic information.</p>
+
+<!-- more -->
+
 
 <p>When Erlang or Elixir source files are compiled, each module is converted to an
 Abstract Semantic Graph and saved to a file. This file is called a BEAM file,
@@ -115,7 +118,7 @@ end
 
 <p>Save the above file to <code>my_module.ex</code>, then run the following:</p>
 
-<pre><code class="shell">$ elixirc my_module.ex
+<pre><code>$ elixirc my_module.ex
 $ file Elixir.MyModule.beam
 Elixir.MyModule.beam: Erlang BEAM file
 </code></pre>

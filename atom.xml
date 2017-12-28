@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2017-08-09T10:08:07-07:00</updated>
+  <updated>2017-12-28T10:43:21-08:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -12,6 +12,269 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Elixir Abstract Syntax]]></title>
+    <link href="http://www.moxleystratton.com/blog/2017/12/28/elixir-abstract-syntax/"/>
+    <updated>2017-12-28T09:02:41-08:00</updated>
+    <id>http://www.moxleystratton.com/blog/2017/12/28/elixir-abstract-syntax</id>
+    <content type="html"><![CDATA[<p>As developers know, program source code is represented as lines of text.</p>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree
+(AST)</a> is the representation
+of the source code as a hierarchical data graph, specifically a tree structure.
+With an AST, much of the difficult work parsing the original source code has
+been performed, and the syntax can be introspected programatically.</p>
+
+<p>Similar to an AST, the <a href="https://en.wikipedia.org/wiki/Abstract_semantic_graph">Abstract Semantic Graph (ASG)</a> is a graph of the
+semantic representation of the source code. The ASG goes one step further than
+the AST by representing semantic information.</p>
+
+<!-- more -->
+
+
+<p>When Erlang or Elixir source files are compiled, each module is converted to an
+Abstract Semantic Graph and saved to a file. This file is called a BEAM file,
+and it has a <code>.beam</code> extension.</p>
+
+<p>Elixir provides a way to extract either the AST or ASG from source code. This
+information is used by tools such as Formatter and Dialyzer for the benefit of
+developers.</p>
+
+<p>We&rsquo;ll walk through two techniques for extracting information from program code.</p>
+
+<h3>The Elixir AST</h3>
+
+<p>The function <code>Code.string_to_quoted!/1</code> converts Elixir source code into Elixir Abstract
+Syntax Tree (AST).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="n">iex</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span> <span class="nc">Code</span><span class="p">.</span><span class="n">string_to_quoted!</span><span class="p">(</span><span class="s2">&quot;2 + 3&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span><span class="ss">:+</span><span class="p">,</span> <span class="p">[</span><span class="ss">line</span><span class="p">:</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>string_to_quoted!/1</code> (and its sibling <code>string_to_quoted/1</code>) know that the
+above bit of source code is an operation on two operands. It represents the
+plus sign as an atom (<code>:+</code>), and it represents the two operands as a list
+(<code>[2, 3]</code>).</p>
+
+<p>The Elixir AST typically contains three-element tuples like the one above. The
+first element is an operation or data type. The second element is metadata about
+the operation (e.g., source code line number), and the third element is the
+arguments of the operation, or in the case of a data type, the data.</p>
+
+<p>Let&rsquo;s try an example on a function call:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="n">iex</span><span class="o">&gt;</span> <span class="nc">Code</span><span class="p">.</span><span class="n">string_to_quoted!</span><span class="p">(</span><span class="s2">&quot;f()&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span><span class="ss">:f</span><span class="p">,</span> <span class="p">[</span><span class="ss">line</span><span class="p">:</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[]}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above represents a function call with an operand <code>:f</code>. In actuality, the AST
+is not sure it&rsquo;s actually a function call. It just knows that the expression
+is &ldquo;call-like&rdquo;, that it takes zero arguments.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="n">iex</span><span class="o">&gt;</span> <span class="nc">Code</span><span class="p">.</span><span class="n">string_to_quoted!</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span><span class="ss">:v</span><span class="p">,</span> <span class="p">[</span><span class="ss">line</span><span class="p">:</span> <span class="mi">1</span><span class="p">],</span> <span class="no">nil</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, the AST gives <code>nil</code> to the arguments list, meaning arguments don&rsquo;t apply.
+The AST representation does&rsquo;t actually know whether it&rsquo;s a call or a variable.
+In Elixir parentheses are optional for a function call, so it could be either.</p>
+
+<p>We&rsquo;ll do one more:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="n">iex</span><span class="o">&gt;</span> <span class="nc">Code</span><span class="p">.</span><span class="n">string_to_quoted!</span><span class="p">(</span><span class="s2">&quot;%{a: \&quot;a\&quot;}&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span><span class="ss">:%{}</span><span class="p">,</span> <span class="p">[</span><span class="ss">line</span><span class="p">:</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="ss">a</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">]}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above shows what the AST looks like for a map literal.</p>
+
+<h2>The BEAM File</h2>
+
+<p>When Elixir (or Erlang) compiles a module, it creates a <code>.beam</code> file that
+stores the compiled module. If code is compiled using <code>mix</code>, the <code>.beam</code> files
+can be found in <code>_build/**/lib/**/ebin/*.beam</code>.</p>
+
+<p>The <code>.beam</code> file can be created more directly, using <code>elixirc</code>.
+This puts the <code>.beam</code> file in the current directory. We will
+use <code>elixirc</code> for the purposes of this article.</p>
+
+<p>We&rsquo;ll start with a sample module:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="kd">defmodule</span> <span class="nc">MyModule</span> <span class="k">do</span>
+</span><span class='line'>  <span class="kd">def</span> <span class="n">addition</span> <span class="k">do</span>
+</span><span class='line'>    <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">def</span> <span class="n">an_atom</span> <span class="k">do</span>
+</span><span class='line'>    <span class="ss">:hello</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">def</span> <span class="n">a_call</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">value</span> <span class="p">=</span> <span class="n">addition</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="n">value</span> <span class="o">+</span> <span class="mi">4</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Save the above file to <code>my_module.ex</code>, then run the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="err">$</span> <span class="n">elixirc</span> <span class="n">my_module</span><span class="p">.</span><span class="n">ex</span>
+</span><span class='line'><span class="err">$</span> <span class="n">file</span> <span class="nc">Elixir.MyModule</span><span class="p">.</span><span class="n">beam</span>
+</span><span class='line'><span class="nc">Elixir.MyModule</span><span class="p">.</span><span class="ss">beam</span><span class="p">:</span> <span class="nc">Erlang</span> <span class="nc">BEAM</span> <span class="n">file</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Erlang provides the <code>beam_lib</code> library and its <code>chunks/2</code> function for reading
+the <code>.beam</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="n">iex</span><span class="o">&gt;</span> <span class="ss">:beam_lib</span><span class="p">.</span><span class="n">chunks</span><span class="p">(</span><span class="s1">&#39;Elixir.MyModule.beam&#39;</span><span class="p">,</span> <span class="p">[</span><span class="ss">:abstract_code</span><span class="p">])</span>
+</span><span class='line'><span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="p">{</span><span class="nc">MyModule</span><span class="p">,</span> <span class="p">[</span>
+</span><span class='line'>         <span class="ss">abstract_code</span><span class="p">:</span> <span class="p">{</span><span class="ss">:raw_abstract_v1</span><span class="p">,</span> <span class="p">[</span>
+</span><span class='line'>                           <span class="p">{</span><span class="ss">:attribute</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:file</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;my_module.ex&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">}},</span>
+</span><span class='line'>                           <span class="p">{</span><span class="ss">:attribute</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:module</span><span class="p">,</span> <span class="nc">MyModule</span><span class="p">},</span>
+</span><span class='line'>                           <span class="p">{</span><span class="ss">:attribute</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:compile</span><span class="p">,</span> <span class="ss">:no_auto_import</span><span class="p">},</span>
+</span><span class='line'>                           <span class="p">{</span><span class="ss">:attribute</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:export</span><span class="p">,</span> <span class="p">[</span>
+</span><span class='line'>                              <span class="ss">__info__</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'>                              <span class="ss">a_call</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>                              <span class="ss">addition</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>                              <span class="ss">an_atom</span><span class="p">:</span> <span class="mi">0</span>
+</span><span class='line'>                            <span class="p">]},</span>
+</span><span class='line'>                           <span class="p">...</span>
+</span><span class='line'>                           <span class="p">]}]}}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first argument to <code>:beam_lib.chunks/2</code> is the <code>.beam</code> file path. Note the
+single quotes; it&rsquo;s a <em>charlist</em>, not a string.</p>
+
+<p>The second argument is a list of &ldquo;chunk types&rdquo; to extract from the <code>.beam</code> file.
+The full list of available chunk types can be found in the <a href="https://github.com/erlang/otp/blob/master/lib/stdlib/src/beam_lib.erl#L68-L73">Erlang Source Code</a>.</p>
+
+<p>The bulk of the return data is a list of tuples. Some of the tuples contain
+the atom <code>:attributes</code> as the first element, and the others have <code>:function</code> as
+the first element.</p>
+
+<p>The tuples having <code>:function</code> represent the functions of the module. The third
+element in the tuple is the function name.</p>
+
+<p>You&rsquo;ll notice a large function called
+<code>:__info__</code> that is automatically added to all Elixir modules.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="p">{</span><span class="ss">:function</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">:__info__</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[...]}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The last three
+functions are the ones defined in the module&rsquo;s source code.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="p">[</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'>  <span class="p">{</span><span class="ss">:function</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="ss">:a_call</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[...]},</span>
+</span><span class='line'>  <span class="p">{</span><span class="ss">:function</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="ss">:addition</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[...]},</span>
+</span><span class='line'>  <span class="p">{</span><span class="ss">:function</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="ss">:an_atom</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[...]}</span>
+</span><span class='line'><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Digging into the <code>:addition</code> function representation, we can see the semantic
+representation of the simple addition operation, <code>2 + 3</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="ss">:op</span><span class="p">,</span>
+</span><span class='line'>  <span class="mi">3</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:+</span><span class="p">,</span>
+</span><span class='line'>  <span class="p">{</span><span class="ss">:integer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span>
+</span><span class='line'>  <span class="p">{</span><span class="ss">:integer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If the goal is to get the list of functions defined by the module, a small filter and map is all it takes:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="p">{</span><span class="n">module</span><span class="p">,</span> <span class="p">[</span><span class="ss">abstract_code</span><span class="p">:</span> <span class="p">{</span><span class="ss">:raw_abstract_v1</span><span class="p">,</span> <span class="n">attributes</span><span class="p">}]}}</span> <span class="p">=</span>
+</span><span class='line'>  <span class="ss">:beam_lib</span><span class="p">.</span><span class="n">chunks</span><span class="p">(</span><span class="s1">&#39;Elixir.MyModule.beam&#39;</span><span class="p">,</span> <span class="p">[</span><span class="ss">:abstract_code</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">attributes</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">elem</span><span class="p">(</span><span class="ni">&amp;1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="ss">:function</span><span class="p">))</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="p">{</span><span class="bp">_</span><span class="p">,</span> <span class="bp">_</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">arity</span><span class="p">,</span> <span class="bp">_</span><span class="p">}</span> <span class="p">-&gt;</span> <span class="p">{</span><span class="n">name</span><span class="p">,</span> <span class="n">arity</span><span class="p">}</span> <span class="k">end</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Returns: [__info__: 1, bar: 0, foo: 0]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Conclusion</h2>
+
+<p>We&rsquo;ve learned how to introspect Elixir source code by extracting the AST and
+ASG. It is my hope that this information will help you build the next great
+developer tool for Elixir.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install Redis on macOS With Homebrew]]></title>
