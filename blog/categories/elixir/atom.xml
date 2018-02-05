@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Elixir, | Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/blog/categories/elixir/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2018-02-05T09:49:53-08:00</updated>
+  <updated>2018-02-05T09:54:32-08:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup/"/>
     <updated>2018-02-05T09:02:41-08:00</updated>
     <id>http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve installed the following Atom plugins for Elixir:</p>
+    <content type="html"><![CDATA[<p>I use the following Atom plugins for Elixir:</p>
 
 <ul>
 <li>language-elixir</li>
