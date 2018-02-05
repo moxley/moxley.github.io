@@ -5,11 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Os X - Moxley Stratton</title>
+  <title>Atom Editor Setup for Elixir - Moxley Stratton</title>
   <meta name="author" content="Moxley Stratton">
 
   
-  <meta name="description" content="Category: os x">
+  <meta name="description" content="I&rsquo;ve installed the following Atom plugins for Elixir: language-elixir
+linter-elixirc
+linter-elixir-credo
+atom-elixir-formatter After installing &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.moxleystratton.com/blog/categories/os-x">
+  <link rel="canonical" href="http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Moxley Stratton" type="application/atom+xml">
@@ -76,36 +79,115 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Os X</h1>
+    
+      <h1 class="entry-title">Atom Editor Setup for Elixir</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-02-05T09:02:41-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:02 am</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>I&rsquo;ve installed the following Atom plugins for Elixir:</p>
 
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/05/11/ten-secret-key-bindings/">Ten Secret Key Bindings From OS X</a></h1>
-<time datetime="2012-05-11T12:00:00-07:00" pubdate><span class='month'>May</span> <span class='day'>11</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/os-x/'>os x</a></span>
-</footer>
+<ul>
+<li>language-elixir</li>
+<li>linter-elixirc</li>
+<li>linter-elixir-credo</li>
+<li>atom-elixir-formatter</li>
+</ul>
 
 
-</article>
+<p>After installing each of these packages, make sure you configure them. Most of
+them don&rsquo;t work without explicit configuration.</p>
 
+<p>Most of these plugins require you to configure either the <code>elixir</code> binary path
+or the <code>mix</code> binary path (or both). To do so, first open a terminal, and run
+<code>which elixir</code> or <code>which mix</code> to get the binary path.</p>
+
+<h2>language-elixir</h2>
+
+<p>This is the minimal package you want to use when developing Elixir code.
+It provides code syntax highlighting.</p>
+
+<h2>linter-elixirc</h2>
+
+<p>This provides feedback when you write bad syntax or syntax that is considered a
+warning by the Elixir compiler. It saves time that would be wasted running
+tests, only to find out you wrote bad syntax.</p>
+
+<h2>linter-elixir-credo</h2>
+
+<p>This provides feedback when you write syntax that violates code style conventions
+managed by Credo.</p>
+
+<h2>atom-elixir-formatter</h2>
+
+<p>Utility that formats Elixir code with the Elixir Formatter. One side utility of
+this package is that it allows you to paste in large data structures from test
+output into your test or fixtures, then easily format the resulting code. It
+only works if you have Elixir 1.6 or higher.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Moxley Stratton</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2018-02-05T09:02:41-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:02 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/atom/'>atom</a>, <a class='category' href='/blog/categories/elixir/'>elixir,</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup/" data-via="moxicon" data-counturl="http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/12/28/elixir-abstract-syntax/" title="Previous Post: Elixir Abstract Syntax">&laquo; Elixir Abstract Syntax</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -189,7 +271,10 @@
       var disqus_shortname = 'moxleystratton';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup/';
+        var disqus_url = 'http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

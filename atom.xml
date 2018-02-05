@@ -4,7 +4,7 @@
   <title><![CDATA[Moxley Stratton]]></title>
   <link href="http://www.moxleystratton.com/atom.xml" rel="self"/>
   <link href="http://www.moxleystratton.com/"/>
-  <updated>2017-12-28T10:44:17-08:00</updated>
+  <updated>2018-02-05T09:49:53-08:00</updated>
   <id>http://www.moxleystratton.com/</id>
   <author>
     <name><![CDATA[Moxley Stratton]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Atom Editor Setup for Elixir]]></title>
+    <link href="http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup/"/>
+    <updated>2018-02-05T09:02:41-08:00</updated>
+    <id>http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve installed the following Atom plugins for Elixir:</p>
+
+<ul>
+<li>language-elixir</li>
+<li>linter-elixirc</li>
+<li>linter-elixir-credo</li>
+<li>atom-elixir-formatter</li>
+</ul>
+
+
+<p>After installing each of these packages, make sure you configure them. Most of
+them don&rsquo;t work without explicit configuration.</p>
+
+<p>Most of these plugins require you to configure either the <code>elixir</code> binary path
+or the <code>mix</code> binary path (or both). To do so, first open a terminal, and run
+<code>which elixir</code> or <code>which mix</code> to get the binary path.</p>
+
+<h2>language-elixir</h2>
+
+<p>This is the minimal package you want to use when developing Elixir code.
+It provides code syntax highlighting.</p>
+
+<h2>linter-elixirc</h2>
+
+<p>This provides feedback when you write bad syntax or syntax that is considered a
+warning by the Elixir compiler. It saves time that would be wasted running
+tests, only to find out you wrote bad syntax.</p>
+
+<h2>linter-elixir-credo</h2>
+
+<p>This provides feedback when you write syntax that violates code style conventions
+managed by Credo.</p>
+
+<h2>atom-elixir-formatter</h2>
+
+<p>Utility that formats Elixir code with the Elixir Formatter. One side utility of
+this package is that it allows you to paste in large data structures from test
+output into your test or fixtures, then easily format the resulting code. It
+only works if you have Elixir 1.6 or higher.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Elixir Abstract Syntax]]></title>

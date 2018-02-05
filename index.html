@@ -9,9 +9,10 @@
   <meta name="author" content="Moxley Stratton">
 
   
-  <meta name="description" content="As developers know, program source code is represented as lines of text. The Abstract Syntax Tree
-(AST) is the representation
-of the source code as a &hellip;">
+  <meta name="description" content="I&rsquo;ve installed the following Atom plugins for Elixir: language-elixir
+linter-elixirc
+linter-elixir-credo
+atom-elixir-formatter After installing &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,73 @@ of the source code as a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/02/05/atom-elixir-setup/">Atom Editor Setup for Elixir</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-02-05T09:02:41-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:02 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve installed the following Atom plugins for Elixir:</p>
+
+<ul>
+<li>language-elixir</li>
+<li>linter-elixirc</li>
+<li>linter-elixir-credo</li>
+<li>atom-elixir-formatter</li>
+</ul>
+
+
+<p>After installing each of these packages, make sure you configure them. Most of
+them don&rsquo;t work without explicit configuration.</p>
+
+<p>Most of these plugins require you to configure either the <code>elixir</code> binary path
+or the <code>mix</code> binary path (or both). To do so, first open a terminal, and run
+<code>which elixir</code> or <code>which mix</code> to get the binary path.</p>
+
+<h2>language-elixir</h2>
+
+<p>This is the minimal package you want to use when developing Elixir code.
+It provides code syntax highlighting.</p>
+
+<h2>linter-elixirc</h2>
+
+<p>This provides feedback when you write bad syntax or syntax that is considered a
+warning by the Elixir compiler. It saves time that would be wasted running
+tests, only to find out you wrote bad syntax.</p>
+
+<h2>linter-elixir-credo</h2>
+
+<p>This provides feedback when you write syntax that violates code style conventions
+managed by Credo.</p>
+
+<h2>atom-elixir-formatter</h2>
+
+<p>Utility that formats Elixir code with the Elixir Formatter. One side utility of
+this package is that it allows you to paste in large data structures from test
+output into your test or fixtures, then easily format the resulting code. It
+only works if you have Elixir 1.6 or higher.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -763,46 +831,6 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/11/ten-secret-key-bindings/">Ten Secret Key Bindings From OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-05-11T12:00:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Did you know that when using these applications:</p>
-
-<ul>
-<li>Any application on OS X, except Vim and MS products</li>
-<li>Bash, or any console program with Readline support</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/11/ten-secret-key-bindings/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -818,6 +846,10 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/02/05/atom-elixir-setup/">Atom Editor Setup for Elixir</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/12/28/elixir-abstract-syntax/">Elixir Abstract Syntax</a>
       </li>
     
@@ -831,10 +863,6 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     
       <li class="post">
         <a href="/blog/2015/09/27/low-level-activerecord/">Low-Level ActiveRecord</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/29/switching-to-octopress-from-wordpress/">Switching to Octopress From Wordpress</a>
       </li>
     
   </ul>
@@ -879,7 +907,7 @@ See the <a href="https://github.com/moxley/cellauto">Github page</a> for more in
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2017 - Moxley Stratton -
+  Copyright &copy; 2018 - Moxley Stratton -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
