@@ -6,36 +6,32 @@ comments: true
 categories: elixir, atom
 published: true
 ---
+When working with Elixir, I want the following support from my editor:
+- Elixir syntax highlighting
+- Compiler errors and warnings displayed when I'm editing Elixir code
+- Automatic Elixir code formatting when I save a file
+- Automatic dialyzer checking and reporting when I save an Elixir code file
 
-I use the following Atom plugins for Elixir:
+These are the following plugins that provide those features:
 
-- language-elixir
-- linter-elixirc
-- linter-elixir-credo
-- atom-elixir-formatter
+- `language-elixir`
+- `atom-elixir-formatter`
+- `ide-elixir`
 
-After installing each of these packages, make sure you configure them. Most of
-them don't work without explicit configuration.
-
-Most of these plugins require you to configure either the `elixir` binary path
-or the `mix` binary path (or both). To do so, first open a terminal, and run
-`which elixir` or `which mix` to get the binary path.
+Before installing any of these packages, read their README pages carefully.
 
 ## language-elixir
 
 This is the minimal package you want to use when developing Elixir code.
 It provides code syntax highlighting.
 
-## linter-elixirc
+## ide-elixir
 
-This provides feedback when you write bad syntax or syntax that is considered a
-warning by the Elixir compiler. It saves time that would be wasted running
-tests, only to find out you wrote bad syntax.
+The most value I get out of IDE Elixir is the feedback I get from its integration
+with the Elixir compiler and Dialyzer.
 
-## linter-elixir-credo
-
-This provides feedback when you write syntax that violates code style conventions
-managed by Credo.
+If you don't care so much about the Dialyzer support, and you want something more
+lightweight, I recommend `linter-elixirc`.
 
 ## atom-elixir-formatter
 
