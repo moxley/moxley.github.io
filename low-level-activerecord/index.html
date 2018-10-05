@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Low-Level ActiveRecord</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.moxleystratton.com/index.xml">
+		<link rel="canonical" href="http://www.moxleystratton.com/low-level-activerecord/">
+		
+		<link rel="shortcut icon" type="image/png" href="http://www.moxleystratton.com/apple-touch-icon-precomposed.png">
+		
+		
+		<meta name="generator" content="Hugo 0.49" />
+
+		
+		<meta name="og:title" content="Low-Level ActiveRecord" />
+		<meta name="og:type" content="article" />
+		<meta name="og:image" content="http://www.moxleystratton.com/img/default-header-img.jpg" />
+		<meta name="og:description" content="" />
+		<meta name="og:url" content="http://www.moxleystratton.com/low-level-activerecord/" />
+		<meta name="og:site_name" content="Low-Level ActiveRecord" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@" />
+
+
+		
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/tachyons.min.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/story.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/descartes.css" />
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="http://www.moxleystratton.com/js/story.js"></script>
+
+	</head>
+	<body class="ma0 bg-white  page-kind-page is-page-true ">
+		
+		<header class="cover bg-top" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.jpg'); background-position: center;">
+			<div class="bg-black-30 bb bt">
+
+				<nav class="hide-print sans-serif  border-box pa3 ph5-l">
+					<a href="http://www.moxleystratton.com/" title="Home">
+						<img src="http://www.moxleystratton.com/img/logo.jpg" class="w2 h2 br-100" alt="Moxley Stratton" />
+					</a>
+					<div class="fr h2 pv2 tr">
+						<a class="link f5 ml2 dim near-white fas fa-rss-square" href="http://www.moxleystratton.com/index.xml" title="RSS Feed"></a>
+						<a class="link f5 ml2 dim near-white fas fa-search" href="http://www.moxleystratton.com/search/" role="search" title="Search"></a>
+					</div>
+				</nav>
+
+				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
+					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Low-Level ActiveRecord</h1>
+					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
+						
+						
+							
+								Published
+								<time datetime="2015-09-27T10:58:40-07:00">Sep 27, 2015</time>
+								<span class="display-print">by </span>
+								 in <a href="http://www.moxleystratton.com/categories//activerecord" class="no-underline category near-white dim">Activerecord</a>, <a href="http://www.moxleystratton.com/categories//programming" class="no-underline category near-white dim">Programming</a>, <a href="http://www.moxleystratton.com/categories//rails" class="no-underline category near-white dim">Rails</a>
+								<span class="display-print">at http://www.moxleystratton.com/low-level-activerecord/</span>
+							
+						
+					</h2>
+				</div>
+
+				
+				
+				
+				
+
+			</div>
+		</header>
+		
+		<main role="main">
+		
+<article class="center bg-white br-3 pv1 ph4 nested-copy-line-height lh-copy f4 nested-links mw-100 measure-wide">
+	
+
+<p>With many Rails projects, there is occasionally a need to bypass the normal
+ActiveRecord API, and get closer to the low-level SQL API. Here are a few
+useful methods that bypass the confines of everyday ActiveRecord.</p>
+
+<h3 id="find-by-sql">#find_by_sql</h3>
+
+<pre><code class="language-ruby">users = User.find_by_sql(&quot;SELECT * FROM users WHERE id = 1&quot;)
+</code></pre>
+
+<p>This returns model instances for the given SQL string.</p>
+
+<p><code>#find_by_sql</code> also accepts parametrized values, like this:</p>
+
+<pre><code class="language-ruby">users = User.find_by_sql([&quot;SELECT * FROM users WHERE id = ?&quot;, 1])
+</code></pre>
+
+<h3 id="select-all">#select_all</h3>
+
+<pre><code class="language-ruby">users = ActiveRecord::Base.connection.select_all(&quot;
+  SELECT id, first_name, created_at
+  FROM users
+  WHERE id = 1&quot;)
+
+users[0]
+{
+  &quot;id&quot;         =&gt; 202,
+  &quot;first_name&quot; =&gt; &quot;Trystan&quot;,
+  &quot;created_at&quot; =&gt; &quot;2015-09-05 15:44:51.597326&quot;
+}
+</code></pre>
+
+<p>This returns an array-like object of type <code>ActiveRecord::Result</code>. Each item in
+the collection is a <code>Hash</code> representing a row in the results.</p>
+
+<p>The <code>ActiveRecord::Result</code> contains information about the table and its columns.
+It knows how to convert column values to <em>some of</em> their corresponding Ruby
+types.</p>
+
+<h3 id="execute">#execute</h3>
+
+<pre><code class="language-ruby">users = ActiveRecord::Base.connection.execute(&quot;SELECT id, first_name, created_at FROM users WHERE id=1&quot;)
+
+users[0]
+{
+  &quot;id&quot;         =&gt; &quot;1&quot;,
+  &quot;first_name&quot; =&gt; &quot;Trystan&quot;,
+  &quot;created_at&quot; =&gt; &quot;2015-09-05 15:44:51.597326&quot;
+}
+</code></pre>
+
+<p>This returns an array-like object that is specific on the database driver. For
+PostgreSQL, this will be a <code>PG::Result</code>. Each item in the collection is a
+<code>Hash</code>. The values of the Hash are strings and nils. No conversion is performed
+to convert the values to the appropriate Ruby type, other than NULL to nil.</p>
+
+<h3 id="quote">#quote</h3>
+
+<p>The <code>select_all</code> and <code>execute</code> methods have no built-in mechanism for escaping
+values for the SQL statement.</p>
+
+<p>Something like this is bad practice:</p>
+
+<pre><code class="language-ruby">users = ActiveRecord::Base.connection.select_all(&quot;
+  SELECT * FROM users WHERE email='#{email}'&quot;)
+</code></pre>
+
+<p>Because we&rsquo;re not sure what is in <code>email</code>. It could have an SQL injection
+attack, or it could just have unexpected characters that will break
+the query. To cover these
+cases, ActiveRecord provides <code>#quote</code>:</p>
+
+<pre><code class="language-ruby">conn = ActiveRecord::Base.connection
+users = conn.select_all(&quot;
+  SELECT * FROM users WHERE email=#{conn.quote(email)}&quot;)
+</code></pre>
+
+<p>Notice that the SQL statement does not have single quote marks around the email.
+<code>#quote</code> does that automatically.</p>
+
+<h3 id="sanitize-sql-array">#sanitize_sql_array</h3>
+
+<p>Using <code>#quote</code> can get unwieldy as more and more values need to be escaped.
+There is a private method called <code>#sanitize_sql_array</code> that brings back the
+parameterized escape mechanism that is present in ActiveRecord&rsquo;s higher-level
+API.</p>
+
+<pre><code class="language-ruby">sql = ActiveRecord::Base.send(:sanitize_sql_array,
+  [&quot;SELECT * FROM users WHERE email=?&quot;, email])
+
+users = ActiveRecord::Base.connection.select_all(sql)
+</code></pre>
+
+<h3 id="connection-config">#connection_config</h3>
+
+<p>Sometimes you need to introspect the database connection details. Maybe you have an external utility that performs bulk operations against the database, and
+it bypasses ActiveRecord entirely.</p>
+
+<pre><code class="language-ruby">config = Rails.application.config.database_configuration
+
+{
+  &quot;common&quot; =&gt; {
+    &quot;adapter&quot;           =&gt; &quot;postgres&quot;,
+    &quot;encoding&quot;          =&gt; &quot;utf8&quot;,
+    &quot;postgis_extension&quot; =&gt; true,
+    &quot;username&quot;          =&gt; &quot;user&quot;,
+    &quot;password&quot;          =&gt; &quot;password&quot;,
+    &quot;host&quot;              =&gt; &quot;127.0.0.1&quot;,
+    &quot;port&quot;              =&gt; 5432
+  },
+  &quot;development&quot; =&gt; {
+    &quot;adapter&quot;           =&gt; &quot;postgres&quot;,
+    &quot;encoding&quot;          =&gt; &quot;utf8&quot;,
+    &quot;postgis_extension&quot; =&gt; true,
+    &quot;username&quot;          =&gt; &quot;user&quot;,
+    &quot;password&quot;          =&gt; &quot;password&quot;,
+    &quot;host&quot;              =&gt; &quot;127.0.0.1&quot;,
+    &quot;port&quot;              =&gt; 5432,
+    &quot;database&quot;          =&gt; &quot;database_development&quot;    
+  },
+  &quot;production&quot; =&gt; {
+    &quot;adapter&quot;           =&gt; &quot;postgres&quot;,
+    &quot;encoding&quot;          =&gt; &quot;utf8&quot;,
+    &quot;postgis_extension&quot; =&gt; true,
+    &quot;username&quot;          =&gt; &quot;user&quot;,
+    &quot;password&quot;          =&gt; &quot;password&quot;,
+    &quot;host&quot;              =&gt; &quot;127.0.0.1&quot;,
+    &quot;port&quot;              =&gt; 5432,
+    &quot;database&quot;          =&gt; &quot;database_production&quot;    
+  }
+}
+</code></pre>
+
+<h2 id="with-connection">#with_connection</h2>
+
+<p>Using a database connection and not returning is like opening a file and not
+closing it. It can lead to connection leaks in some contexts.
+ActiveRecord provides a block-style pattern for using a database connection:</p>
+
+<pre><code class="language-ruby">ActiveRecord::Base.connection_pool.with_connection do |conn|
+  users = conn.select_all(&quot;
+    SELECT * FROM users WHERE email=#{conn.quote(email)}&quot;)
+end
+</code></pre>
+
+<h2 id="structure-load">#structure_load</h2>
+
+<p>For times when you need to load a bunch of SQL statements from a file,
+ActiveRecord provides <code>#structure_load</code>:</p>
+
+<pre><code class="language-ruby">config = Rails.application.config.database_configuration['development']
+sql_file = &quot;tmp/foo.sql&quot;
+ActiveRecord::Tasks::DatabaseTasks.structure_load(config, sql_file)
+</code></pre>
+
+</article>
+
+		</main>
+		
+				<div class="hide-print sans-serif f6 f5-l mt5 ph3 pb6 center nested-copy-line-height lh-copy nested-links mw-100 measure-wide">
+		<div class="about-the-author">
+		
+			
+			
+				
+					
+				
+			
+		
+		</div>
+		
+	</div>
+
+		
+		
+		
+		<footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3" role="contentinfo">
+			<p class="w-50 fr tr">
+			<a class="no-underline near-white" href="https://github.com/xaprb/story"><img class="dib" title="Made with Hugo and Story" alt="Story logo" src="http://www.moxleystratton.com/img/story-logo-white.svg" style="width: 1.5rem; height: 1.5rem" /></a>
+			</p>
+			<p class="w-50 near-white">
+				&copy; 2018 
+			</p>
+		</footer>
+		
+	
+	
+	</body>
+</html>

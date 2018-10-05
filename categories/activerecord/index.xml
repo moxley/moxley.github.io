@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Activerecord on Moxley Stratton</title>
+    <link>http://www.moxleystratton.com/categories/activerecord/</link>
+    <description>Recent content in Activerecord on Moxley Stratton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Sep 2015 10:58:40 -0700</lastBuildDate>
+    
+	<atom:link href="http://www.moxleystratton.com/categories/activerecord/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Low-Level ActiveRecord</title>
+      <link>http://www.moxleystratton.com/low-level-activerecord/</link>
+      <pubDate>Sun, 27 Sep 2015 10:58:40 -0700</pubDate>
+      
+      <guid>http://www.moxleystratton.com/low-level-activerecord/</guid>
+      <description>With many Rails projects, there is occasionally a need to bypass the normal ActiveRecord API, and get closer to the low-level SQL API. Here are a few useful methods that bypass the confines of everyday ActiveRecord.
+#find_by_sql users = User.find_by_sql(&amp;quot;SELECT * FROM users WHERE id = 1&amp;quot;)  This returns model instances for the given SQL string.
+#find_by_sql also accepts parametrized values, like this:
+users = User.find_by_sql([&amp;quot;SELECT * FROM users WHERE id = ?</description>
+    </item>
+    
+  </channel>
+</rss>

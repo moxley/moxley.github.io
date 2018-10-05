@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Finding the source for a given Rails web page</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.moxleystratton.com/index.xml">
+		<link rel="canonical" href="http://www.moxleystratton.com/finding-the-source-for-a-given-rails-web-page/">
+		
+		<link rel="shortcut icon" type="image/png" href="http://www.moxleystratton.com/apple-touch-icon-precomposed.png">
+		
+		
+		<meta name="generator" content="Hugo 0.49" />
+
+		
+		<meta name="og:title" content="Finding the source for a given Rails web page" />
+		<meta name="og:type" content="article" />
+		<meta name="og:image" content="http://www.moxleystratton.com/img/default-header-img.jpg" />
+		<meta name="og:description" content="" />
+		<meta name="og:url" content="http://www.moxleystratton.com/finding-the-source-for-a-given-rails-web-page/" />
+		<meta name="og:site_name" content="Finding the source for a given Rails web page" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@" />
+
+
+		
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/tachyons.min.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/story.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/descartes.css" />
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="http://www.moxleystratton.com/js/story.js"></script>
+
+	</head>
+	<body class="ma0 bg-white  page-kind-page is-page-true ">
+		
+		<header class="cover bg-top" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.jpg'); background-position: center;">
+			<div class="bg-black-30 bb bt">
+
+				<nav class="hide-print sans-serif  border-box pa3 ph5-l">
+					<a href="http://www.moxleystratton.com/" title="Home">
+						<img src="http://www.moxleystratton.com/img/logo.jpg" class="w2 h2 br-100" alt="Moxley Stratton" />
+					</a>
+					<div class="fr h2 pv2 tr">
+						<a class="link f5 ml2 dim near-white fas fa-rss-square" href="http://www.moxleystratton.com/index.xml" title="RSS Feed"></a>
+						<a class="link f5 ml2 dim near-white fas fa-search" href="http://www.moxleystratton.com/search/" role="search" title="Search"></a>
+					</div>
+				</nav>
+
+				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
+					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Finding the source for a given Rails web page</h1>
+					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
+						
+						
+							
+								Published
+								<time datetime="2014-05-29T12:00:00Z">May 29, 2014</time>
+								<span class="display-print">by </span>
+								 in <a href="http://www.moxleystratton.com/categories//ruby" class="no-underline category near-white dim">Ruby</a>, <a href="http://www.moxleystratton.com/categories//rails" class="no-underline category near-white dim">Rails</a>
+								<span class="display-print">at http://www.moxleystratton.com/finding-the-source-for-a-given-rails-web-page/</span>
+							
+						
+					</h2>
+				</div>
+
+				
+				
+				
+				
+
+			</div>
+		</header>
+		
+		<main role="main">
+		
+<article class="center bg-white br-3 pv1 ph4 nested-copy-line-height lh-copy f4 nested-links mw-100 measure-wide">
+	
+
+<p>These tips may help those of you who are relatively new to Rails, or maybe even if you&rsquo;re not.</p>
+
+<!-- more -->
+
+<h2 id="common-tips-and-tricks">Common tips and tricks</h2>
+
+<ul>
+<li>Look at the URL path (e.g. <code>/users/100685/edit</code>).
+Can the action and main view file be determined from CRUD/REST conventions?
+
+<ul>
+<li><code>/:model/edit</code> -&gt; edit.html.slim</li>
+<li><code>/:model/1234</code> -&gt; show.html.slim</li>
+<li><code>/:model/new</code> -&gt; new.html.slim</li>
+<li><code>/:model</code> -&gt; index.html.slim</li>
+</ul></li>
+<li>Look up the path in routes.rb, or even more useful, run <code>rake routes</code></li>
+</ul>
+
+<h2 id="finding-a-controller-and-action-responsible-for-a-given-page">Finding a controller and action responsible for a given page</h2>
+
+<ol>
+<li>In development go to your server&rsquo;s output, and clear the screen (<code>Ctrl+L</code>,
+for Linux, <code>Cmd-K</code> for OS X)</li>
+<li>Refresh the web page</li>
+<li>Back to the server&rsquo;s output, scroll to the top of the output. About the second
+line of non-blank log output, you should see something like:
+<code>Processing by UserseController#edit as HTML</code>. That&rsquo;s the
+controller (<code>UsersController</code>) and action (<code>edit</code>).</li>
+</ol>
+
+<h2 id="finding-a-view-file-for-a-given-page">Finding a view file for a given page</h2>
+
+<ul>
+<li>If in development, look at the server log. If it is too noisy, use
+<code>tail -f log/development | grep Rendered</code> to cut out the noise.</li>
+<li>If in development, add the <code>rails_view_annotator</code> gem to your Gemfile,
+and look at the DOM or HTML source. It should have HTML comments identifying
+the view partials responsible for their generated HTML.</li>
+</ul>
+
+</article>
+
+		</main>
+		
+				<div class="hide-print sans-serif f6 f5-l mt5 ph3 pb6 center nested-copy-line-height lh-copy nested-links mw-100 measure-wide">
+		<div class="about-the-author">
+		
+			
+			
+				
+					
+				
+			
+		
+		</div>
+		
+	</div>
+
+		
+		
+		
+		<footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3" role="contentinfo">
+			<p class="w-50 fr tr">
+			<a class="no-underline near-white" href="https://github.com/xaprb/story"><img class="dib" title="Made with Hugo and Story" alt="Story logo" src="http://www.moxleystratton.com/img/story-logo-white.svg" style="width: 1.5rem; height: 1.5rem" /></a>
+			</p>
+			<p class="w-50 near-white">
+				&copy; 2018 
+			</p>
+		</footer>
+		
+	
+	
+	</body>
+</html>

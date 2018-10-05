@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Text Editors on Moxley Stratton</title>
+    <link>http://www.moxleystratton.com/categories/text-editors/</link>
+    <description>Recent content in Text Editors on Moxley Stratton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Mar 2014 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.moxleystratton.com/categories/text-editors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Considering a switch to the Atom Text Editor?</title>
+      <link>http://www.moxleystratton.com/considering-a-switch-to-the-atom-text-editor/</link>
+      <pubDate>Sun, 16 Mar 2014 12:00:00 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/considering-a-switch-to-the-atom-text-editor/</guid>
+      <description>You&amp;rsquo;ve probably heard of Atom, Github&amp;rsquo;s new text editor. Read these checklists to help you decide whether it&amp;rsquo;s an editor worth switching to.
+General Pros  Open Source High-quality extension and enhancement infrastructure View is programmable using good old HTML DOM and CSS Well-known API model (NodeJS) Built-in Github integration Built-in, light Git integration Realtime Markdown preview Seamlessly tracks external file renames while the file is open Browse archive files, like zip or tar.</description>
+    </item>
+    
+  </channel>
+</rss>

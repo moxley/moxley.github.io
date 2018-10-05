@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.moxleystratton.com/index.xml">
+		<link rel="canonical" href="http://www.moxleystratton.com/ruby-escape-unescape-encode-decode-html-xml-uri-url/">
+		
+		<link rel="shortcut icon" type="image/png" href="http://www.moxleystratton.com/apple-touch-icon-precomposed.png">
+		
+		
+		<meta name="generator" content="Hugo 0.49" />
+
+		
+		<meta name="og:title" content="Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL" />
+		<meta name="og:type" content="article" />
+		<meta name="og:image" content="http://www.moxleystratton.com/img/default-header-img.jpg" />
+		<meta name="og:description" content="" />
+		<meta name="og:url" content="http://www.moxleystratton.com/ruby-escape-unescape-encode-decode-html-xml-uri-url/" />
+		<meta name="og:site_name" content="Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@" />
+
+
+		
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/tachyons.min.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/story.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/descartes.css" />
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="http://www.moxleystratton.com/js/story.js"></script>
+
+	</head>
+	<body class="ma0 bg-white  page-kind-page is-page-true ">
+		
+		<header class="cover bg-top" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.jpg'); background-position: center;">
+			<div class="bg-black-30 bb bt">
+
+				<nav class="hide-print sans-serif  border-box pa3 ph5-l">
+					<a href="http://www.moxleystratton.com/" title="Home">
+						<img src="http://www.moxleystratton.com/img/logo.jpg" class="w2 h2 br-100" alt="Moxley Stratton" />
+					</a>
+					<div class="fr h2 pv2 tr">
+						<a class="link f5 ml2 dim near-white fas fa-rss-square" href="http://www.moxleystratton.com/index.xml" title="RSS Feed"></a>
+						<a class="link f5 ml2 dim near-white fas fa-search" href="http://www.moxleystratton.com/search/" role="search" title="Search"></a>
+					</div>
+				</nav>
+
+				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
+					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL</h1>
+					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
+						
+						
+							
+								Published
+								<time datetime="2007-07-31T12:00:00Z">Jul 31, 2007</time>
+								<span class="display-print">by </span>
+								 in <a href="http://www.moxleystratton.com/categories//ruby" class="no-underline category near-white dim">Ruby</a>
+								<span class="display-print">at http://www.moxleystratton.com/ruby-escape-unescape-encode-decode-html-xml-uri-url/</span>
+							
+						
+					</h2>
+				</div>
+
+				
+				
+				
+				
+
+			</div>
+		</header>
+		
+		<main role="main">
+		
+<article class="center bg-white br-3 pv1 ph4 nested-copy-line-height lh-copy f4 nested-links mw-100 measure-wide">
+	<p>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.</p>
+
+<!-- more -->
+
+<pre><code class="language-ruby">require 'cgi'
+
+# Escape data for URL query parameters
+name = &quot;ruby?&quot;
+value = &quot;yes&quot;
+url = &quot;http://example.com/?&quot; + CGI.escape(name) + '=' + CGI.escape(value) + &quot;&amp;var=T&quot;
+# url: http://example.com/?ruby%3F=yes&amp;var=T
+
+# Escape data for HTML
+url = &quot;http://example.com/?ruby%3F=yes&amp;var=T&quot;
+html = %(&lt;a href=&quot;#{CGI.escapeHTML(url)}&quot;&gt;example&lt;/a&gt;)
+# html: &lt;a href=&quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&quot;&gt;example&lt;/a&gt;
+
+# Unescape HTML-escaped data
+url = CGI.unescapeHTML(&quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&quot;)
+# url: http://example.com/?ruby%3F=yes&amp;var=T
+
+# Parse query params:
+query = &quot;ruby%3F=yes&amp;var=T&quot;
+pairs = query.split('&amp;')    # pairs: [&quot;ruby%3F=yes&quot;, &quot;var=T&quot;]
+name, value = pairs[0].split('=').map{|v| CGI.unescape(v)}
+# name, value: [&quot;ruby?&quot;, &quot;yes&quot;]
+</code></pre>
+
+</article>
+
+		</main>
+		
+				<div class="hide-print sans-serif f6 f5-l mt5 ph3 pb6 center nested-copy-line-height lh-copy nested-links mw-100 measure-wide">
+		<div class="about-the-author">
+		
+			
+			
+				
+					
+				
+			
+		
+		</div>
+		
+	</div>
+
+		
+		
+		
+		<footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3" role="contentinfo">
+			<p class="w-50 fr tr">
+			<a class="no-underline near-white" href="https://github.com/xaprb/story"><img class="dib" title="Made with Hugo and Story" alt="Story logo" src="http://www.moxleystratton.com/img/story-logo-white.svg" style="width: 1.5rem; height: 1.5rem" /></a>
+			</p>
+			<p class="w-50 near-white">
+				&copy; 2018 
+			</p>
+		</footer>
+		
+	
+	
+	</body>
+</html>

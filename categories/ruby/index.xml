@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby on Moxley Stratton</title>
+    <link>http://www.moxleystratton.com/categories/ruby/</link>
+    <description>Recent content in Ruby on Moxley Stratton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 24 Nov 2014 19:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.moxleystratton.com/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sometimes Clojure is More Concise than Ruby</title>
+      <link>http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/</link>
+      <pubDate>Mon, 24 Nov 2014 19:00:00 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/</guid>
+      <description>I find that 90% of the time, Clojure is more verbose than Ruby. Here&amp;rsquo;s one simple example where Clojure wins a conciseness battle:
+;; Subtract two vectors in Clojure (def a [10 9 8]) (def b [1 2 3]) (map - a b) ;; (9 7 5)  # Subtract two vectors in Ruby a = [10, 9, 8] b = [1, 2, 3] a.zip(b).map { |(a, b)| a - b } # [9, 7, 5]  What is it about Ruby that makes it less concise in this example?</description>
+    </item>
+    
+    <item>
+      <title>Finding the source for a given Rails web page</title>
+      <link>http://www.moxleystratton.com/finding-the-source-for-a-given-rails-web-page/</link>
+      <pubDate>Thu, 29 May 2014 12:00:00 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/finding-the-source-for-a-given-rails-web-page/</guid>
+      <description>These tips may help those of you who are relatively new to Rails, or maybe even if you&amp;rsquo;re not.
+Common tips and tricks  Look at the URL path (e.g. /users/100685/edit). Can the action and main view file be determined from CRUD/REST conventions?  /:model/edit -&amp;gt; edit.html.slim /:model/1234 -&amp;gt; show.html.slim /:model/new -&amp;gt; new.html.slim /:model -&amp;gt; index.html.slim  Look up the path in routes.rb, or even more useful, run rake routes  Finding a controller and action responsible for a given page  In development go to your server&amp;rsquo;s output, and clear the screen (Ctrl+L, for Linux, Cmd-K for OS X) Refresh the web page Back to the server&amp;rsquo;s output, scroll to the top of the output.</description>
+    </item>
+    
+    <item>
+      <title>Ruby: Escape, Unescape, Encode, Decode, HTML, XML, URI, URL</title>
+      <link>http://www.moxleystratton.com/ruby-escape-unescape-encode-decode-html-xml-uri-url/</link>
+      <pubDate>Tue, 31 Jul 2007 12:00:00 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/ruby-escape-unescape-encode-decode-html-xml-uri-url/</guid>
+      <description>This example shows you how to escape and un-escape a value to be included in a URI and within HTML.
+require &#39;cgi&#39; # Escape data for URL query parameters name = &amp;quot;ruby?&amp;quot; value = &amp;quot;yes&amp;quot; url = &amp;quot;http://example.com/?&amp;quot; + CGI.escape(name) + &#39;=&#39; + CGI.escape(value) + &amp;quot;&amp;amp;var=T&amp;quot; # url: http://example.com/?ruby%3F=yes&amp;amp;var=T # Escape data for HTML url = &amp;quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&amp;quot; html = %(&amp;lt;a href=&amp;quot;#{CGI.escapeHTML(url)}&amp;quot;&amp;gt;example&amp;lt;/a&amp;gt;) # html: &amp;lt;a href=&amp;quot;http://example.com/?ruby%3F=yes&amp;amp;amp;var=T&amp;quot;&amp;gt;example&amp;lt;/a&amp;gt; # Unescape HTML-escaped data url = CGI.</description>
+    </item>
+    
+  </channel>
+</rss>

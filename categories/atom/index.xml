@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Atom on Moxley Stratton</title>
+    <link>http://www.moxleystratton.com/categories/atom/</link>
+    <description>Recent content in Atom on Moxley Stratton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Feb 2018 10:02:41 -0700</lastBuildDate>
+    
+	<atom:link href="http://www.moxleystratton.com/categories/atom/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Atom Editor Setup for Elixir</title>
+      <link>http://www.moxleystratton.com/atom-elixir-setup/</link>
+      <pubDate>Mon, 05 Feb 2018 10:02:41 -0700</pubDate>
+      
+      <guid>http://www.moxleystratton.com/atom-elixir-setup/</guid>
+      <description>When working with Elixir, I want the following support from my editor: - Elixir syntax highlighting - Compiler errors and warnings displayed when I&amp;rsquo;m editing Elixir code - Automatic Elixir code formatting when I save a file - Automatic dialyzer checking and reporting when I save an Elixir code file
+These are the following plugins that provide those features:
+ language-elixir atom-elixir-formatter ide-elixir  Before installing any of these packages, read their README pages carefully.</description>
+    </item>
+    
+    <item>
+      <title>Considering a switch to the Atom Text Editor?</title>
+      <link>http://www.moxleystratton.com/considering-a-switch-to-the-atom-text-editor/</link>
+      <pubDate>Sun, 16 Mar 2014 12:00:00 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/considering-a-switch-to-the-atom-text-editor/</guid>
+      <description>You&amp;rsquo;ve probably heard of Atom, Github&amp;rsquo;s new text editor. Read these checklists to help you decide whether it&amp;rsquo;s an editor worth switching to.
+General Pros  Open Source High-quality extension and enhancement infrastructure View is programmable using good old HTML DOM and CSS Well-known API model (NodeJS) Built-in Github integration Built-in, light Git integration Realtime Markdown preview Seamlessly tracks external file renames while the file is open Browse archive files, like zip or tar.</description>
+    </item>
+    
+  </channel>
+</rss>

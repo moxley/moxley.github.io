@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Moxley Stratton</title>
+    <link>http://www.moxleystratton.com/categories/javascript/</link>
+    <description>Recent content in Javascript on Moxley Stratton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Jan 2006 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.moxleystratton.com/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bookmarklet Compiler</title>
+      <link>http://www.moxleystratton.com/bookmarklet-compiler/</link>
+      <pubDate>Wed, 11 Jan 2006 12:00:00 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/bookmarklet-compiler/</guid>
+      <description>What are bookmarklets? They&amp;rsquo;re small Javascripts, saved as browser bookmarks, that perform useful functions. Here&amp;rsquo;s my favorite bookmarklet site. It includes the bookmarklet that helped me develop my first Ajax applications: Javascript Shell.
+How do you make a bookmarklet?  Write the javascript that you want to be the bookmarklet. Escape all the special URL characters, like space, parentheses, etc. Wrap the script in an anonymous Javascript function Wrap the function in a Javascript URL (javascript:.</description>
+    </item>
+    
+  </channel>
+</rss>

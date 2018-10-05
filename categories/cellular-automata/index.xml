@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cellular Automata on Moxley Stratton</title>
+    <link>http://www.moxleystratton.com/categories/cellular-automata/</link>
+    <description>Recent content in Cellular Automata on Moxley Stratton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Dec 2012 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.moxleystratton.com/categories/cellular-automata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Simple Cellular Automata</title>
+      <link>http://www.moxleystratton.com/simple-cellular-automata/</link>
+      <pubDate>Sat, 01 Dec 2012 12:00:00 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/simple-cellular-automata/</guid>
+      <description>I released a very simple cellular automata explorer. Try it out here. See the Github page for more information.</description>
+    </item>
+    
+  </channel>
+</rss>

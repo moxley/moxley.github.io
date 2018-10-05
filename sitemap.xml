@@ -1,100 +1,173 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2018/02/05/atom-elixir-setup/</loc>
-    <lastmod>2018-02-05T09:02:41-08:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/atom-elixir-setup/</loc>
+    <lastmod>2018-02-05T10:02:41-07:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2017/12/28/elixir-abstract-syntax/</loc>
-    <lastmod>2017-12-28T09:02:41-08:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/elixir-abstract-syntax/</loc>
+    <lastmod>2017-12-28T10:02:41-07:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2017/08/09/install-redis-on-macos-with-homebrew/</loc>
+    <loc>http://www.moxleystratton.com/install-redis-on-macos-with-homebrew/</loc>
     <lastmod>2017-08-09T10:02:41-07:00</lastmod>
-    <priority>0.8</priority>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2017/08/09/install-elixir-on-macos-using-asdf/</loc>
+    <loc>http://www.moxleystratton.com/install-elixir-on-macos-using-asdf/</loc>
     <lastmod>2017-08-09T09:45:01-07:00</lastmod>
-    <priority>0.8</priority>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2015/09/27/low-level-activerecord/</loc>
+    <loc>http://www.moxleystratton.com/low-level-activerecord/</loc>
     <lastmod>2015-09-27T10:58:40-07:00</lastmod>
-    <priority>0.8</priority>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2014/11/29/switching-to-octopress-from-wordpress/</loc>
+    <loc>http://www.moxleystratton.com/switching-to-octopress-from-wordpress/</loc>
     <lastmod>2014-11-29T11:34:20-08:00</lastmod>
-    <priority>0.8</priority>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2014/11/24/sometimes-clojure-is-more-concise-than-ruby/</loc>
-    <lastmod>2014-11-24T19:00:00-08:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/</loc>
+    <lastmod>2014-11-24T19:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2014/05/29/finding-the-source-for-a-given-rails-web-page/</loc>
-    <lastmod>2014-05-29T12:00:00-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/finding-the-source-for-a-given-rails-web-page/</loc>
+    <lastmod>2014-05-29T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2014/03/16/considering-a-switch-to-the-atom-text-editor/</loc>
-    <lastmod>2014-03-16T12:00:00-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/considering-a-switch-to-the-atom-text-editor/</loc>
+    <lastmod>2014-03-16T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2012/12/01/simple-cellular-automata/</loc>
-    <lastmod>2012-12-01T12:00:00-08:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/simple-cellular-automata/</loc>
+    <lastmod>2012-12-01T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2012/05/11/ten-secret-key-bindings/</loc>
-    <lastmod>2012-05-11T12:00:00-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/ten-secret-key-bindings/</loc>
+    <lastmod>2012-05-11T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2012/04/13/injection/</loc>
-    <lastmod>2012-04-13T12:00:00-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/injection/</loc>
+    <lastmod>2012-04-13T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2008/05/01/clojure-tutorial-for-the-non-lisp-programmer/</loc>
-    <lastmod>2008-05-01T12:00:00-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/clojure-tutorial-for-the-non-lisp-programmer/</loc>
+    <lastmod>2008-05-01T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/</loc>
-    <lastmod>2007-07-31T12:00:00-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/ruby-escape-unescape-encode-decode-html-xml-uri-url/</loc>
+    <lastmod>2007-07-31T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/2006/01/11/bookmarklet-compiler/</loc>
-    <lastmod>2006-01-11T12:00:00-08:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://www.moxleystratton.com/bookmarklet-compiler/</loc>
+    <lastmod>2006-01-11T12:00:00+00:00</lastmod>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/blog/archives/</loc>
-    <lastmod>2018-02-05T09:54:32-08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>http://www.moxleystratton.com/search/</loc>
   </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/activerecord/</loc>
+    <lastmod>2015-09-27T10:58:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/atom/</loc>
+    <lastmod>2018-02-05T10:02:41-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/</loc>
+    <lastmod>2015-09-27T10:58:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/cellular-automata/</loc>
+    <lastmod>2012-12-01T12:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/clojure/</loc>
+    <lastmod>2014-11-24T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/coding/</loc>
+    <lastmod>2014-03-16T12:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/elixir/</loc>
+    <lastmod>2018-02-05T10:02:41-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/javascript/</loc>
+    <lastmod>2006-01-11T12:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
   <url>
     <loc>http://www.moxleystratton.com/</loc>
-    <lastmod>2018-02-05T09:54:32-08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2018-02-05T10:02:41-07:00</lastmod>
+    <priority>0</priority>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/cellauto/cellauto.html</loc>
-    <lastmod>2015-09-27T11:46:22-07:00</lastmod>
-    <priority>0.6</priority>
+    <loc>http://www.moxleystratton.com/categories/os-x/</loc>
+    <lastmod>2012-05-11T12:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
+  
   <url>
-    <loc>http://www.moxleystratton.com/files/sqittle.html</loc>
-    <lastmod>2015-09-27T11:46:22-07:00</lastmod>
-    <priority>0.6</priority>
+    <loc>http://www.moxleystratton.com/categories/programming/</loc>
+    <lastmod>2015-09-27T10:58:40-07:00</lastmod>
+    <priority>0</priority>
   </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/rails/</loc>
+    <lastmod>2015-09-27T10:58:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/ruby/</loc>
+    <lastmod>2014-11-24T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/text-editors/</loc>
+    <lastmod>2014-03-16T12:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
 </urlset>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elixir on Moxley Stratton</title>
+    <link>http://www.moxleystratton.com/categories/elixir/</link>
+    <description>Recent content in Elixir on Moxley Stratton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Feb 2018 10:02:41 -0700</lastBuildDate>
+    
+	<atom:link href="http://www.moxleystratton.com/categories/elixir/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Atom Editor Setup for Elixir</title>
+      <link>http://www.moxleystratton.com/atom-elixir-setup/</link>
+      <pubDate>Mon, 05 Feb 2018 10:02:41 -0700</pubDate>
+      
+      <guid>http://www.moxleystratton.com/atom-elixir-setup/</guid>
+      <description>When working with Elixir, I want the following support from my editor: - Elixir syntax highlighting - Compiler errors and warnings displayed when I&amp;rsquo;m editing Elixir code - Automatic Elixir code formatting when I save a file - Automatic dialyzer checking and reporting when I save an Elixir code file
+These are the following plugins that provide those features:
+ language-elixir atom-elixir-formatter ide-elixir  Before installing any of these packages, read their README pages carefully.</description>
+    </item>
+    
+    <item>
+      <title>Elixir Abstract Syntax</title>
+      <link>http://www.moxleystratton.com/elixir-abstract-syntax/</link>
+      <pubDate>Thu, 28 Dec 2017 10:02:41 -0700</pubDate>
+      
+      <guid>http://www.moxleystratton.com/elixir-abstract-syntax/</guid>
+      <description>As developers know, program source code is represented as lines of text.
+The Abstract Syntax Tree (AST) is the representation of the source code as a hierarchical data graph, specifically a tree structure. With an AST, much of the difficult work parsing the original source code has been performed, and the syntax can be introspected programatically.
+Similar to an AST, the Abstract Semantic Graph (ASG) is a graph of the semantic representation of the source code.</description>
+    </item>
+    
+  </channel>
+</rss>
