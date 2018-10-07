@@ -6,7 +6,7 @@
     <description>Recent content in Atom on Moxley Stratton</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Feb 2018 10:02:41 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 06 Oct 2018 10:02:41 -0700</lastBuildDate>
     
 	<atom:link href="http://www.moxleystratton.com/categories/atom/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,12 +14,12 @@
     <item>
       <title>Atom Editor Setup for Elixir</title>
       <link>http://www.moxleystratton.com/atom-elixir-setup/</link>
-      <pubDate>Mon, 05 Feb 2018 10:02:41 -0700</pubDate>
+      <pubDate>Sat, 06 Oct 2018 10:02:41 -0700</pubDate>
       
       <guid>http://www.moxleystratton.com/atom-elixir-setup/</guid>
-      <description>When working with Elixir, I want the following support from my editor: - Elixir syntax highlighting - Compiler errors and warnings displayed when I&amp;rsquo;m editing Elixir code - Automatic Elixir code formatting when I save a file - Automatic dialyzer checking and reporting when I save an Elixir code file
-These are the following plugins that provide those features:
- language-elixir atom-elixir-formatter ide-elixir  Before installing any of these packages, read their README pages carefully.</description>
+      <description>When working with Elixir, I want the following support from my editor:
+ Elixir syntax highlighting Compiler errors and warnings displayed while I&amp;rsquo;m editing Elixir code Automatic Elixir code formatting Automatic Dialyzer checking and reporting when I save an Elixir code file  These are the following plugins that provide those features:
+ language-elixir ide-elixir atom-elixir-formatter linter-elixir-credo  Before installing any of these packages, read their README pages carefully.</description>
     </item>
     
     <item>

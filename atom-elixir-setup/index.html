@@ -59,7 +59,7 @@
 						
 							
 								Published
-								<time datetime="2018-02-05T10:02:41-07:00">Feb 5, 2018</time>
+								<time datetime="2018-10-06T10:02:41-07:00">Oct 6, 2018</time>
 								<span class="display-print">by </span>
 								 in <a href="http://www.moxleystratton.com/categories//elixir" class="no-underline category near-white dim">Elixir</a>, <a href="http://www.moxleystratton.com/categories//atom" class="no-underline category near-white dim">Atom</a>
 								<span class="display-print">at http://www.moxleystratton.com/atom-elixir-setup/</span>
@@ -81,41 +81,58 @@
 <article class="center bg-white br-3 pv1 ph4 nested-copy-line-height lh-copy f4 nested-links mw-100 measure-wide">
 	
 
-<p>When working with Elixir, I want the following support from my editor:
-- Elixir syntax highlighting
-- Compiler errors and warnings displayed when I&rsquo;m editing Elixir code
-- Automatic Elixir code formatting when I save a file
-- Automatic dialyzer checking and reporting when I save an Elixir code file</p>
+<p>When working with Elixir, I want the following support from my editor:</p>
+
+<ul>
+<li>Elixir syntax highlighting</li>
+<li>Compiler errors and warnings displayed while I&rsquo;m editing Elixir code</li>
+<li>Automatic Elixir code formatting</li>
+<li>Automatic <a href="http://hex.pm/packages/dialyxer">Dialyzer</a> checking and reporting when I save an Elixir code file</li>
+</ul>
 
 <p>These are the following plugins that provide those features:</p>
 
 <ul>
 <li><code>language-elixir</code></li>
-<li><code>atom-elixir-formatter</code></li>
 <li><code>ide-elixir</code></li>
+<li><code>atom-elixir-formatter</code></li>
+<li><code>linter-elixir-credo</code></li>
 </ul>
 
 <p>Before installing any of these packages, read their README pages carefully.</p>
 
 <h2 id="language-elixir">language-elixir</h2>
 
+<p><a href="https://atom.io/packages/language-elixir">https://atom.io/packages/language-elixir</a></p>
+
 <p>This is the minimal package you want to use when developing Elixir code.
 It provides code syntax highlighting.</p>
 
 <h2 id="ide-elixir">ide-elixir</h2>
 
-<p>The most value I get out of IDE Elixir is the feedback I get from its integration
-with the Elixir compiler and Dialyzer.</p>
+<p><a href="https://atom.io/packages/ide-elixir">https://atom.io/packages/ide-elixir</a></p>
 
-<p>If you don&rsquo;t care so much about the Dialyzer support, and you want something more
-lightweight, I recommend <code>linter-elixirc</code>.</p>
+<p>The most value I get out of IDE Elixir is the feedback it gives from the Elixir
+compiler, and from <a href="http://hex.pm/packages/dialyxer">Dialyzer</a>.</p>
+
+<p>If you don&rsquo;t care so much about the Dialyzer support, and you want something
+more lightweight, I recommend <a
+href="https://atom.io/packages/linter-elixirc"><code>linter-elixirc</code></a>.</p>
 
 <h2 id="atom-elixir-formatter">atom-elixir-formatter</h2>
 
-<p>Utility that formats Elixir code with the Elixir Formatter. One side utility of
-this package is that it allows you to paste in large data structures from test
-output into your test or fixtures, then easily format the resulting code. It
-only works if you have Elixir 1.6 or higher.</p>
+<p><a href="https://atom.io/packages/atom-elixir-formatter">https://atom.io/packages/atom-elixir-formatter</a></p>
+
+<p>This package formats Elixir code with the Elixir Formatter, which is built into
+Elixir 1.6 and up. One side utility of this package is that it allows you to
+paste in large data structures from test output into your test or fixtures, then
+easily format the resulting code.</p>
+
+<h2 id="linter-elixir-credo">linter-elixir-credo</h2>
+
+<p><a href="https://atom.io/packages/linter-elixir-credo">https://atom.io/packages/linter-elixir-credo</a></p>
+
+<p>This package integrates with Credo to report into code style and consistency.</p>
 
 </article>
 

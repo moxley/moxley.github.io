@@ -6,20 +6,10 @@
     <description>Recent content in Clojure on Moxley Stratton</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Nov 2014 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 May 2008 12:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.moxleystratton.com/categories/clojure/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Sometimes Clojure is More Concise than Ruby</title>
-      <link>http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/</link>
-      <pubDate>Mon, 24 Nov 2014 19:00:00 +0000</pubDate>
-      
-      <guid>http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/</guid>
-      <description>I find that 90% of the time, Clojure is more verbose than Ruby. Here&amp;rsquo;s one simple example where Clojure wins a conciseness battle:
-;; Subtract two vectors in Clojure (def a [10 9 8]) (def b [1 2 3]) (map - a b) ;; (9 7 5)  # Subtract two vectors in Ruby a = [10, 9, 8] b = [1, 2, 3] a.zip(b).map { |(a, b)| a - b } # [9, 7, 5]  What is it about Ruby that makes it less concise in this example?</description>
-    </item>
     
     <item>
       <title>Clojure Tutorial for the Non-Lisp Programmer</title>

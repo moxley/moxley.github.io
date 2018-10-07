@@ -75,7 +75,7 @@
 				
 				<div class="mb4 mb0-ns w-100 h4 h4-m w4-m h5-ns w5-ns br3 cover hide-child" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.tn-500x500.jpg'); background-position: center;">
 					<a href="http://www.moxleystratton.com/atom-elixir-setup/" class="db child w-100 h-100 f7 lh-copy white no-underline br3 ph3 pt4 pt5-l ttu tc bg-black-60">
-						<i class="mt3 mt5-l child far fa-calendar-alt"> Feb 5, 2018</i>
+						<i class="mt3 mt5-l child far fa-calendar-alt"> Oct 6, 2018</i>
 					</a>
 				</div>
 				
@@ -83,9 +83,9 @@
 					<h1 class="f3 fw1 mt0 lh-title"><a href="http://www.moxleystratton.com/atom-elixir-setup/" class="color-inherit dim link">Atom Editor Setup for Elixir</a></h1>
 					<div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
 						
-							When working with Elixir, I want the following support from my editor: - Elixir syntax highlighting - Compiler errors and warnings displayed when I&rsquo;m editing Elixir code - Automatic Elixir code formatting when I save a file - Automatic dialyzer checking and reporting when I save an Elixir code file
-These are the following plugins that provide those features:
- language-elixir atom-elixir-formatter ide-elixir  Before installing any of these packages, read their README pages carefully.
+							When working with Elixir, I want the following support from my editor:
+ Elixir syntax highlighting Compiler errors and warnings displayed while I&rsquo;m editing Elixir code Automatic Elixir code formatting Automatic Dialyzer checking and reporting when I save an Elixir code file  These are the following plugins that provide those features:
+ language-elixir ide-elixir atom-elixir-formatter linter-elixir-credo  Before installing any of these packages, read their README pages carefully.
 							<p class="pa0 sans-serif f7"><a class="ba br3 pa2 link" href="http://www.moxleystratton.com/atom-elixir-setup/">Continue Reading <i class="fas fa-chevron-circle-right"></i></a></p>
 						
 					</div>
@@ -216,59 +216,6 @@ users = User.find_by_sql([&quot;SELECT * FROM users WHERE id = ?
 			<div class="flex flex-column flex-row-ns">
 				
 				<div class="mb4 mb0-ns w-100 h4 h4-m w4-m h5-ns w5-ns br3 cover hide-child" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.tn-500x500.jpg'); background-position: center;">
-					<a href="http://www.moxleystratton.com/switching-to-octopress-from-wordpress/" class="db child w-100 h-100 f7 lh-copy white no-underline br3 ph3 pt4 pt5-l ttu tc bg-black-60">
-						<i class="mt3 mt5-l child far fa-calendar-alt"> Nov 29, 2014</i>
-					</a>
-				</div>
-				
-				<div class="w-100 w6-ns pl3-ns">
-					<h1 class="f3 fw1 mt0 lh-title"><a href="http://www.moxleystratton.com/switching-to-octopress-from-wordpress/" class="color-inherit dim link">Switching to Octopress from Wordpress</a></h1>
-					<div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-						
-							Wordpress has been my blogging platform for the last two years, and Drupal for a few years before that. Both are written in PHP and both were installed and maintained on a traditional shared hosting account. I would have stuck with Wordpress if it weren&rsquo;t for it&rsquo;s lack of robust Markdown language support. Writing a coder&rsquo;s blog requires code samples, usually in multiple languages. Github&rsquo;s flavor of Markdown has proved to be an excellent language for authoring content that includes code samples, and Octopress supports it by default.
-							<p class="pa0 sans-serif f7"><a class="ba br3 pa2 link" href="http://www.moxleystratton.com/switching-to-octopress-from-wordpress/">Continue Reading <i class="fas fa-chevron-circle-right"></i></a></p>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</article>
-</div>
-
-		
-			<div class="relative w-100">
-	<article class="bb b--black-10">
-		<div class="db pv4 ph3 ph0-l no-underline dark-gray">
-			<div class="flex flex-column flex-row-ns">
-				
-				<div class="mb4 mb0-ns w-100 h4 h4-m w4-m h5-ns w5-ns br3 cover hide-child" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.tn-500x500.jpg'); background-position: center;">
-					<a href="http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/" class="db child w-100 h-100 f7 lh-copy white no-underline br3 ph3 pt4 pt5-l ttu tc bg-black-60">
-						<i class="mt3 mt5-l child far fa-calendar-alt"> Nov 24, 2014</i>
-					</a>
-				</div>
-				
-				<div class="w-100 w6-ns pl3-ns">
-					<h1 class="f3 fw1 mt0 lh-title"><a href="http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/" class="color-inherit dim link">Sometimes Clojure is More Concise than Ruby</a></h1>
-					<div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-						
-							I find that 90% of the time, Clojure is more verbose than Ruby. Here&rsquo;s one simple example where Clojure wins a conciseness battle:
-;; Subtract two vectors in Clojure (def a [10 9 8]) (def b [1 2 3]) (map - a b) ;; (9 7 5)  # Subtract two vectors in Ruby a = [10, 9, 8] b = [1, 2, 3] a.zip(b).map { |(a, b)| a - b } # [9, 7, 5]  What is it about Ruby that makes it less concise in this example?
-							<p class="pa0 sans-serif f7"><a class="ba br3 pa2 link" href="http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/">Continue Reading <i class="fas fa-chevron-circle-right"></i></a></p>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</article>
-</div>
-
-		
-			<div class="relative w-100">
-	<article class="bb b--black-10">
-		<div class="db pv4 ph3 ph0-l no-underline dark-gray">
-			<div class="flex flex-column flex-row-ns">
-				
-				<div class="mb4 mb0-ns w-100 h4 h4-m w4-m h5-ns w5-ns br3 cover hide-child" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.tn-500x500.jpg'); background-position: center;">
 					<a href="http://www.moxleystratton.com/finding-the-source-for-a-given-rails-web-page/" class="db child w-100 h-100 f7 lh-copy white no-underline br3 ph3 pt4 pt5-l ttu tc bg-black-60">
 						<i class="mt3 mt5-l child far fa-calendar-alt"> May 29, 2014</i>
 					</a>
@@ -334,6 +281,61 @@ General Pros  Open Source High-quality extension and enhancement infrastructure 
 						
 							I released a very simple cellular automata explorer. Try it out here. See the Github page for more information.
 							<p class="pa0 sans-serif f7"><a class="ba br3 pa2 link" href="http://www.moxleystratton.com/simple-cellular-automata/">Continue Reading <i class="fas fa-chevron-circle-right"></i></a></p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+</div>
+
+		
+			<div class="relative w-100">
+	<article class="bb b--black-10">
+		<div class="db pv4 ph3 ph0-l no-underline dark-gray">
+			<div class="flex flex-column flex-row-ns">
+				
+				<div class="mb4 mb0-ns w-100 h4 h4-m w4-m h5-ns w5-ns br3 cover hide-child" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.tn-500x500.jpg'); background-position: center;">
+					<a href="http://www.moxleystratton.com/ten-secret-key-bindings/" class="db child w-100 h-100 f7 lh-copy white no-underline br3 ph3 pt4 pt5-l ttu tc bg-black-60">
+						<i class="mt3 mt5-l child far fa-calendar-alt"> May 11, 2012</i>
+					</a>
+				</div>
+				
+				<div class="w-100 w6-ns pl3-ns">
+					<h1 class="f3 fw1 mt0 lh-title"><a href="http://www.moxleystratton.com/ten-secret-key-bindings/" class="color-inherit dim link">Ten Secret Key Bindings from OS X</a></h1>
+					<div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+						
+							Did you know that when using these applications:
+ Any application on OS X, except Vim and MS products Bash, or any console program with Readline support  These key bindings are available:
+ Control-A - Move to beginning of line Control-E - Move to end of line Control-F - Move forward one column Control-B - Move backward one column Control-N - Move to next line Control-P - Move to previous line Control-D - Delete next character Control-H - Delete previous character Control-K - Delete from cursor to end of line Control-Y - Paste what was deleted with Control-K  It seems silly, but the thing I love the most about OS X is the ubiquity of these key bindings.
+							<p class="pa0 sans-serif f7"><a class="ba br3 pa2 link" href="http://www.moxleystratton.com/ten-secret-key-bindings/">Continue Reading <i class="fas fa-chevron-circle-right"></i></a></p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+</div>
+
+		
+			<div class="relative w-100">
+	<article class="bb b--black-10">
+		<div class="db pv4 ph3 ph0-l no-underline dark-gray">
+			<div class="flex flex-column flex-row-ns">
+				
+				<div class="mb4 mb0-ns w-100 h4 h4-m w4-m h5-ns w5-ns br3 cover hide-child" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.tn-500x500.jpg'); background-position: center;">
+					<a href="http://www.moxleystratton.com/injection/" class="db child w-100 h-100 f7 lh-copy white no-underline br3 ph3 pt4 pt5-l ttu tc bg-black-60">
+						<i class="mt3 mt5-l child far fa-calendar-alt"> Apr 13, 2012</i>
+					</a>
+				</div>
+				
+				<div class="w-100 w6-ns pl3-ns">
+					<h1 class="f3 fw1 mt0 lh-title"><a href="http://www.moxleystratton.com/injection/" class="color-inherit dim link">Injection</a></h1>
+					<div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+						
+							Within the world of application development, there is a conspiracy.
+$sql = &quot;SELECT * FROM users WHERE username='&quot; . $username . &quot;'&quot;;  What&rsquo;s wrong with this code? The problem is that $username needs to be escaped before it can be put into the SQL statement. If $username contains single quotes, the SQL statement will do something you did not intend. If you already know this, stick around, there&rsquo;s more to this story.
+							<p class="pa0 sans-serif f7"><a class="ba br3 pa2 link" href="http://www.moxleystratton.com/injection/">Continue Reading <i class="fas fa-chevron-circle-right"></i></a></p>
 						
 					</div>
 				</div>

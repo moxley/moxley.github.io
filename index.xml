@@ -7,51 +7,68 @@
 		<language>en-us</language>
 		<author></author>
 		<rights>Copyright (c) 2018</rights>
-		<updated>2018-02-05 10:02:41 -0700 -0700</updated>
+		<updated>2018-10-06 10:02:41 -0700 PDT</updated>
 		
 		<item>
 			<title>Atom Editor Setup for Elixir</title>
 			<link>http://www.moxleystratton.com/atom-elixir-setup/</link>
-			<pubDate>Mon, 05 Feb 2018 10:02:41 -0700</pubDate>
+			<pubDate>Sat, 06 Oct 2018 10:02:41 PDT</pubDate>
 			<author></author>
 			<guid>http://www.moxleystratton.com/atom-elixir-setup/</guid>
 			<description>
 
-&lt;p&gt;When working with Elixir, I want the following support from my editor:
-- Elixir syntax highlighting
-- Compiler errors and warnings displayed when I&amp;rsquo;m editing Elixir code
-- Automatic Elixir code formatting when I save a file
-- Automatic dialyzer checking and reporting when I save an Elixir code file&lt;/p&gt;
+&lt;p&gt;When working with Elixir, I want the following support from my editor:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Elixir syntax highlighting&lt;/li&gt;
+&lt;li&gt;Compiler errors and warnings displayed while I&amp;rsquo;m editing Elixir code&lt;/li&gt;
+&lt;li&gt;Automatic Elixir code formatting&lt;/li&gt;
+&lt;li&gt;Automatic &lt;a href=&#34;http://hex.pm/packages/dialyxer&#34;&gt;Dialyzer&lt;/a&gt; checking and reporting when I save an Elixir code file&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;These are the following plugins that provide those features:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;language-elixir&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;atom-elixir-formatter&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;ide-elixir&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;atom-elixir-formatter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;linter-elixir-credo&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Before installing any of these packages, read their README pages carefully.&lt;/p&gt;
 
 &lt;h2 id=&#34;language-elixir&#34;&gt;language-elixir&lt;/h2&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://atom.io/packages/language-elixir&#34;&gt;https://atom.io/packages/language-elixir&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;This is the minimal package you want to use when developing Elixir code.
 It provides code syntax highlighting.&lt;/p&gt;
 
 &lt;h2 id=&#34;ide-elixir&#34;&gt;ide-elixir&lt;/h2&gt;
 
-&lt;p&gt;The most value I get out of IDE Elixir is the feedback I get from its integration
-with the Elixir compiler and Dialyzer.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://atom.io/packages/ide-elixir&#34;&gt;https://atom.io/packages/ide-elixir&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;If you don&amp;rsquo;t care so much about the Dialyzer support, and you want something more
-lightweight, I recommend &lt;code&gt;linter-elixirc&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The most value I get out of IDE Elixir is the feedback it gives from the Elixir
+compiler, and from &lt;a href=&#34;http://hex.pm/packages/dialyxer&#34;&gt;Dialyzer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t care so much about the Dialyzer support, and you want something
+more lightweight, I recommend &lt;a
+href=&#34;https://atom.io/packages/linter-elixirc&#34;&gt;&lt;code&gt;linter-elixirc&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;atom-elixir-formatter&#34;&gt;atom-elixir-formatter&lt;/h2&gt;
 
-&lt;p&gt;Utility that formats Elixir code with the Elixir Formatter. One side utility of
-this package is that it allows you to paste in large data structures from test
-output into your test or fixtures, then easily format the resulting code. It
-only works if you have Elixir 1.6 or higher.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://atom.io/packages/atom-elixir-formatter&#34;&gt;https://atom.io/packages/atom-elixir-formatter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This package formats Elixir code with the Elixir Formatter, which is built into
+Elixir 1.6 and up. One side utility of this package is that it allows you to
+paste in large data structures from test output into your test or fixtures, then
+easily format the resulting code.&lt;/p&gt;
+
+&lt;h2 id=&#34;linter-elixir-credo&#34;&gt;linter-elixir-credo&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://atom.io/packages/linter-elixir-credo&#34;&gt;https://atom.io/packages/linter-elixir-credo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This package integrates with Credo to report into code style and consistency.&lt;/p&gt;
 </description>
 		</item>
 		
@@ -517,69 +534,6 @@ ActiveRecord provides &lt;code&gt;#structure_load&lt;/code&gt;:&lt;/p&gt;
 sql_file = &amp;quot;tmp/foo.sql&amp;quot;
 ActiveRecord::Tasks::DatabaseTasks.structure_load(config, sql_file)
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-		</item>
-		
-		<item>
-			<title>Switching to Octopress from Wordpress</title>
-			<link>http://www.moxleystratton.com/switching-to-octopress-from-wordpress/</link>
-			<pubDate>Sat, 29 Nov 2014 11:34:20 PST</pubDate>
-			<author></author>
-			<guid>http://www.moxleystratton.com/switching-to-octopress-from-wordpress/</guid>
-			<description>&lt;p&gt;&lt;img src=&#34;http://cl.ly/image/1k3O2Y023s1u/octopress-atom.jpg&#34; alt=&#34;octopress post in atom&#34; title=&#34;Octopress and Atom - A potent combination&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Wordpress has been my blogging platform for the last two years, and
-Drupal for a few years before that. Both are written in PHP and both
-were installed and maintained on a traditional shared hosting account.
-I would have stuck with Wordpress if it weren&amp;rsquo;t for it&amp;rsquo;s lack of robust
-Markdown language support. Writing a coder&amp;rsquo;s blog requires code samples,
-usually in multiple languages. Github&amp;rsquo;s flavor of Markdown has proved to be
-an excellent language for authoring content that includes code samples, and
-Octopress supports it by default.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt;
-is a wrapper around &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;, and Jekyll is well suited for
-publishing a blog to a Github&amp;rsquo;s Pages service. Since Jekyll only generates a
-static site, it can be much faster than a PHP solution like Wordpress or Drupal.
-When used in conjunction with the &lt;a href=&#34;https://atom.io/&#34;&gt;Atom text editor&lt;/a&gt;,
-Octopress becomes a powerful blogging platform.&lt;/p&gt;
-</description>
-		</item>
-		
-		<item>
-			<title>Sometimes Clojure is More Concise than Ruby</title>
-			<link>http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/</link>
-			<pubDate>Mon, 24 Nov 2014 19:00:00 UTC</pubDate>
-			<author></author>
-			<guid>http://www.moxleystratton.com/sometimes-clojure-is-more-concise-than-ruby/</guid>
-			<description>&lt;p&gt;I find that 90% of the time, Clojure is more verbose than Ruby. Here&amp;rsquo;s one simple example where Clojure wins a conciseness battle:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-clojure&#34;&gt;;; Subtract two vectors in Clojure
-(def a [10 9 8])
-(def b [1 2 3])
-(map - a b)
-;; (9 7 5)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Subtract two vectors in Ruby
-a = [10, 9, 8]
-b = [1, 2, 3]
-a.zip(b).map { |(a, b)| a - b }
-# [9, 7, 5]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;What is it about Ruby that makes it less concise in this example?&lt;/p&gt;
-
-&lt;p&gt;In my opinion, the OOP nature of Ruby gets in the way. In OOP, there is a message receiver
-(the object), plus zero or more arguments. In Clojure, there is no receiver, only arguments.
-In Ruby, the two arguments to Clojure&amp;rsquo;s &lt;code&gt;map&lt;/code&gt; call have to be split up into the receiver
-and the first argument. Additionally, the arguments to Ruby&amp;rsquo;s &lt;code&gt;map&lt;/code&gt; arrive as a single
-array instead of of two distinct scalar arguments. This requires the destructor
-parentheses inside the &lt;code&gt;map&lt;/code&gt; block.&lt;/p&gt;
-
-&lt;p&gt;The syntactical division between a receiver and it&amp;rsquo;s arguments is usually not a problem.
-But every once in a while, it gets in the way. Another division in OOP is between class
-and instance. I&amp;rsquo;ve found that this division can sometimes get in the way too.&lt;/p&gt;
 </description>
 		</item>
 		
