@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.moxleystratton.com/tensorflow-macos/</loc>
+    <lastmod>2018-11-26T03:06:44+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.moxleystratton.com/atom-elixir-setup/</loc>
     <lastmod>2018-10-06T10:02:41-07:00</lastmod>
   </url>
@@ -117,7 +122,7 @@
   
   <url>
     <loc>http://www.moxleystratton.com/</loc>
-    <lastmod>2018-10-06T10:02:41-07:00</lastmod>
+    <lastmod>2018-11-26T03:06:44+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -151,6 +156,12 @@
   
   <url>
     <loc>http://www.moxleystratton.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.moxleystratton.com/categories/tensorflow/</loc>
+    <lastmod>2018-11-26T03:06:44+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -7,7 +7,33 @@
 		<language>en-us</language>
 		<author></author>
 		<rights>Copyright (c) 2018</rights>
-		<updated>2018-10-06 10:02:41 -0700 PDT</updated>
+		<updated>2018-11-26 03:06:44 &#43;0000 UTC</updated>
+		
+		<item>
+			<title>TensorFlow on MacOS</title>
+			<link>http://www.moxleystratton.com/tensorflow-macos/</link>
+			<pubDate>Mon, 26 Nov 2018 03:06:44 UTC</pubDate>
+			<author></author>
+			<guid>http://www.moxleystratton.com/tensorflow-macos/</guid>
+			<description>&lt;p&gt;I was very excited to start running TensorFlow Python programs on my Mac.&lt;/p&gt;
+
+&lt;p&gt;I installed it using PIP, using the instructions provided by &lt;a href=&#34;https://www.tensorflow.org/&#34;&gt;TensorFlow.org&lt;/a&gt;. On running my first TensorFlow program, the first thing it output was:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2018-11-25 19:13:07.524017: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This didn&amp;rsquo;t look good, it turned out it&amp;rsquo;s just a warning. My program worked, but wasn&amp;rsquo;t running
+as fast as it could. I don&amp;rsquo;t want to be hobbled by an inferior version of TensorFlow. I want the
+optimized version!&lt;/p&gt;
+
+&lt;p&gt;After some investigation, the way to resolve the warning is to compile TensorFlow from source:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.tensorflow.org/install/source&#34;&gt;https://www.tensorflow.org/install/source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;When installing from source, the installer will prompt you for options. To keep things simple and maximize
+the chance of success, use the default values provided.&lt;/p&gt;
+</description>
+		</item>
 		
 		<item>
 			<title>Atom Editor Setup for Elixir</title>
