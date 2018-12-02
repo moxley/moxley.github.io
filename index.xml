@@ -62,7 +62,6 @@ the neuron becomes equivalent to its activation function.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import tensorflow as tf
 from tensorflow import keras
-from tensorflow.contrib import eager as tfe
 import numpy as np
 import matplotlib.pyplot as plt
 &lt;/code&gt;&lt;/pre&gt;
