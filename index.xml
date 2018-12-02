@@ -47,7 +47,7 @@ a very simple neural network.&lt;/p&gt;
 &lt;p&gt;Defined as a user story:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;As a Tensorflow programmer&lt;/li&gt;
+&lt;li&gt;As a TensorFlow programmer&lt;/li&gt;
 &lt;li&gt;I want the ability to read a model&amp;rsquo;s parameters during training&lt;/li&gt;
 &lt;li&gt;So that I can visualize them&lt;/li&gt;
 &lt;/ul&gt;
