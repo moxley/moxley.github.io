@@ -6,10 +6,21 @@
     <description>Recent content in Tensorflow on Moxley Stratton</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Nov 2018 03:06:44 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Nov 2018 03:49:14 +0000</lastBuildDate>
     
 	<atom:link href="http://www.moxleystratton.com/categories/tensorflow/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Visualizing Neuron Weights with Tensorflow</title>
+      <link>http://www.moxleystratton.com/tensorflow-visualizing-weights/</link>
+      <pubDate>Mon, 26 Nov 2018 03:49:14 +0000</pubDate>
+      
+      <guid>http://www.moxleystratton.com/tensorflow-visualizing-weights/</guid>
+      <description>I have a deep interest in knowing exactly how a neural network works. Not only do I want to know the theory, I want to know&amp;ndash; in practice&amp;ndash; what&amp;rsquo;s happening to the neuron&amp;rsquo;s weights as the network is being trained.
+With TensorFlow, it took a lot of work and investigation to finally get to a point where I had something that visualized weights being trained.
+It seemed that TensorFlow was putting roadblocks at every possible path to getting the valuees of the changing weights.</description>
+    </item>
     
     <item>
       <title>TensorFlow on MacOS</title>

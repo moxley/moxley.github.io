@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Visualizing Neuron Weights with Tensorflow</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.moxleystratton.com/index.xml">
+		<link rel="canonical" href="http://www.moxleystratton.com/tensorflow-visualizing-weights/">
+		
+		<link rel="shortcut icon" type="image/png" href="http://www.moxleystratton.com/apple-touch-icon-precomposed.png">
+		
+		
+		<meta name="generator" content="Hugo 0.49" />
+
+		
+		<meta name="og:title" content="Visualizing Neuron Weights with Tensorflow" />
+		<meta name="og:type" content="article" />
+		<meta name="og:image" content="http://www.moxleystratton.com/img/default-header-img.jpg" />
+		<meta name="og:description" content="" />
+		<meta name="og:url" content="http://www.moxleystratton.com/tensorflow-visualizing-weights/" />
+		<meta name="og:site_name" content="Visualizing Neuron Weights with Tensorflow" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@" />
+
+
+		
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/tachyons.min.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/story.css" />
+		<link rel="stylesheet" href="http://www.moxleystratton.com/css/descartes.css" />
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="http://www.moxleystratton.com/js/story.js"></script>
+
+	</head>
+	<body class="ma0 bg-white  page-kind-page is-page-true ">
+		
+		<header class="cover bg-top" style="background-image: url('http://www.moxleystratton.com/img/default-header-img.jpg'); background-position: center;">
+			<div class="bg-black-30 bb bt">
+
+				<nav class="hide-print sans-serif  border-box pa3 ph5-l">
+					<a href="http://www.moxleystratton.com/" title="Home">
+						<img src="http://www.moxleystratton.com/img/logo.jpg" class="w2 h2 br-100" alt="Moxley Stratton" />
+					</a>
+					<div class="fr h2 pv2 tr">
+						<a class="link f5 ml2 dim near-white fas fa-rss-square" href="http://www.moxleystratton.com/index.xml" title="RSS Feed"></a>
+						<a class="link f5 ml2 dim near-white fas fa-search" href="http://www.moxleystratton.com/search/" role="search" title="Search"></a>
+					</div>
+				</nav>
+
+				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
+					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Visualizing Neuron Weights with Tensorflow</h1>
+					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
+						
+						
+							
+								Published
+								<time datetime="2018-11-26T03:49:14Z">Nov 26, 2018</time>
+								<span class="display-print">by </span>
+								 in <a href="http://www.moxleystratton.com/categories//tensorflow" class="no-underline category near-white dim">Tensorflow</a>
+								<span class="display-print">at http://www.moxleystratton.com/tensorflow-visualizing-weights/</span>
+							
+						
+					</h2>
+				</div>
+
+				
+				
+				
+				
+
+			</div>
+		</header>
+		
+		<main role="main">
+		
+<article class="center bg-white br-3 pv1 ph4 nested-copy-line-height lh-copy f4 nested-links mw-100 measure-wide">
+	
+
+<p><img src="https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/two-weights-training-2.png" alt="weights during training" /></p>
+
+<p>I have a deep interest in knowing exactly how a neural network works. Not only do
+I want to know the theory, I want to know&ndash; in practice&ndash; what&rsquo;s happening to the neuron&rsquo;s weights
+as the network is being trained.</p>
+
+<p>With TensorFlow, it took a lot of work and investigation to finally get to a point where I had something that
+visualized weights being trained.</p>
+
+<p>It seemed that TensorFlow was putting roadblocks at every possible path to getting the valuees of the
+changing weights. For graph calculations&ndash; the kind that TensorFlow is based on&ndash; it&rsquo;s only possible
+to read values in the graph during the graph&rsquo;s session. That&rsquo;s not an issue if you have a reference
+to the session. But for models built with Keras, the session is created and destroyed behind
+the scenes.</p>
+
+<p>I saw that TensorFlow provides a way to save a model&rsquo;s state to a file. I tried digging
+into that mechanism to get the chaning weights, but I only ran into deadends. I tried
+using TensorFlow&rsquo;s &ldquo;eager execution&rdquo; mode, but I was not able to get any of my Keras-based
+models to work.</p>
+
+<p>It turns out the <code>tf.keras.Model</code> exposes a method called <code>get_weights()</code>. This
+returns a Python array containing the weights and biases of the model. The
+solution seems so easy in retrospect. Below is a demo of visualizing weights of
+a very simple neural network.</p>
+
+<h2 id="getting-model-parameters-during-training">Getting Model Parameters During Training</h2>
+
+<p>Defined as a user story:</p>
+
+<ul>
+<li>As a Tensorflow programmer</li>
+<li>I want the ability to read a model&rsquo;s parameters during training</li>
+<li>So that I can visualize them</li>
+</ul>
+
+<p>Let&rsquo;s create a very simple model with <code>tf.keras</code>. It will consist of a single
+neuron on a single layer. It will have two inputs.</p>
+
+<p>We&rsquo;re going to train the model to change its weights to <code>[1.0, 1.0]</code>, so that
+the neuron becomes equivalent to its activation function.</p>
+
+<p>First, import the necessary dependencies:</p>
+
+<pre><code class="language-python">import tensorflow as tf
+from tensorflow import keras
+from tensorflow.contrib import eager as tfe
+import numpy as np
+import matplotlib.pyplot as plt
+</code></pre>
+
+<p>Create the model:</p>
+
+<pre><code class="language-python"># Sequential: https://www.tensorflow.org/api_docs/python/tf/keras/models/Sequential
+model = keras.Sequential([
+    keras.layers.Dense(1, input_shape=(2,), activation='tanh')
+])
+
+learning_rate = 0.5
+optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+model.compile(optimizer=optimizer,
+              loss='mean_squared_error',
+              metrics=['accuracy'])
+</code></pre>
+
+<p>For a single-neuron network, we need an activation function that is completely
+differentiatiable. In other words, the graph of the function shouldn&rsquo;t have any
+horizontal lines or vertical lines or gaps in it. Otherwise, it could fail
+to improve during training, depending on where the weights start off. <code>tanh</code>
+fits the bill.</p>
+
+<p><img src="https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/tanh-function.png" alt="tanh function" /></p>
+
+<p>Generate the training data and corresponding labels:</p>
+
+<pre><code class="language-python"># This function is used to generate training labels
+# We need to match neuron's activation function
+def tanh(x):
+    x_sum = np.sum(x)
+    return np.tanh(x_sum)
+
+train_data = np.random.random((500, 2))
+train_labels = np.array(list(map(tanh, train_data)))
+</code></pre>
+
+<p>Let&rsquo;s see how the model performs before training:</p>
+
+<pre><code class="language-python">test_data = np.random.random((10, 2))
+test_labels = np.array(list(map(tanh, test_data)))
+
+test_loss, _ = model.evaluate(test_data, test_labels)
+print('loss:', test_loss)
+# loss: 0.19740669429302216
+</code></pre>
+
+<p>Not great, eh? That&rsquo;s what we expect for an untrained network.</p>
+
+<p>Here&rsquo;s how we record the weights during training:</p>
+
+<pre><code class="language-python"># Records the weights throughout the training process
+weights_history = []
+
+# A custom callback
+# https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/Callback
+class MyCallback(keras.callbacks.Callback):
+    def on_batch_end(self, batch, logs):
+        weights, _biases = model.get_weights()
+        w1, w2 = weights
+        weights = [w1[0], w2[0]]
+        print('on_batch_end() model.weights:', weights)
+        weights_history.append(weights)
+
+
+callback = MyCallback()
+</code></pre>
+
+<p>We create a custom callback that inherits from <code>keras.callbacks.Callback</code>.</p>
+
+<p>When we call fit() to train the model, we pass in the callback:</p>
+
+<pre><code class="language-python"># fit(): https://www.tensorflow.org/api_docs/python/tf/keras/models/Sequential#fit
+model.fit(train_data, train_labels, epochs=10,
+          verbose=False, callbacks=[callback])
+</code></pre>
+
+<p>Watching the output, you&rsquo;ll see updated weights at the end of each training batch.
+They should approach <code>1.0</code>.</p>
+
+<p>Now, <code>weights_history</code> will have the historical weights.</p>
+
+<p>Now let&rsquo;s see how well the model performs, after training:</p>
+
+<pre><code class="language-python">test_loss, _ = model.evaluate(test_data, test_labels)
+print('loss:', test_loss)
+# loss: 0.00015836639795452356
+</code></pre>
+
+<p>As loss of <code>0.0002</code> is much better than <code>0.2</code>.</p>
+
+<p>Let&rsquo;s plot the historical weight values during training:</p>
+
+<pre><code class="language-python">plt.figure(1, figsize=(6, 3))
+plt.plot(weights_history)
+plt.show()
+</code></pre>
+
+<p>Test 1:
+<img src="https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/two-weights-training-1.png" alt="weights during training 1" /></p>
+
+<p>Test 2:
+<img src="https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/two-weights-training-3.png" alt="weights during training 3" /></p>
+
+<p>And that&rsquo;s it. We&rsquo;ve successfully visualized neuron weights during training.</p>
+
+</article>
+
+		</main>
+		
+				<div class="hide-print sans-serif f6 f5-l mt5 ph3 pb6 center nested-copy-line-height lh-copy nested-links mw-100 measure-wide">
+		<div class="about-the-author">
+		
+			
+			
+				
+					
+				
+			
+		
+		</div>
+		
+	</div>
+
+		
+		
+		
+		<footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3" role="contentinfo">
+			<p class="w-50 fr tr">
+			<a class="no-underline near-white" href="https://github.com/xaprb/story"><img class="dib" title="Made with Hugo and Story" alt="Story logo" src="http://www.moxleystratton.com/img/story-logo-white.svg" style="width: 1.5rem; height: 1.5rem" /></a>
+			</p>
+			<p class="w-50 near-white">
+				&copy; 2018 
+			</p>
+		</footer>
+		
+	
+	
+	</body>
+</html>

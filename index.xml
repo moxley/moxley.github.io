@@ -7,7 +7,170 @@
 		<language>en-us</language>
 		<author></author>
 		<rights>Copyright (c) 2018</rights>
-		<updated>2018-11-26 03:06:44 &#43;0000 UTC</updated>
+		<updated>2018-11-26 03:49:14 &#43;0000 UTC</updated>
+		
+		<item>
+			<title>Visualizing Neuron Weights with Tensorflow</title>
+			<link>http://www.moxleystratton.com/tensorflow-visualizing-weights/</link>
+			<pubDate>Mon, 26 Nov 2018 03:49:14 UTC</pubDate>
+			<author></author>
+			<guid>http://www.moxleystratton.com/tensorflow-visualizing-weights/</guid>
+			<description>
+
+&lt;p&gt;&lt;img src=&#34;https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/two-weights-training-2.png&#34; alt=&#34;weights during training&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I have a deep interest in knowing exactly how a neural network works. Not only do
+I want to know the theory, I want to know&amp;ndash; in practice&amp;ndash; what&amp;rsquo;s happening to the neuron&amp;rsquo;s weights
+as the network is being trained.&lt;/p&gt;
+
+&lt;p&gt;With TensorFlow, it took a lot of work and investigation to finally get to a point where I had something that
+visualized weights being trained.&lt;/p&gt;
+
+&lt;p&gt;It seemed that TensorFlow was putting roadblocks at every possible path to getting the valuees of the
+changing weights. For graph calculations&amp;ndash; the kind that TensorFlow is based on&amp;ndash; it&amp;rsquo;s only possible
+to read values in the graph during the graph&amp;rsquo;s session. That&amp;rsquo;s not an issue if you have a reference
+to the session. But for models built with Keras, the session is created and destroyed behind
+the scenes.&lt;/p&gt;
+
+&lt;p&gt;I saw that TensorFlow provides a way to save a model&amp;rsquo;s state to a file. I tried digging
+into that mechanism to get the chaning weights, but I only ran into deadends. I tried
+using TensorFlow&amp;rsquo;s &amp;ldquo;eager execution&amp;rdquo; mode, but I was not able to get any of my Keras-based
+models to work.&lt;/p&gt;
+
+&lt;p&gt;It turns out the &lt;code&gt;tf.keras.Model&lt;/code&gt; exposes a method called &lt;code&gt;get_weights()&lt;/code&gt;. This
+returns a Python array containing the weights and biases of the model. The
+solution seems so easy in retrospect. Below is a demo of visualizing weights of
+a very simple neural network.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-model-parameters-during-training&#34;&gt;Getting Model Parameters During Training&lt;/h2&gt;
+
+&lt;p&gt;Defined as a user story:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;As a Tensorflow programmer&lt;/li&gt;
+&lt;li&gt;I want the ability to read a model&amp;rsquo;s parameters during training&lt;/li&gt;
+&lt;li&gt;So that I can visualize them&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let&amp;rsquo;s create a very simple model with &lt;code&gt;tf.keras&lt;/code&gt;. It will consist of a single
+neuron on a single layer. It will have two inputs.&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re going to train the model to change its weights to &lt;code&gt;[1.0, 1.0]&lt;/code&gt;, so that
+the neuron becomes equivalent to its activation function.&lt;/p&gt;
+
+&lt;p&gt;First, import the necessary dependencies:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import tensorflow as tf
+from tensorflow import keras
+from tensorflow.contrib import eager as tfe
+import numpy as np
+import matplotlib.pyplot as plt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create the model:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Sequential: https://www.tensorflow.org/api_docs/python/tf/keras/models/Sequential
+model = keras.Sequential([
+    keras.layers.Dense(1, input_shape=(2,), activation=&#39;tanh&#39;)
+])
+
+learning_rate = 0.5
+optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+model.compile(optimizer=optimizer,
+              loss=&#39;mean_squared_error&#39;,
+              metrics=[&#39;accuracy&#39;])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For a single-neuron network, we need an activation function that is completely
+differentiatiable. In other words, the graph of the function shouldn&amp;rsquo;t have any
+horizontal lines or vertical lines or gaps in it. Otherwise, it could fail
+to improve during training, depending on where the weights start off. &lt;code&gt;tanh&lt;/code&gt;
+fits the bill.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/tanh-function.png&#34; alt=&#34;tanh function&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Generate the training data and corresponding labels:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# This function is used to generate training labels
+# We need to match neuron&#39;s activation function
+def tanh(x):
+    x_sum = np.sum(x)
+    return np.tanh(x_sum)
+
+train_data = np.random.random((500, 2))
+train_labels = np.array(list(map(tanh, train_data)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see how the model performs before training:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;test_data = np.random.random((10, 2))
+test_labels = np.array(list(map(tanh, test_data)))
+
+test_loss, _ = model.evaluate(test_data, test_labels)
+print(&#39;loss:&#39;, test_loss)
+# loss: 0.19740669429302216
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not great, eh? That&amp;rsquo;s what we expect for an untrained network.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how we record the weights during training:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Records the weights throughout the training process
+weights_history = []
+
+# A custom callback
+# https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/Callback
+class MyCallback(keras.callbacks.Callback):
+    def on_batch_end(self, batch, logs):
+        weights, _biases = model.get_weights()
+        w1, w2 = weights
+        weights = [w1[0], w2[0]]
+        print(&#39;on_batch_end() model.weights:&#39;, weights)
+        weights_history.append(weights)
+
+
+callback = MyCallback()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We create a custom callback that inherits from &lt;code&gt;keras.callbacks.Callback&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When we call fit() to train the model, we pass in the callback:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# fit(): https://www.tensorflow.org/api_docs/python/tf/keras/models/Sequential#fit
+model.fit(train_data, train_labels, epochs=10,
+          verbose=False, callbacks=[callback])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Watching the output, you&amp;rsquo;ll see updated weights at the end of each training batch.
+They should approach &lt;code&gt;1.0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, &lt;code&gt;weights_history&lt;/code&gt; will have the historical weights.&lt;/p&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s see how well the model performs, after training:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;test_loss, _ = model.evaluate(test_data, test_labels)
+print(&#39;loss:&#39;, test_loss)
+# loss: 0.00015836639795452356
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As loss of &lt;code&gt;0.0002&lt;/code&gt; is much better than &lt;code&gt;0.2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s plot the historical weight values during training:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plt.figure(1, figsize=(6, 3))
+plt.plot(weights_history)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test 1:
+&lt;img src=&#34;https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/two-weights-training-1.png&#34; alt=&#34;weights during training 1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Test 2:
+&lt;img src=&#34;https://s3-us-west-2.amazonaws.com/moxicon-public/blog/tensorflow-visualizing-weights/two-weights-training-3.png&#34; alt=&#34;weights during training 3&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it. We&amp;rsquo;ve successfully visualized neuron weights during training.&lt;/p&gt;
+</description>
+		</item>
 		
 		<item>
 			<title>TensorFlow on MacOS</title>
