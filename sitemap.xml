@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.moxleystratton.com/when-to-use-elixirs-string-to-atom/</loc>
+    <lastmod>2018-12-13T00:18:15+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.moxleystratton.com/tensorflow-visualizing-weights/</loc>
     <lastmod>2018-11-26T03:49:14+00:00</lastmod>
   </url>
@@ -127,7 +132,7 @@
   
   <url>
     <loc>http://www.moxleystratton.com/</loc>
-    <lastmod>2018-11-26T03:49:14+00:00</lastmod>
+    <lastmod>2018-12-13T00:18:15+00:00</lastmod>
     <priority>0</priority>
   </url>
   
